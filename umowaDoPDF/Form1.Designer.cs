@@ -116,6 +116,7 @@
             this.tName.Name = "tName";
             this.tName.Size = new System.Drawing.Size(297, 20);
             this.tName.TabIndex = 5;
+            this.tName.Text = "Piotr Lipinski";
             // 
             // tIDCard
             // 
@@ -125,6 +126,7 @@
             this.tIDCard.Name = "tIDCard";
             this.tIDCard.Size = new System.Drawing.Size(297, 20);
             this.tIDCard.TabIndex = 17;
+            this.tIDCard.Text = "AZJ 467588";
             // 
             // label4
             // 
@@ -143,6 +145,7 @@
             this.tPesel.Name = "tPesel";
             this.tPesel.Size = new System.Drawing.Size(297, 20);
             this.tPesel.TabIndex = 18;
+            this.tPesel.Text = "87092389876";
             // 
             // label5
             // 
@@ -161,6 +164,7 @@
             this.tStreet.Name = "tStreet";
             this.tStreet.Size = new System.Drawing.Size(297, 20);
             this.tStreet.TabIndex = 11;
+            this.tStreet.Text = "plac Tadeusza Kosciuszki 2";
             // 
             // label6
             // 
@@ -177,6 +181,7 @@
             this.tZipCode.Name = "tZipCode";
             this.tZipCode.Size = new System.Drawing.Size(78, 20);
             this.tZipCode.TabIndex = 13;
+            this.tZipCode.Text = "28-300";
             // 
             // label7
             // 
@@ -195,6 +200,7 @@
             this.tCity.Name = "tCity";
             this.tCity.Size = new System.Drawing.Size(269, 20);
             this.tCity.TabIndex = 15;
+            this.tCity.Text = "Jedrzejow";
             // 
             // label8
             // 
@@ -213,6 +219,7 @@
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
             this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(614, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
+            this.tSubjectOfAgreemnt.Text = "Koparka do BTC Miliart PH/s";
             // 
             // label9
             // 
@@ -231,6 +238,7 @@
             this.tBuyingPriceInWords.Name = "tBuyingPriceInWords";
             this.tBuyingPriceInWords.Size = new System.Drawing.Size(297, 20);
             this.tBuyingPriceInWords.TabIndex = 25;
+            this.tBuyingPriceInWords.Text = "trzysta czterdziesci piec zlotych";
             // 
             // label10
             // 
@@ -255,6 +263,11 @@
             this.nudBuyingPrice.Name = "nudBuyingPrice";
             this.nudBuyingPrice.Size = new System.Drawing.Size(124, 20);
             this.nudBuyingPrice.TabIndex = 23;
+            this.nudBuyingPrice.Value = new decimal(new int[] {
+            345,
+            0,
+            0,
+            0});
             // 
             // label11
             // 
@@ -288,6 +301,11 @@
             this.nudSellingPrice.Name = "nudSellingPrice";
             this.nudSellingPrice.Size = new System.Drawing.Size(124, 20);
             this.nudSellingPrice.TabIndex = 27;
+            this.nudSellingPrice.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // tSellingPriceInWords
             // 
@@ -297,6 +315,7 @@
             this.tSellingPriceInWords.Name = "tSellingPriceInWords";
             this.tSellingPriceInWords.Size = new System.Drawing.Size(297, 20);
             this.tSellingPriceInWords.TabIndex = 29;
+            this.tSellingPriceInWords.Text = "piecset zlotych";
             // 
             // label13
             // 

@@ -24,9 +24,10 @@ namespace umowaDoPDF
             XGraphics gfx = XGraphics.FromPdfPage(newAgreement.Pages[0]);
             gfx.DrawString(a.From.ToString("dd-MM-yyyy"), font, new XSolidBrush(XColor.FromName("black")), 140, 130);
             gfx.DrawString(a.Client.Name, font, new XSolidBrush(XColor.FromName("black")), 140, 145);
-            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 140, 145);
+            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 140, 160);
+            gfx.DrawString(a.Client.IDCard, font, new XSolidBrush(XColor.FromName("black")), 300, 175);
+            gfx.DrawString(a.Client.Pesel, font, new XSolidBrush(XColor.FromName("black")), 400, 175);
             
-
 
 
             newAgreement.Save(path);
