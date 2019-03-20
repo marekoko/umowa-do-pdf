@@ -1,12 +1,12 @@
-﻿using System;
+﻿using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
 
 namespace umowaDoPDF
 {
@@ -19,11 +19,13 @@ namespace umowaDoPDF
             newAgreement.AddPage(AgreementOriginal.Pages[0]);
             AgreementOriginal.Dispose();
             XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
-            XFont prodNameFont = new XFont("Times New Roman", 9, XFontStyle.Regular, options);
+            XFont font = new XFont("Calibri", 11, XFontStyle.Regular, options);
 
             XGraphics gfx = XGraphics.FromPdfPage(newAgreement.Pages[0]);
-            gfx.DrawString(a.From.ToString("dd"));
-
+            gfx.DrawString(a.From.ToString("dd-MM-yyyy"), font, new XSolidBrush(XColor.FromName("black")), 140, 130);
+            gfx.DrawString(a.Client.Name, font, new XSolidBrush(XColor.FromName("black")), 140, 145);
+            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 140, 145);
+            
 
 
 
