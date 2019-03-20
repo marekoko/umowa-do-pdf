@@ -25,6 +25,8 @@ namespace umowaDoPDF
             gfx.DrawString(a.From.ToString("dd"));
 
 
+
+
             newAgreement.Save(path);
             newAgreement.Dispose();
         }
