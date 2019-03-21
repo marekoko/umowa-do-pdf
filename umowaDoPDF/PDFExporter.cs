@@ -19,15 +19,17 @@ namespace umowaDoPDF
             newAgreement.AddPage(AgreementOriginal.Pages[0]);
             AgreementOriginal.Dispose();
             XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
-            XFont font = new XFont("Calibri", 11, XFontStyle.Regular, options);
+            XFont font = new XFont("Calibri", 12, XFontStyle.Regular, options);
 
             XGraphics gfx = XGraphics.FromPdfPage(newAgreement.Pages[0]);
-            gfx.DrawString(a.From.ToString("dd-MM-yyyy"), font, new XSolidBrush(XColor.FromName("black")), 140, 130);
-            gfx.DrawString(a.Client.Name, font, new XSolidBrush(XColor.FromName("black")), 140, 145);
-            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 140, 160);
-            gfx.DrawString(a.Client.IDCard, font, new XSolidBrush(XColor.FromName("black")), 300, 175);
+            gfx.DrawString($"{a.From.ToString("dd-MM-yyyy")} r. w Jędrzejowie pomiędzy:", font, new XSolidBrush(XColor.FromName("black")), 83, 133);
+            gfx.DrawString(a.Client.Name, font, new XSolidBrush(XColor.FromName("black")), 83, 148);
+            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 83, 163);
+            gfx.DrawString(a.Client.IDCard, font, new XSolidBrush(XColor.FromName("black")), 250, 175);
             gfx.DrawString(a.Client.Pesel, font, new XSolidBrush(XColor.FromName("black")), 400, 175);
-            
+            gfx.DrawString(a.SubjectOfAgreement, font, new XSolidBrush(XColor.FromName("black")), 400, 190);
+            gfx.DrawString($"{a.PurchasePrice} zł", font, new XSolidBrush(XColor.FromName("black")), 400, 190);
+            gfx.DrawString(a.PurchasePriceInWords, font, new XSolidBrush(XColor.FromName("black")), 400, 220);
 
 
             newAgreement.Save(path);

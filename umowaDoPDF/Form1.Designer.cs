@@ -46,17 +46,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tSubjectOfAgreemnt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.tBuyingPriceInWords = new System.Windows.Forms.TextBox();
+            this.tPurchasePriceInWords = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.nudBuyingPrice = new System.Windows.Forms.NumericUpDown();
+            this.nudPurchasePrice = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.nudSellingPrice = new System.Windows.Forms.NumericUpDown();
-            this.tSellingPriceInWords = new System.Windows.Forms.TextBox();
+            this.nudBuyoutPrice = new System.Windows.Forms.NumericUpDown();
+            this.tBuyoutPriceInWords = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.bGeneratePDF = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellingPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpFrom
@@ -230,15 +230,15 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Przedmiot Umowy:";
             // 
-            // tBuyingPriceInWords
+            // tPurchasePriceInWords
             // 
-            this.tBuyingPriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tPurchasePriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBuyingPriceInWords.Location = new System.Drawing.Point(126, 247);
-            this.tBuyingPriceInWords.Name = "tBuyingPriceInWords";
-            this.tBuyingPriceInWords.Size = new System.Drawing.Size(297, 20);
-            this.tBuyingPriceInWords.TabIndex = 25;
-            this.tBuyingPriceInWords.Text = "trzysta czterdziesci piec zlotych";
+            this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
+            this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(297, 20);
+            this.tPurchasePriceInWords.TabIndex = 25;
+            this.tPurchasePriceInWords.Text = "trzysta czterdziesci piec zlotych";
             // 
             // label10
             // 
@@ -249,21 +249,21 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Cena zakupu słownie:";
             // 
-            // nudBuyingPrice
+            // nudPurchasePrice
             // 
-            this.nudBuyingPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nudPurchasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudBuyingPrice.DecimalPlaces = 2;
-            this.nudBuyingPrice.Location = new System.Drawing.Point(126, 221);
-            this.nudBuyingPrice.Maximum = new decimal(new int[] {
+            this.nudPurchasePrice.DecimalPlaces = 2;
+            this.nudPurchasePrice.Location = new System.Drawing.Point(126, 221);
+            this.nudPurchasePrice.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.nudBuyingPrice.Name = "nudBuyingPrice";
-            this.nudBuyingPrice.Size = new System.Drawing.Size(124, 20);
-            this.nudBuyingPrice.TabIndex = 23;
-            this.nudBuyingPrice.Value = new decimal(new int[] {
+            this.nudPurchasePrice.Name = "nudPurchasePrice";
+            this.nudPurchasePrice.Size = new System.Drawing.Size(124, 20);
+            this.nudPurchasePrice.TabIndex = 23;
+            this.nudPurchasePrice.Value = new decimal(new int[] {
             345,
             0,
             0,
@@ -287,35 +287,35 @@
             this.label12.TabIndex = 28;
             this.label12.Text = "Cena wykupu:";
             // 
-            // nudSellingPrice
+            // nudBuyoutPrice
             // 
-            this.nudSellingPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nudBuyoutPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudSellingPrice.DecimalPlaces = 2;
-            this.nudSellingPrice.Location = new System.Drawing.Point(126, 273);
-            this.nudSellingPrice.Maximum = new decimal(new int[] {
+            this.nudBuyoutPrice.DecimalPlaces = 2;
+            this.nudBuyoutPrice.Location = new System.Drawing.Point(126, 273);
+            this.nudBuyoutPrice.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.nudSellingPrice.Name = "nudSellingPrice";
-            this.nudSellingPrice.Size = new System.Drawing.Size(124, 20);
-            this.nudSellingPrice.TabIndex = 27;
-            this.nudSellingPrice.Value = new decimal(new int[] {
+            this.nudBuyoutPrice.Name = "nudBuyoutPrice";
+            this.nudBuyoutPrice.Size = new System.Drawing.Size(124, 20);
+            this.nudBuyoutPrice.TabIndex = 27;
+            this.nudBuyoutPrice.Value = new decimal(new int[] {
             500,
             0,
             0,
             0});
             // 
-            // tSellingPriceInWords
+            // tBuyoutPriceInWords
             // 
-            this.tSellingPriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tBuyoutPriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tSellingPriceInWords.Location = new System.Drawing.Point(126, 299);
-            this.tSellingPriceInWords.Name = "tSellingPriceInWords";
-            this.tSellingPriceInWords.Size = new System.Drawing.Size(297, 20);
-            this.tSellingPriceInWords.TabIndex = 29;
-            this.tSellingPriceInWords.Text = "piecset zlotych";
+            this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
+            this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(297, 20);
+            this.tBuyoutPriceInWords.TabIndex = 29;
+            this.tBuyoutPriceInWords.Text = "pięćset zlotych";
             // 
             // label13
             // 
@@ -344,12 +344,12 @@
             this.ClientSize = new System.Drawing.Size(839, 396);
             this.Controls.Add(this.bGeneratePDF);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.nudSellingPrice);
-            this.Controls.Add(this.tSellingPriceInWords);
+            this.Controls.Add(this.nudBuyoutPrice);
+            this.Controls.Add(this.tBuyoutPriceInWords);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.nudBuyingPrice);
-            this.Controls.Add(this.tBuyingPriceInWords);
+            this.Controls.Add(this.nudPurchasePrice);
+            this.Controls.Add(this.tPurchasePriceInWords);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tSubjectOfAgreemnt);
             this.Controls.Add(this.label9);
@@ -371,8 +371,8 @@
             this.Controls.Add(this.dtpFrom);
             this.Name = "Form1";
             this.Text = "Generator Umowy";
-            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSellingPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,13 +398,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tSubjectOfAgreemnt;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tBuyingPriceInWords;
+        private System.Windows.Forms.TextBox tPurchasePriceInWords;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown nudBuyingPrice;
+        private System.Windows.Forms.NumericUpDown nudPurchasePrice;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown nudSellingPrice;
-        private System.Windows.Forms.TextBox tSellingPriceInWords;
+        private System.Windows.Forms.NumericUpDown nudBuyoutPrice;
+        private System.Windows.Forms.TextBox tBuyoutPriceInWords;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bGeneratePDF;
     }

@@ -8,9 +8,10 @@ namespace umowaDoPDF
         public DateTime To { get; set; }
         public Client Client { get; set; }
         public string SubjectOfAgreement { get; set; }
-        public decimal BuyingPrice { get; set; }
-        public string BuyingPriceInWords { get; set; }
-        public decimal SellingPrice { get; set; }
-        public string SellingPriceInWords { get; set; }
+        public decimal PurchasePrice { get; set; }
+        public string PurchasePriceInWords { get; set; }
+        public decimal BuyoutPrice { get; set; }
+        public string BuyoutPriceInWords { get; set; }
+
     }
 }

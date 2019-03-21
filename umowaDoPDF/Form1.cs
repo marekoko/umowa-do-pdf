@@ -25,10 +25,10 @@ namespace umowaDoPDF
             var a = new Agreement();
             a.From = dtpFrom.Value;
             a.To = dtpTo.Value;
-            a.BuyingPrice = nudBuyingPrice.Value;
-            a.SellingPrice = nudSellingPrice.Value;
-            a.BuyingPriceInWords = tBuyingPriceInWords.Text;
-            a.SellingPriceInWords = tSellingPriceInWords.Text;
+            a.PurchasePrice = nudPurchasePrice.Value;
+            a.BuyoutPrice = nudBuyoutPrice.Value;
+            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
             a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
             a.Client = new Client();
             a.Client.IDCard = tIDCard.Text;
