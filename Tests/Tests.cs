@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using umowaDoPDF;
 using Xunit;
+using RandomTestValues;
 
 namespace Tests
 {
@@ -13,7 +15,11 @@ namespace Tests
         [Fact]
         public void File_should_be_generated_properly()
         {
+            var agr = RandomValue.Object<Agreement>();
             
+            PDFExporter.SaveAsPDF("umowaNowa.pdf", agr);
+            Assert.Equal(true, true);
+            true.ShouldBe(true);
         }
 
     }
