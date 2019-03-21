@@ -28,9 +28,8 @@ namespace umowaDoPDF
             gfx.DrawString(a.Client.IDCard, font, new XSolidBrush(XColor.FromName("black")), 250, 175);
             gfx.DrawString(a.Client.Pesel, font, new XSolidBrush(XColor.FromName("black")), 400, 175);
             gfx.DrawString(a.SubjectOfAgreement, font, new XSolidBrush(XColor.FromName("black")), 400, 190);
-            gfx.DrawString($"{a.PurchasePrice} zł", font, new XSolidBrush(XColor.FromName("black")), 400, 190);
+            gfx.DrawString(a.PurchasePriceString(), font, new XSolidBrush(XColor.FromName("black")), 400, 190);
             gfx.DrawString(a.PurchasePriceInWords, font, new XSolidBrush(XColor.FromName("black")), 400, 220);
-
 
             newAgreement.Save(path);
             newAgreement.Dispose();
