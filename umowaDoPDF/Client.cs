@@ -11,5 +11,10 @@ namespace umowaDoPDF
         public Address Address { get; set; }
         public string IDCard { get; set; }
         public string Pesel { get; set; }
+
+        public string IDCardAndPeselString()
+        {
+            return $" {IDCard} , nr PESEL: {Pesel} ,"; 
+        }
     }
 }

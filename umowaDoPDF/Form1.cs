@@ -23,7 +23,7 @@ namespace umowaDoPDF
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
             var a = new Agreement();
-            a.From = dtpFrom.Value;
+            a.FromDate = dtpFrom.Value;
             a.To = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
             a.BuyoutPrice = nudBuyoutPrice.Value;

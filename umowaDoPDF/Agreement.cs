@@ -4,7 +4,7 @@ namespace umowaDoPDF
 {
     public class Agreement
     {
-        public DateTime From { get; set; }
+        public DateTime FromDate { get; set; }
         public DateTime To { get; set; }
         public Client Client { get; set; }
         public string SubjectOfAgreement { get; set; }
@@ -15,7 +15,11 @@ namespace umowaDoPDF
 
         public string PurchasePriceString()
         {
-            return $"{PurchasePrice} zł";
+            return $"{this.PurchasePrice} zł";
+        }
+        public string FromDateString()
+        {
+            return $"{this.FromDate.ToString("dd-MM-yyyy")} r. w Jędrzejowie pomiędzy:";
         }
     }
     
