@@ -64,8 +64,9 @@ namespace umowaDoPDF
         {
             string path = "dane.txt";
             var a = new Agreement();
-            var line = $@"{a.FromDateString()} {a.Client.Name} {a.Client.Address.ToString()} {a.PurchasePriceString()} 
-                            {a.SubjectOfAgreement} {a.BuyoutPriceString()} {a.ToDateString()}";
+            //var line = $@"{a.FromDateString()} {a.Client.Name} {a.Client.Address.ToString()} {a.PurchasePriceString()} 
+            //                {a.SubjectOfAgreement} {a.BuyoutPriceString()} {a.ToDateString()}";
+            var line = "asdasdasd";
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine(line);
