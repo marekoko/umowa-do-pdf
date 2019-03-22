@@ -64,8 +64,8 @@ namespace umowaDoPDF
         {
             string path = "dane.txt";
             var a = new Agreement();
-            var fileExist = File.Exists(path);
-            var line = $"{(fileExist ? "kolejna" : "pierwsza")} linia";
+            var line = $@"{a.FromDateString()} {a.Client.Name} {a.Client.Address.ToString()} {a.PurchasePriceString()} 
+                            {a.SubjectOfAgreement} {a.BuyoutPriceString()} {a.ToDateString()}";
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine(line);
