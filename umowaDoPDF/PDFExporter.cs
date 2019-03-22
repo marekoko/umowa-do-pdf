@@ -19,16 +19,21 @@ namespace umowaDoPDF
             newAgreement.AddPage(AgreementOriginal.Pages[0]);
             AgreementOriginal.Dispose();
             XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
-            XFont font = new XFont("Calibri", 12, XFontStyle.Regular, options);
+            XFont fontBold = new XFont("Calibri", 12, XFontStyle.Bold, options);
+            XFont fontRegular = new XFont("Calibri", 12, XFontStyle.Regular, options);
 
             XGraphics gfx = XGraphics.FromPdfPage(newAgreement.Pages[0]);
-            gfx.DrawString(a.FromDateString(), font, new XSolidBrush(XColor.FromName("black")), 83, 133.5);
-            gfx.DrawString(a.Client.Name, font, new XSolidBrush(XColor.FromName("black")), 80, 148.5);
-            gfx.DrawString(a.Client.Address.ToString(), font, new XSolidBrush(XColor.FromName("black")), 43, 162.5);
-            gfx.DrawString(a.Client.IDCardAndPeselString(), font, new XSolidBrush(XColor.FromName("black")), 240, 176.5);
-            gfx.DrawString(a.SubjectOfAgreement, font, new XSolidBrush(XColor.FromName("black")), 60, 225.5);
-            gfx.DrawString(a.PurchasePriceString(), font, new XSolidBrush(XColor.FromName("black")), 250, 252);
-            gfx.DrawString(a.PurchasePriceInWords, font, new XSolidBrush(XColor.FromName("black")), 100, 266);
+            gfx.DrawString(a.FromDateString(), fontBold, new XSolidBrush(XColor.FromName("black")), 83, 133.5);
+            gfx.DrawString(a.Client.Name, fontBold, new XSolidBrush(XColor.FromName("black")), 80, 148.2);
+            gfx.DrawString(a.Client.Address.ToString(), fontBold, new XSolidBrush(XColor.FromName("black")), 43, 162.7);
+            gfx.DrawString(a.Client.IDCardAndPeselString(), fontBold, new XSolidBrush(XColor.FromName("black")), 240, 177.4);
+            gfx.DrawString(a.SubjectOfAgreement, fontBold, new XSolidBrush(XColor.FromName("black")), 53.5, 230.5);
+            gfx.DrawString(a.PurchasePriceString(), fontBold, new XSolidBrush(XColor.FromName("black")), 264, 245.5);
+            gfx.DrawString(a.PurchasePriceInWords, fontBold, new XSolidBrush(XColor.FromName("black")), 100, 260.15);
+            gfx.DrawString(a.ToDateString(), fontBold, new XSolidBrush(XColor.FromName("black")), 321, 350.3);
+            gfx.DrawString(a.BuyoutPriceString(), fontBold, new XSolidBrush(XColor.FromName("black")), 348.2, 379.5);
+            gfx.DrawString(a.BuyoutPriceInWords, fontBold, new XSolidBrush(XColor.FromName("black")), 100, 394.2);
+
 
             newAgreement.Save(path);
             newAgreement.Dispose();

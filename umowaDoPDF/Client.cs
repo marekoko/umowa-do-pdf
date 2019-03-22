@@ -14,7 +14,7 @@ namespace umowaDoPDF
 
         public string IDCardAndPeselString()
         {
-            return $" {IDCard} , nr PESEL: {Pesel} ,"; 
+            return $": {IDCard} , nr PESEL: {Pesel} ,"; 
         }
     }
 }

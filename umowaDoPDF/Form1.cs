@@ -25,7 +25,7 @@ namespace umowaDoPDF
         {
             var a = new Agreement();
             a.FromDate = dtpFrom.Value;
-            a.To = dtpTo.Value;
+            a.ToDate = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
             a.BuyoutPrice = nudBuyoutPrice.Value;
             a.PurchasePriceInWords = tPurchasePriceInWords.Text;

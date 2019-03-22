@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using umowaDoPDF;
 using Xunit;
 using RandomTestValues;
+using System.Diagnostics;
 
 namespace Tests
 {
@@ -20,6 +21,8 @@ namespace Tests
             PDFExporter.SaveAsPDF("umowaNowa.pdf", agr);
             Assert.Equal(true, true);
             true.ShouldBe(true);
+
+            Process.Start("umowaNowa.pdf");
         }
 
     }
