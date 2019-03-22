@@ -55,6 +55,7 @@
             this.tBuyoutPriceInWords = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.bGeneratePDF = new System.Windows.Forms.Button();
+            this.bSaveData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -337,11 +338,23 @@
             this.bGeneratePDF.UseVisualStyleBackColor = true;
             this.bGeneratePDF.Click += new System.EventHandler(this.bGeneratePDF_Click);
             // 
+            // bSaveData
+            // 
+            this.bSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSaveData.Location = new System.Drawing.Point(623, 340);
+            this.bSaveData.Name = "bSaveData";
+            this.bSaveData.Size = new System.Drawing.Size(99, 44);
+            this.bSaveData.TabIndex = 33;
+            this.bSaveData.Text = "Zapisz Dane";
+            this.bSaveData.UseVisualStyleBackColor = true;
+            this.bSaveData.Click += new System.EventHandler(this.bSaveData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 396);
+            this.Controls.Add(this.bSaveData);
             this.Controls.Add(this.bGeneratePDF);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.nudBuyoutPrice);
@@ -407,6 +420,7 @@
         private System.Windows.Forms.TextBox tBuyoutPriceInWords;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bGeneratePDF;
+        private System.Windows.Forms.Button bSaveData;
     }
 }
 

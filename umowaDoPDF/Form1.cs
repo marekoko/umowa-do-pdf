@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,5 +60,16 @@ namespace umowaDoPDF
 
         }
 
+        private void bSaveData_Click(object sender, EventArgs e)
+        {
+            string path = "dane.txt";
+            var a = new Agreement();
+            var fileExist = File.Exists(path);
+            var line = $"{(fileExist ? "kolejna" : "pierwsza")} linia";
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine(line);
+            }
+        }
     }
 }
