@@ -332,7 +332,7 @@
             this.bGeneratePDF.Location = new System.Drawing.Point(728, 340);
             this.bGeneratePDF.Name = "bGeneratePDF";
             this.bGeneratePDF.Size = new System.Drawing.Size(99, 44);
-            this.bGeneratePDF.TabIndex = 30;
+            this.bGeneratePDF.TabIndex = 32;
             this.bGeneratePDF.Text = "Stwórz PDF";
             this.bGeneratePDF.UseVisualStyleBackColor = true;
             this.bGeneratePDF.Click += new System.EventHandler(this.bGeneratePDF_Click);

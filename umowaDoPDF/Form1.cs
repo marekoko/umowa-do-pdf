@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,10 @@ namespace umowaDoPDF
             PDFExporter.SaveAsPDF(sfd.FileName, a);
             
             MessageBox.Show("Zapisano PDF!");
+
+            Process.Start(sfd.FileName);
+
         }
+
     }
 }
