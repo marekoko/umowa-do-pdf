@@ -64,12 +64,35 @@ namespace umowaDoPDF
         {
             string path = "dane.txt";
             var a = new Agreement();
-            //var line = $@"{a.FromDateString()} {a.Client.Name} {a.Client.Address.ToString()} {a.PurchasePriceString()} 
-            //                {a.SubjectOfAgreement} {a.BuyoutPriceString()} {a.ToDateString()}";
-            var line = "asdasdasd";
+            a.FromDate = dtpFrom.Value;
+            a.ToDate = dtpTo.Value;
+            a.PurchasePrice = nudPurchasePrice.Value;
+            a.BuyoutPrice = nudBuyoutPrice.Value;
+            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+            a.Client = new Client();
+            a.Client.IDCard = tIDCard.Text;
+            a.Client.Name = tName.Text;
+            a.Client.Pesel = tPesel.Text;
+            var address = a.Client.Address = new Address();
+            address.City = tCity.Text;
+            address.Street = tStreet.Text;
+            address.ZipCode = tZipCode.Text;
+            var line = $@"
+{a.FromDate:dd-MM-yyy}
+{a.Client.Name}
+{a.Client.Address.ToString()}
+{a.PurchasePrice}
+{a.SubjectOfAgreement}
+{a.BuyoutPrice}
+{a.ToDateString()}";
+            //var line = "asdasdasd";
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine(line);
+                MessageBox.Show("Zapisano do pliku txt");
+                Process.Start("dane.txt");
             }
         }
     }
