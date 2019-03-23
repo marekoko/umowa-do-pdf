@@ -23,7 +23,7 @@ namespace umowaDoPDF
         }
         public string FromDateString()
         {
-            return $"{this.FromDate.ToString("dd-MM-yyyy")} r. w Jędrzejowie pomiędzy:";
+            return $"{this.FromDate.ToString("dd-MM-yyyy")} r.";
         }
         public string ToDateString()
         {
