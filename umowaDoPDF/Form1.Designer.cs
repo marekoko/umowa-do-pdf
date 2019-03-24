@@ -117,7 +117,7 @@
             this.tName.Name = "tName";
             this.tName.Size = new System.Drawing.Size(297, 20);
             this.tName.TabIndex = 5;
-            this.tName.Text = "Piotr Lipinski";
+            this.tName.Text = "Piotr Lipiński";
             // 
             // tIDCard
             // 
@@ -201,7 +201,7 @@
             this.tCity.Name = "tCity";
             this.tCity.Size = new System.Drawing.Size(269, 20);
             this.tCity.TabIndex = 15;
-            this.tCity.Text = "Jedrzejow";
+            this.tCity.Text = "Jedrzejów";
             // 
             // label8
             // 

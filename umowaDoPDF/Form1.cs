@@ -49,11 +49,11 @@ namespace umowaDoPDF
             {
                 return;
             }
-            
+
 
 
             PDFExporter.SaveAsPDF(sfd.FileName, a);
-            
+
             MessageBox.Show("Zapisano PDF!");
 
             Process.Start(sfd.FileName);
@@ -92,7 +92,8 @@ namespace umowaDoPDF
             {
                 tw.WriteLine(line);
                 MessageBox.Show("Zapisano do pliku txt");
-                Process.Start("dane.txt");
+                try {Process.Start("notepad++.exe", "dane.txt");}
+                catch {Process.Start("dane.txt");}
             }
         }
     }
