@@ -87,7 +87,6 @@ namespace umowaDoPDF
 {a.SubjectOfAgreement}
 {a.BuyoutPrice}
 {a.ToDateString()}";
-            //var line = "asdasdasd";
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine(line);
