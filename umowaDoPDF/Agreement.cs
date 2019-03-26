@@ -23,11 +23,11 @@ namespace umowaDoPDF
         }
         public string FromDateString()
         {
-            return $"{this.FromDate.ToString("dd-MM-yyyy")} r.";
+            return $"{this.FromDate.ToString("dd.MM.yyyy")} r.";
         }
         public string ToDateString()
         {
-            return $"{this.ToDate.ToString("dd-MM-yyyy")}.";
+            return $"{this.ToDate.ToString("dd.MM.yyyy")}.";
         }
     }
     

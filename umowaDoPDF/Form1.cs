@@ -80,10 +80,9 @@ namespace umowaDoPDF
             address.Street = tStreet.Text;
             address.ZipCode = tZipCode.Text;
             var line = $@"
-{a.FromDate:dd-MM-yyy}
-{a.Client.Name}
-{a.Client.Address.ToString()}
-{a.PurchasePrice}
+{a.FromDate:dd.MM.yyyy}
+{a.Client.Name} {a.Client.Address.ToString()}
+{decimal.Round(a.PurchasePrice, 2, MidpointRounding.AwayFromZero)}
 {a.SubjectOfAgreement}
 {a.BuyoutPrice}
 {a.ToDateString()}";

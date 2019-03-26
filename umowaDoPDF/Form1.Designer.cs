@@ -265,10 +265,10 @@
             this.nudPurchasePrice.Size = new System.Drawing.Size(124, 20);
             this.nudPurchasePrice.TabIndex = 23;
             this.nudPurchasePrice.Value = new decimal(new int[] {
-            345,
+            34554,
             0,
             0,
-            0});
+            131072});
             // 
             // label11
             // 
