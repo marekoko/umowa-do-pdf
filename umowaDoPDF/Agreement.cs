@@ -15,11 +15,11 @@ namespace umowaDoPDF
 
         public string PurchasePriceString()
         {
-            return $"{this.PurchasePrice} zł";
+            return $"{this.PurchasePrice.ToString("0.00")} zł";
         }
         public string BuyoutPriceString()
         {
-            return $"{this.BuyoutPrice} zł";
+            return $"{this.BuyoutPrice.ToString("0.00")} zł";
         }
         public string FromDateString()
         {

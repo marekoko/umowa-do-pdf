@@ -82,9 +82,9 @@ namespace umowaDoPDF
             var line = $@"
 {a.FromDate:dd.MM.yyyy}
 {a.Client.Name} {a.Client.Address.ToString()}
-{decimal.Round(a.PurchasePrice, 2, MidpointRounding.AwayFromZero)}
+{a.PurchasePrice.ToString("0.00")}
 {a.SubjectOfAgreement}
-{a.BuyoutPrice}
+{a.BuyoutPrice.ToString("0.00")}
 {a.ToDateString()}";
             using (TextWriter tw = new StreamWriter(path, true))
             {
