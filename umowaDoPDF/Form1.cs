@@ -85,7 +85,7 @@ namespace umowaDoPDF
 {a.PurchasePrice.ToString("0.00")}
 {a.SubjectOfAgreement}
 {a.BuyoutPrice.ToString("0.00")}
-{a.ToDateString()}";
+{a.ToDate:dd.MM.yyyy}";
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine(line);
