@@ -42,6 +42,7 @@ namespace umowaDoPDF
             address.ZipCode = tZipCode.Text;
 
             SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             sfd.Filter = "PDF|*.pdf";
             sfd.FileName = $"Umowa Lombardowa {DateTime.Now:ddMMyyyy}";
             var dr = sfd.ShowDialog();
