@@ -1,6 +1,6 @@
 ﻿namespace umowaDoPDF
 {
-    partial class Form1
+    partial class AddCustomerForm
     {
         /// <summary>
         /// Required designer variable.
