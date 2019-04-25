@@ -85,6 +85,8 @@ namespace umowaDoPDF
 {a.Client.Name} {a.Client.Address.ToString()}
 {a.PurchasePrice.ToString("0.00")}
 {a.SubjectOfAgreement}
+{a.Client.IDCard}
+{a.Client.Pesel}
 {a.BuyoutPrice.ToString("0.00")}
 {a.ToDate:dd.MM.yyyy}";
             using (TextWriter tw = new StreamWriter(path, true))
