@@ -97,5 +97,33 @@ namespace umowaDoPDF
                 catch {Process.Start("dane.txt");}
             }
         }
+
+        private void BSaveClient_Click(object sender, EventArgs e)
+        {
+            var a = new Agreement();
+            a.FromDate = dtpFrom.Value;
+            a.ToDate = dtpTo.Value;
+            a.PurchasePrice = nudPurchasePrice.Value;
+            a.BuyoutPrice = nudBuyoutPrice.Value;
+            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+            a.Client = new Client();
+            a.Client.IDCard = tIDCard.Text;
+            a.Client.Name = tName.Text;
+            a.Client.Pesel = tPesel.Text;
+            var address = a.Client.Address = new Address();
+            address.City = tCity.Text;
+            address.Street = tStreet.Text;
+            address.ZipCode = tZipCode.Text;
+
+            string path = $"{a.Client.Name}_{a.Client.Pesel}.txt";
+            string clientData = $"{a.Client.FirstNameOnly()} spacja {a.Client.LastNameOnly()}";
+            using (TextWriter tw = new StreamWriter(path, false))
+            {
+                tw.WriteLine(clientData);
+                Process.Start(path);
+            }
+        }
     }
 }

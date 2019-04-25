@@ -16,5 +16,13 @@ namespace umowaDoPDF
         {
             return $"dowodem osobistym nr: {IDCard} , nr PESEL: {Pesel} ,"; 
         }
+        public string FirstNameOnly()
+        {
+            return Name.Split(' ')[0];
+        }
+        public string LastNameOnly()
+        {
+            return Name.Split(' ')[1];
+        }
     }
 }

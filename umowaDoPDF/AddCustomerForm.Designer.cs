@@ -56,6 +56,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bGeneratePDF = new System.Windows.Forms.Button();
             this.bSaveData = new System.Windows.Forms.Button();
+            this.bSaveClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -349,11 +350,23 @@
             this.bSaveData.UseVisualStyleBackColor = true;
             this.bSaveData.Click += new System.EventHandler(this.bSaveData_Click);
             // 
-            // Form1
+            // bSaveClient
+            // 
+            this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSaveClient.Location = new System.Drawing.Point(518, 340);
+            this.bSaveClient.Name = "bSaveClient";
+            this.bSaveClient.Size = new System.Drawing.Size(99, 44);
+            this.bSaveClient.TabIndex = 34;
+            this.bSaveClient.Text = "Zapisz Klienta";
+            this.bSaveClient.UseVisualStyleBackColor = true;
+            this.bSaveClient.Click += new System.EventHandler(this.BSaveClient_Click);
+            // 
+            // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 396);
+            this.Controls.Add(this.bSaveClient);
             this.Controls.Add(this.bSaveData);
             this.Controls.Add(this.bGeneratePDF);
             this.Controls.Add(this.label12);
@@ -382,7 +395,7 @@
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFrom);
-            this.Name = "Form1";
+            this.Name = "AddCustomerForm";
             this.Text = "Generator Umowy";
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).EndInit();
@@ -421,6 +434,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bGeneratePDF;
         private System.Windows.Forms.Button bSaveData;
+        private System.Windows.Forms.Button bSaveClient;
     }
 }
 
