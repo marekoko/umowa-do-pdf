@@ -117,11 +117,17 @@ namespace umowaDoPDF
             address.Street = tStreet.Text;
             address.ZipCode = tZipCode.Text;
 
-            string path = $"{a.Client.Name}_{a.Client.Pesel}.txt";
+            string path = $".\\Clients\\{a.Client.Name}_{a.Client.Pesel}.txt";
             string clientData = $"{a.Client.FirstNameOnly()} spacja {a.Client.LastNameOnly()}";
             using (TextWriter tw = new StreamWriter(path, false))
             {
+                string[] filePaths = Directory.GetFiles(".", "*.txt");
                 tw.WriteLine(clientData);
+                foreach (string file in filePaths)
+                {
+                    tw.WriteLine(file);
+
+                }
                 Process.Start(path);
             }
         }

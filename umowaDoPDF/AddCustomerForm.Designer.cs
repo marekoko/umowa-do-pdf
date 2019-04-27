@@ -57,6 +57,7 @@
             this.bGeneratePDF = new System.Windows.Forms.Button();
             this.bSaveData = new System.Windows.Forms.Button();
             this.bSaveClient = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +70,7 @@
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(54, 12);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(126, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(180, 20);
             this.dtpFrom.TabIndex = 0;
             // 
             // label1
@@ -98,7 +99,7 @@
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(54, 38);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(126, 20);
+            this.dtpTo.Size = new System.Drawing.Size(180, 20);
             this.dtpTo.TabIndex = 2;
             // 
             // label3
@@ -116,7 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(297, 20);
+            this.tName.Size = new System.Drawing.Size(351, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "Piotr Lipiński";
             // 
@@ -126,7 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tIDCard.Location = new System.Drawing.Point(98, 143);
             this.tIDCard.Name = "tIDCard";
-            this.tIDCard.Size = new System.Drawing.Size(297, 20);
+            this.tIDCard.Size = new System.Drawing.Size(351, 20);
             this.tIDCard.TabIndex = 17;
             this.tIDCard.Text = "AZJ 467588";
             // 
@@ -145,7 +146,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPesel.Location = new System.Drawing.Point(98, 169);
             this.tPesel.Name = "tPesel";
-            this.tPesel.Size = new System.Drawing.Size(297, 20);
+            this.tPesel.Size = new System.Drawing.Size(351, 20);
             this.tPesel.TabIndex = 18;
             this.tPesel.Text = "87092389876";
             // 
@@ -164,7 +165,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tStreet.Location = new System.Drawing.Point(54, 93);
             this.tStreet.Name = "tStreet";
-            this.tStreet.Size = new System.Drawing.Size(297, 20);
+            this.tStreet.Size = new System.Drawing.Size(351, 20);
             this.tStreet.TabIndex = 11;
             this.tStreet.Text = "plac Tadeusza Kosciuszki 2";
             // 
@@ -200,7 +201,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tCity.Location = new System.Drawing.Point(267, 117);
             this.tCity.Name = "tCity";
-            this.tCity.Size = new System.Drawing.Size(269, 20);
+            this.tCity.Size = new System.Drawing.Size(323, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "Jedrzejów";
             // 
@@ -219,7 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(107, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(614, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(668, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "Koparka do BTC Miliart PH/s";
             // 
@@ -238,7 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
-            this.tPurchasePriceInWords.Size = new System.Drawing.Size(297, 20);
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(351, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "trzysta czterdziesci piec zlotych";
             // 
@@ -263,7 +264,7 @@
             0,
             0});
             this.nudPurchasePrice.Name = "nudPurchasePrice";
-            this.nudPurchasePrice.Size = new System.Drawing.Size(124, 20);
+            this.nudPurchasePrice.Size = new System.Drawing.Size(178, 20);
             this.nudPurchasePrice.TabIndex = 23;
             this.nudPurchasePrice.Value = new decimal(new int[] {
             345,
@@ -301,7 +302,7 @@
             0,
             0});
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
-            this.nudBuyoutPrice.Size = new System.Drawing.Size(124, 20);
+            this.nudBuyoutPrice.Size = new System.Drawing.Size(178, 20);
             this.nudBuyoutPrice.TabIndex = 27;
             this.nudBuyoutPrice.Value = new decimal(new int[] {
             500,
@@ -315,7 +316,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
-            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(297, 20);
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(351, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "pięćset zlotych";
             // 
@@ -331,7 +332,7 @@
             // bGeneratePDF
             // 
             this.bGeneratePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGeneratePDF.Location = new System.Drawing.Point(728, 340);
+            this.bGeneratePDF.Location = new System.Drawing.Point(782, 434);
             this.bGeneratePDF.Name = "bGeneratePDF";
             this.bGeneratePDF.Size = new System.Drawing.Size(99, 44);
             this.bGeneratePDF.TabIndex = 32;
@@ -342,7 +343,7 @@
             // bSaveData
             // 
             this.bSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveData.Location = new System.Drawing.Point(623, 340);
+            this.bSaveData.Location = new System.Drawing.Point(677, 434);
             this.bSaveData.Name = "bSaveData";
             this.bSaveData.Size = new System.Drawing.Size(99, 44);
             this.bSaveData.TabIndex = 33;
@@ -353,7 +354,7 @@
             // bSaveClient
             // 
             this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveClient.Location = new System.Drawing.Point(518, 340);
+            this.bSaveClient.Location = new System.Drawing.Point(572, 434);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
             this.bSaveClient.TabIndex = 34;
@@ -361,11 +362,20 @@
             this.bSaveClient.UseVisualStyleBackColor = true;
             this.bSaveClient.Click += new System.EventHandler(this.BSaveClient_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(623, 38);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(204, 21);
+            this.comboBox1.TabIndex = 35;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 396);
+            this.ClientSize = new System.Drawing.Size(893, 490);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.bSaveClient);
             this.Controls.Add(this.bSaveData);
             this.Controls.Add(this.bGeneratePDF);
@@ -435,6 +445,7 @@
         private System.Windows.Forms.Button bGeneratePDF;
         private System.Windows.Forms.Button bSaveData;
         private System.Windows.Forms.Button bSaveClient;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
