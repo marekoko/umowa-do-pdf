@@ -14,12 +14,26 @@ namespace umowaDoPDF
 {
     public partial class AddCustomerForm : Form
     {
+
+        private readonly string clientsDir = Directory.GetCurrentDirectory() + "\\Clients";
+
         public AddCustomerForm()
         {
             InitializeComponent();
             var today = DateTime.Now;
             dtpFrom.Value = today;
             dtpTo.Value = today.AddDays(30);
+            GetClientsToComboBox();
+        }
+
+        public void GetClientsToComboBox()
+        {
+            cBoxClientsList.Items.Clear();
+
+            ToolsAndStuff.MkDir(clientsDir);
+            string[] txtClientFiles = Directory.GetFiles(clientsDir);
+            foreach (string filePath in txtClientFiles) cBoxClientsList.Items.Add(Path.GetFileNameWithoutExtension(filePath));
+
         }
 
         private void bGeneratePDF_Click(object sender, EventArgs e)
@@ -117,19 +131,60 @@ namespace umowaDoPDF
             address.Street = tStreet.Text;
             address.ZipCode = tZipCode.Text;
 
-            string path = $".\\Clients\\{a.Client.Name}_{a.Client.Pesel}.txt";
-            string clientData = $"{a.Client.FirstNameOnly()} spacja {a.Client.LastNameOnly()}";
-            using (TextWriter tw = new StreamWriter(path, false))
-            {
-                string[] filePaths = Directory.GetFiles(".", "*.txt");
-                tw.WriteLine(clientData);
-                foreach (string file in filePaths)
-                {
-                    tw.WriteLine(file);
+            //string clientsPath = $"{Directory.GetCurrentDirectory()}\\Clients\\";
+            string clientTextFile = $"{a.Client.Name}_{a.Client.Pesel}.txt";
+            string clientData = $@"
+{a.Client.FirstNameOnly()}
+{a.Client.LastNameOnly()}
+{a.Client.Address.ZipCode}
+{a.Client.Address.City}
+{a.Client.Address.Street}
+{a.Client.IDCard}
+{a.Client.Pesel}";
+            ToolsAndStuff.MkDir(clientsDir);
 
-                }
-                Process.Start(path);
+            using (TextWriter tw = new StreamWriter($"{clientsDir}\\{clientTextFile}", false))
+            {
+                tw.WriteLine(clientData);
+                //Process.Start($"{clientsDir}\\{clientTextFile}");
             }
+        }
+
+        private void CBoxClientsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cBoxClientsList.SelectedItem = cBoxClientsList.Text;
+        }
+
+        private void CBoxClientsList_DropDown(object sender, EventArgs e)
+        {
+            GetClientsToComboBox();
+
+        }
+
+        private void BChooseClientFromCBox_Click(object sender, EventArgs e)
+        {
+            if(cBoxClientsList.Text == "")
+            {
+                Console.WriteLine("Błont");
+                MessageBox.Show("Wybierz klienta z listy");
+            }
+            else
+            {
+                string[] linesTxtClient = File.ReadAllLines($"{clientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
+                Console.WriteLine(linesTxtClient.Count());
+                foreach (string clientData in linesTxtClient)
+                {
+                    Console.WriteLine(clientData);
+                }
+                
+                tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+                tZipCode.Text = linesTxtClient[3];
+                tCity.Text = linesTxtClient[4];
+                tStreet.Text = linesTxtClient[5];
+                tIDCard.Text = linesTxtClient[6];
+                tPesel.Text = linesTxtClient[7];
+            }
+
         }
     }
 }

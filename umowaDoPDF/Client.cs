@@ -22,7 +22,14 @@ namespace umowaDoPDF
         }
         public string LastNameOnly()
         {
-            return Name.Split(' ')[1];
+            if ((Name.Split().Count() == 2))
+            {
+                return Name.Split(' ')[1];
+            }
+            else
+            {
+                return ">>> BRAK NAZWISKA LUB ZBYT DUŻA ILOŚĆ <<<";
+            };
         }
     }
 }
