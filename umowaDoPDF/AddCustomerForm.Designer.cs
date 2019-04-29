@@ -121,7 +121,7 @@
             this.tName.Name = "tName";
             this.tName.Size = new System.Drawing.Size(246, 20);
             this.tName.TabIndex = 5;
-            this.tName.Text = "Piotr Lipiński";
+            this.tName.Enter += new System.EventHandler(this.TName_Enter);
             // 
             // tIDCard
             // 
@@ -129,9 +129,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tIDCard.Location = new System.Drawing.Point(98, 143);
             this.tIDCard.Name = "tIDCard";
-            this.tIDCard.Size = new System.Drawing.Size(335, 20);
+            this.tIDCard.Size = new System.Drawing.Size(442, 20);
             this.tIDCard.TabIndex = 17;
-            this.tIDCard.Text = "AZJ 467588";
+            this.tIDCard.Text = "-- Seria i Nr Dowodu --";
             // 
             // label4
             // 
@@ -148,9 +148,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPesel.Location = new System.Drawing.Point(98, 169);
             this.tPesel.Name = "tPesel";
-            this.tPesel.Size = new System.Drawing.Size(335, 20);
+            this.tPesel.Size = new System.Drawing.Size(442, 20);
             this.tPesel.TabIndex = 18;
-            this.tPesel.Text = "87092389876";
+            this.tPesel.Text = "-- Nr PESEL --";
             // 
             // label5
             // 
@@ -169,7 +169,7 @@
             this.tStreet.Name = "tStreet";
             this.tStreet.Size = new System.Drawing.Size(246, 20);
             this.tStreet.TabIndex = 11;
-            this.tStreet.Text = "plac Tadeusza Kosciuszki 2";
+            this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
             // 
             // label6
             // 
@@ -184,9 +184,9 @@
             // 
             this.tZipCode.Location = new System.Drawing.Point(98, 117);
             this.tZipCode.Name = "tZipCode";
-            this.tZipCode.Size = new System.Drawing.Size(78, 20);
+            this.tZipCode.Size = new System.Drawing.Size(101, 20);
             this.tZipCode.TabIndex = 13;
-            this.tZipCode.Text = "28-300";
+            this.tZipCode.Text = "-- Kod Pocztowy --";
             // 
             // label7
             // 
@@ -201,16 +201,16 @@
             // 
             this.tCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tCity.Location = new System.Drawing.Point(267, 117);
+            this.tCity.Location = new System.Drawing.Point(282, 117);
             this.tCity.Name = "tCity";
-            this.tCity.Size = new System.Drawing.Size(166, 20);
+            this.tCity.Size = new System.Drawing.Size(258, 20);
             this.tCity.TabIndex = 15;
-            this.tCity.Text = "Jedrzejów";
+            this.tCity.Text = "-- Gmina/Miasto --";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(181, 120);
+            this.label8.Location = new System.Drawing.Point(205, 120);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 14;
@@ -222,9 +222,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(107, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(326, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(433, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
-            this.tSubjectOfAgreemnt.Text = "Koparka do BTC Miliart PH/s";
+            this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
             // 
             // label9
             // 
@@ -241,9 +241,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
-            this.tPurchasePriceInWords.Size = new System.Drawing.Size(307, 20);
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(414, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
-            this.tPurchasePriceInWords.Text = "trzysta czterdziesci piec zlotych";
+            this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
             // 
             // label10
             // 
@@ -268,11 +268,6 @@
             this.nudPurchasePrice.Name = "nudPurchasePrice";
             this.nudPurchasePrice.Size = new System.Drawing.Size(73, 20);
             this.nudPurchasePrice.TabIndex = 23;
-            this.nudPurchasePrice.Value = new decimal(new int[] {
-            345,
-            0,
-            0,
-            0});
             // 
             // label11
             // 
@@ -306,11 +301,6 @@
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
             this.nudBuyoutPrice.Size = new System.Drawing.Size(73, 20);
             this.nudBuyoutPrice.TabIndex = 27;
-            this.nudBuyoutPrice.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // tBuyoutPriceInWords
             // 
@@ -318,9 +308,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
-            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(307, 20);
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(414, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
-            this.tBuyoutPriceInWords.Text = "pięćset zlotych";
+            this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
             // 
             // label13
             // 

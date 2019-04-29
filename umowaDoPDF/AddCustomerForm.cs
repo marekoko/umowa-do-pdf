@@ -186,5 +186,10 @@ namespace umowaDoPDF
             }
 
         }
+
+        private void TName_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, " -- Wpisz Imię i Nazwisko --");
+        }
     }
 }
