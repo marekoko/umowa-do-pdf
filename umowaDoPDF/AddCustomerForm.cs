@@ -189,7 +189,8 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, " -- Wpisz Imię i Nazwisko --");
+            Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, "-- Wpisz Imię i Nazwisko --");
         }
     }
 }
