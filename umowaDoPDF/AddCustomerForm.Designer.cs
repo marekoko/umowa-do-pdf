@@ -72,7 +72,7 @@
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(54, 12);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(75, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(84, 20);
             this.dtpFrom.TabIndex = 0;
             // 
             // label1
@@ -101,13 +101,13 @@
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(54, 38);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(75, 20);
+            this.dtpTo.Size = new System.Drawing.Size(84, 20);
             this.dtpTo.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 70);
+            this.label3.Location = new System.Drawing.Point(7, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 4;
@@ -117,9 +117,10 @@
             // 
             this.tName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(246, 20);
+            this.tName.Size = new System.Drawing.Size(222, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
@@ -129,11 +130,14 @@
             // 
             this.tIDCard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tIDCard.Location = new System.Drawing.Point(98, 143);
+            this.tIDCard.ForeColor = System.Drawing.Color.Silver;
+            this.tIDCard.Location = new System.Drawing.Point(126, 143);
             this.tIDCard.Name = "tIDCard";
-            this.tIDCard.Size = new System.Drawing.Size(442, 20);
+            this.tIDCard.Size = new System.Drawing.Size(117, 20);
             this.tIDCard.TabIndex = 17;
             this.tIDCard.Text = "-- Seria i Nr Dowodu --";
+            this.tIDCard.Enter += new System.EventHandler(this.TIDCard_Enter);
+            this.tIDCard.Leave += new System.EventHandler(this.TIDCard_Leave);
             // 
             // label4
             // 
@@ -148,11 +152,14 @@
             // 
             this.tPesel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tPesel.Location = new System.Drawing.Point(98, 169);
+            this.tPesel.ForeColor = System.Drawing.Color.Silver;
+            this.tPesel.Location = new System.Drawing.Point(126, 169);
             this.tPesel.Name = "tPesel";
-            this.tPesel.Size = new System.Drawing.Size(442, 20);
+            this.tPesel.Size = new System.Drawing.Size(117, 20);
             this.tPesel.TabIndex = 18;
             this.tPesel.Text = "-- Nr PESEL --";
+            this.tPesel.Enter += new System.EventHandler(this.TPesel_Enter);
+            this.tPesel.Leave += new System.EventHandler(this.TPesel_Leave);
             // 
             // label5
             // 
@@ -167,16 +174,19 @@
             // 
             this.tStreet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tStreet.Location = new System.Drawing.Point(54, 93);
+            this.tStreet.ForeColor = System.Drawing.Color.Silver;
+            this.tStreet.Location = new System.Drawing.Point(54, 119);
             this.tStreet.Name = "tStreet";
-            this.tStreet.Size = new System.Drawing.Size(246, 20);
-            this.tStreet.TabIndex = 11;
+            this.tStreet.Size = new System.Drawing.Size(486, 20);
+            this.tStreet.TabIndex = 16;
             this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
+            this.tStreet.Enter += new System.EventHandler(this.TStreet_Enter);
+            this.tStreet.Leave += new System.EventHandler(this.TStreet_Leave);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 96);
+            this.label6.Location = new System.Drawing.Point(7, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 10;
@@ -184,16 +194,19 @@
             // 
             // tZipCode
             // 
-            this.tZipCode.Location = new System.Drawing.Point(98, 117);
+            this.tZipCode.ForeColor = System.Drawing.Color.Silver;
+            this.tZipCode.Location = new System.Drawing.Point(98, 93);
             this.tZipCode.Name = "tZipCode";
             this.tZipCode.Size = new System.Drawing.Size(101, 20);
             this.tZipCode.TabIndex = 13;
             this.tZipCode.Text = "-- Kod Pocztowy --";
+            this.tZipCode.Enter += new System.EventHandler(this.TZipCode_Enter);
+            this.tZipCode.Leave += new System.EventHandler(this.TZipCode_Leave);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 120);
+            this.label7.Location = new System.Drawing.Point(7, 96);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 12;
@@ -203,16 +216,19 @@
             // 
             this.tCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tCity.Location = new System.Drawing.Point(282, 117);
+            this.tCity.ForeColor = System.Drawing.Color.Silver;
+            this.tCity.Location = new System.Drawing.Point(282, 93);
             this.tCity.Name = "tCity";
             this.tCity.Size = new System.Drawing.Size(258, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "-- Gmina/Miasto --";
+            this.tCity.Enter += new System.EventHandler(this.TCity_Enter);
+            this.tCity.Leave += new System.EventHandler(this.TCity_Leave);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(205, 120);
+            this.label8.Location = new System.Drawing.Point(205, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 14;
@@ -222,11 +238,14 @@
             // 
             this.tSubjectOfAgreemnt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(107, 195);
+            this.tSubjectOfAgreemnt.ForeColor = System.Drawing.Color.Silver;
+            this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(126, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(433, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(414, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
+            this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
+            this.tSubjectOfAgreemnt.Leave += new System.EventHandler(this.TSubjectOfAgreemnt_Leave);
             // 
             // label9
             // 
@@ -241,11 +260,14 @@
             // 
             this.tPurchasePriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tPurchasePriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
             this.tPurchasePriceInWords.Size = new System.Drawing.Size(414, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
+            this.tPurchasePriceInWords.Enter += new System.EventHandler(this.TPurchasePriceInWords_Enter);
+            this.tPurchasePriceInWords.Leave += new System.EventHandler(this.TPurchasePriceInWords_Leave);
             // 
             // label10
             // 
@@ -308,11 +330,14 @@
             // 
             this.tBuyoutPriceInWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBuyoutPriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
             this.tBuyoutPriceInWords.Size = new System.Drawing.Size(414, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
+            this.tBuyoutPriceInWords.Enter += new System.EventHandler(this.TBuyoutPriceInWords_Enter);
+            this.tBuyoutPriceInWords.Leave += new System.EventHandler(this.TBuyoutPriceInWords_Leave);
             // 
             // label13
             // 
@@ -351,7 +376,7 @@
             this.bSaveClient.Location = new System.Drawing.Point(677, 324);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
-            this.bSaveClient.TabIndex = 34;
+            this.bSaveClient.TabIndex = 30;
             this.bSaveClient.Text = "Zapisz Klienta";
             this.bSaveClient.UseVisualStyleBackColor = true;
             this.bSaveClient.Click += new System.EventHandler(this.BSaveClient_Click);

@@ -16,15 +16,11 @@ namespace umowaDoPDF
     {
 
         private readonly string clientsDir = Directory.GetCurrentDirectory() + "\\Clients";
-
+        private Dictionary<string, string> TextBoxesDefaults = null;
         public AddCustomerForm()
         {
             InitializeComponent();
-            var TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
-            foreach(KeyValuePair<string, string> entry in TextBoxesDefaults)
-            {
-                Console.WriteLine(entry.Key + " - " + entry.Value);
-            }
+            TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
             dtpTo.Value = today.AddDays(30);
@@ -194,15 +190,111 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-            
+
             //Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, tName.Text, tName.Text);
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
         }
 
         private void TName_Leave(object sender, EventArgs e)
         {
             
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, tName.Text, tName.Text);
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TZipCode_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TZipCode_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TCity_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TCity_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TStreet_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TStreet_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TIDCard_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TIDCard_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TPesel_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TPesel_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TSubjectOfAgreemnt_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TSubjectOfAgreemnt_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TPurchasePriceInWords_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TPurchasePriceInWords_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
+
+        }
+
+        private void TBuyoutPriceInWords_Enter(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
+
+        }
+
+        private void TBuyoutPriceInWords_Leave(object sender, EventArgs e)
+        {
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
 
         }
     }

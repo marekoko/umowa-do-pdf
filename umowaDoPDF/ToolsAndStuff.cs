@@ -11,10 +11,11 @@ namespace umowaDoPDF
 {
     class ToolsAndStuff
     {   
+        
+        public static Dictionary<string, string> MakeTextBoxesDictionary(Control.ControlCollection controls)
         //
         // Take out all checkboxes and text from it into dictionary:
         //
-        public static Dictionary<string, string> MakeTextBoxesDictionary(Control.ControlCollection controls)
         {
             Dictionary<string, string> TextBoxDict = new Dictionary<string, string>();
 
@@ -26,13 +27,23 @@ namespace umowaDoPDF
                     TextBoxDict.Add(collectionItem.Name, collectionItem.Text);
                     Console.WriteLine(collectionItem.Text);
                 }
-            }
 
+            }
+            ////
+            //// testing for printing key-value pairs:
+            ////
+            //foreach(KeyValuePair<string, string> entry in TextBoxDict)
+            //{
+            //    Console.WriteLine(entry.Key + " - " + entry.Value);
+            //}
 
             return TextBoxDict;
         }
 
         public static void MkDir(string path)
+        //
+        // Making directory in designated path with messagebox info
+        //
         {
             if (!Directory.Exists(path))
             {
@@ -41,12 +52,12 @@ namespace umowaDoPDF
             }
         }
 
-        public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, string pHText, string defaultPHText)
+        public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, Dictionary<string, string> defaultTextBoxNames)
         {
 
             if (entering)
             {
-                if (sender.Text == $"{pHText}")
+                if (sender.Text == $"{defaultTextBoxNames[$"{sender.Name}"]}")
                 {
                     Console.WriteLine("Entering");
                     sender.Text = "";
@@ -61,7 +72,7 @@ namespace umowaDoPDF
 
                     //private System.Windows.Forms.TextBox tName;
                     
-                    sender.Text = $"{defaultPHText}";
+                    sender.Text = $"{defaultTextBoxNames[$"{sender.Name}"]}";
                     sender.ForeColor = Color.Silver;
                 }
             }
