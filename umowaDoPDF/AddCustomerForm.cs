@@ -20,6 +20,11 @@ namespace umowaDoPDF
         public AddCustomerForm()
         {
             InitializeComponent();
+            var TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
+            foreach(KeyValuePair<string, string> entry in TextBoxesDefaults)
+            {
+                Console.WriteLine(entry.Key + " - " + entry.Value);
+            }
             var today = DateTime.Now;
             dtpFrom.Value = today;
             dtpTo.Value = today.AddDays(30);
@@ -189,13 +194,15 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
+            
             //Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, tName.Text);
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, tName.Text, tName.Text);
         }
 
         private void TName_Leave(object sender, EventArgs e)
         {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, tName.Text);
+            
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, tName.Text, tName.Text);
 
         }
     }
