@@ -20,12 +20,14 @@ namespace umowaDoPDF
             }
         }
 
-        public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, string pHText)
+        public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, string pHText, string defaultPHText)
         {
             if (entering)
             {
                 if (sender.Text == $"{pHText}")
                 {
+                    defaultPHText = pHText;
+                    Console.WriteLine("Entering");
                     sender.Text = "";
                     sender.ForeColor = Color.Black;
                 }
@@ -34,7 +36,8 @@ namespace umowaDoPDF
             {
                 if (sender.Text == "")
                 {
-                    sender.Text = $"{pHText}";
+                    Console.WriteLine("NOT_Entering");
+                    sender.Text = $"{defaultPHText}";
                     sender.ForeColor = Color.Silver;
                 }
             }

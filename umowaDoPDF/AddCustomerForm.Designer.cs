@@ -121,7 +121,9 @@
             this.tName.Name = "tName";
             this.tName.Size = new System.Drawing.Size(246, 20);
             this.tName.TabIndex = 5;
+            this.tName.Text = "-- Imię i Nazwisko --";
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
+            this.tName.Leave += new System.EventHandler(this.TName_Leave);
             // 
             // tIDCard
             // 
