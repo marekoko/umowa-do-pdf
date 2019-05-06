@@ -296,6 +296,22 @@ namespace umowaDoPDF
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
 
+        }// <-------------------------------- Placeholder things
+
+        private void NudPurchasePrice_ValueChanged(object sender, EventArgs e)
+        {
+            decimal nudPurchaseValue = nudPurchasePrice.Value;
+            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudPurchaseValue.ToString());
+            tPurchasePriceInWords.ForeColor = Color.Black;
+            tPurchasePriceInWords.Text = niwPL;
+        }
+
+        private void NudBuyoutPrice_ValueChanged(object sender, EventArgs e)
+        {
+            decimal nudBuyoutPriceValue = nudBuyoutPrice.Value;
+            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudBuyoutPriceValue.ToString());
+            tBuyoutPriceInWords.ForeColor = Color.Black;
+            tBuyoutPriceInWords.Text = niwPL;
         }
     }
 }

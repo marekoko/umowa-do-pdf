@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             this.cBoxClientsList = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.bChooseClientFromCBox = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -292,6 +294,7 @@
             this.nudPurchasePrice.Name = "nudPurchasePrice";
             this.nudPurchasePrice.Size = new System.Drawing.Size(73, 20);
             this.nudPurchasePrice.TabIndex = 23;
+            this.nudPurchasePrice.ValueChanged += new System.EventHandler(this.NudPurchasePrice_ValueChanged);
             // 
             // label11
             // 
@@ -325,6 +328,7 @@
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
             this.nudBuyoutPrice.Size = new System.Drawing.Size(73, 20);
             this.nudBuyoutPrice.TabIndex = 27;
+            this.nudBuyoutPrice.ValueChanged += new System.EventHandler(this.NudBuyoutPrice_ValueChanged);
             // 
             // tBuyoutPriceInWords
             // 
@@ -414,6 +418,11 @@
             this.bChooseClientFromCBox.UseVisualStyleBackColor = true;
             this.bChooseClientFromCBox.Click += new System.EventHandler(this.BChooseClientFromCBox_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,6 +503,7 @@
         private System.Windows.Forms.ComboBox cBoxClientsList;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button bChooseClientFromCBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
