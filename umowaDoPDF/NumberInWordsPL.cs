@@ -90,79 +90,79 @@ namespace umowaDoPDF
         }
 
 
-        private static string Hundreds(string Number)
-        {
-            string intTensNumber = Convert.ToInt32(Number);
-            string name = null;
-            switch (intTensNumber)
-            {
-                case 10:
-                    name = "dziesięć";
-                    break;
-                case 11:
-                    name = "jedenaście";
-                    break;
-                case 12:
-                    name = "dwanaście";
-                    break;
-                case 13:
-                    name = "trzynaście";
-                    break;
-                case 14:
-                    name = "czternaście";
-                    break;
-                case 15:
-                    name = "piętnaście";
-                    break;
-                case 16:
-                    name = "szesnaście";
-                    break;
-                case 17:
-                    name = "siedemnaście";
-                    break;
-                case 18:
-                    name = "osiemnaście";
-                    break;
-                case 19:
-                    name = "dziewiętnaście";
-                    break;
-                case 20:
-                    name = "dwadzieścia";
-                    break;
-                case 30:
-                    name = "trzydzieści";
-                    break;
-                case 40:
-                    name = "czterdzieści";
-                    break;
-                case 50:
-                    name = "pięćdziesiąt";
-                    break;
-                case 60:
-                    name = "sześćdziesiąt";
-                    break;
-                case 70:
-                    name = "siedemdziesiąt";
-                    break;
-                case 80:
-                    name = "osiemdziesiąt";
-                    break;
-                case 90:
-                    name = "dziewięćdziesiąt";
-                    break;
-                case 300:
-                    name = "trzysta";
-                    break;
-                default:
-                    if (intTensNumber > 0)
-                    {
-                        name = Tens(Number.Substring(0, 1) + "0") + " " + Ones(Number.Substring(1));
-                    }
-                    break;
-            }
-            return name;
-        }
-    } 
+        //private static string Hundreds(string Number)
+        //{
+        //    string intTensNumber = Convert.ToInt32(Number);
+        //    string name = null;
+        //    switch (intTensNumber)
+        //    {
+        //        case 10:
+        //            name = "dziesięć";
+        //            break;
+        //        case 11:
+        //            name = "jedenaście";
+        //            break;
+        //        case 12:
+        //            name = "dwanaście";
+        //            break;
+        //        case 13:
+        //            name = "trzynaście";
+        //            break;
+        //        case 14:
+        //            name = "czternaście";
+        //            break;
+        //        case 15:
+        //            name = "piętnaście";
+        //            break;
+        //        case 16:
+        //            name = "szesnaście";
+        //            break;
+        //        case 17:
+        //            name = "siedemnaście";
+        //            break;
+        //        case 18:
+        //            name = "osiemnaście";
+        //            break;
+        //        case 19:
+        //            name = "dziewiętnaście";
+        //            break;
+        //        case 20:
+        //            name = "dwadzieścia";
+        //            break;
+        //        case 30:
+        //            name = "trzydzieści";
+        //            break;
+        //        case 40:
+        //            name = "czterdzieści";
+        //            break;
+        //        case 50:
+        //            name = "pięćdziesiąt";
+        //            break;
+        //        case 60:
+        //            name = "sześćdziesiąt";
+        //            break;
+        //        case 70:
+        //            name = "siedemdziesiąt";
+        //            break;
+        //        case 80:
+        //            name = "osiemdziesiąt";
+        //            break;
+        //        case 90:
+        //            name = "dziewięćdziesiąt";
+        //            break;
+        //        case 300:
+        //            name = "trzysta";
+        //            break;
+        //        default:
+        //            if (intTensNumber > 0)
+        //            {
+        //                name = Tens(Number.Substring(0, 1) + "0") + " " + Ones(Number.Substring(1));
+        //            }
+        //            break;
+        //    }
+        //    return name;
+        //}
+     
 
         private static string Ones(string Number)
         {
