@@ -8,9 +8,9 @@ namespace umowaDoPDF
 {
     class NumberInWordsPL
     {
-        public static String ConvertNumberToWordsPL(String Number)
+        public static string ConvertNumberToWordsPL(string Number)
         {
-            string word = "";
+            string word = null;
             try
             {
                 bool beginsZero = false;//tests for 0XX    
@@ -23,7 +23,7 @@ namespace umowaDoPDF
 
                     int numDigits = Number.Length;
                     int pos = 0;//store digit grouping    
-                    String place = "";//digit grouping name:hundres,thousand,etc...    
+                    string place = "";//digit grouping name:hundres,thousand,etc...    
                     switch (numDigits)
                     {
                         case 1://ones' range    
@@ -36,8 +36,10 @@ namespace umowaDoPDF
                             isDone = true;
                             break;
                         case 3://hundreds' range    
-                            pos = (numDigits % 3) + 1;
-                            place = " sto ";
+                            word = Hundreds(Number);
+                            isDone = true;
+                            //pos = (numDigits % 3) + 1; //Old code
+                            //place = " sto ";  //Old code
                             break;
                         case 4://thousands' range    
                         case 5:
@@ -90,85 +92,14 @@ namespace umowaDoPDF
         }
 
 
-        //private static string Hundreds(string Number)
-        //{
-        //    string intTensNumber = Convert.ToInt32(Number);
-        //    string name = null;
-        //    switch (intTensNumber)
-        //    {
-        //        case 10:
-        //            name = "dziesięć";
-        //            break;
-        //        case 11:
-        //            name = "jedenaście";
-        //            break;
-        //        case 12:
-        //            name = "dwanaście";
-        //            break;
-        //        case 13:
-        //            name = "trzynaście";
-        //            break;
-        //        case 14:
-        //            name = "czternaście";
-        //            break;
-        //        case 15:
-        //            name = "piętnaście";
-        //            break;
-        //        case 16:
-        //            name = "szesnaście";
-        //            break;
-        //        case 17:
-        //            name = "siedemnaście";
-        //            break;
-        //        case 18:
-        //            name = "osiemnaście";
-        //            break;
-        //        case 19:
-        //            name = "dziewiętnaście";
-        //            break;
-        //        case 20:
-        //            name = "dwadzieścia";
-        //            break;
-        //        case 30:
-        //            name = "trzydzieści";
-        //            break;
-        //        case 40:
-        //            name = "czterdzieści";
-        //            break;
-        //        case 50:
-        //            name = "pięćdziesiąt";
-        //            break;
-        //        case 60:
-        //            name = "sześćdziesiąt";
-        //            break;
-        //        case 70:
-        //            name = "siedemdziesiąt";
-        //            break;
-        //        case 80:
-        //            name = "osiemdziesiąt";
-        //            break;
-        //        case 90:
-        //            name = "dziewięćdziesiąt";
-        //            break;
-        //        case 300:
-        //            name = "trzysta";
-        //            break;
-        //        default:
-        //            if (intTensNumber > 0)
-        //            {
-        //                name = Tens(Number.Substring(0, 1) + "0") + " " + Ones(Number.Substring(1));
-        //            }
-        //            break;
-        //    }
-        //    return name;
-        //}
-     
+
+
 
         private static string Ones(string Number)
         {
-            int intNumber = Convert.ToInt32(Number);
-            string name = "";
-            switch (intNumber)
+            int intOnesNumber = Convert.ToInt32(Number);
+            string name = null;
+            switch (intOnesNumber)
             {
 
                 case 1:
@@ -265,6 +196,51 @@ namespace umowaDoPDF
                     if (intTensNumber > 0)
                     {
                         name = Tens(Number.Substring(0, 1) + "0") + " " + Ones(Number.Substring(1));
+                    }
+                    break;
+            }
+            return name;
+        }
+        private static string Hundreds(string Number)
+        {
+            int intHundredsNumber = Convert.ToInt32(Number);
+            Console.WriteLine(Number);
+            Console.WriteLine(intHundredsNumber);
+            //return "sto jeden";
+            string name = null;
+            switch (intHundredsNumber)
+            {
+                case 100:
+                    name = "sto";
+                    break;
+                case 200:
+                    name = "dwieście";
+                    break;
+                case 300:
+                    name = "trzysta";
+                    break;
+                case 400:
+                    name = "czterysta";
+                    break;
+                case 500:
+                    name = "pięćset";
+                    break;
+                case 600:
+                    name = "sześćset";
+                    break;
+                case 700:
+                    name = "siedemset";
+                    break;
+                case 800:
+                    name = "osiemset";
+                    break;
+                case 900:
+                    name = "dziewięćset";
+                    break;
+                default:
+                    if (intHundredsNumber > 0)
+                    {
+                        name = Hundreds(Number.Substring(0, 1) + "00") + " " + Tens(Number.Substring(1, 1) + "0") + " " + Ones(Number.Substring(2));
                     }
                     break;
             }

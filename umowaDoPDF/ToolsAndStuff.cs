@@ -14,7 +14,7 @@ namespace umowaDoPDF
         
         public static Dictionary<string, string> MakeTextBoxesDictionary(Control.ControlCollection controls)
         //
-        // Take out all checkboxes and text from it into dictionary:
+        // Take out all checkboxes and text from this form and put it into dictionary:
         //
         {
             Dictionary<string, string> TextBoxDict = new Dictionary<string, string>();
@@ -25,7 +25,8 @@ namespace umowaDoPDF
                 if (collectionItem != null)
                 {
                     TextBoxDict.Add(collectionItem.Name, collectionItem.Text);
-                    Console.WriteLine(collectionItem.Text);
+                    //check the list in console:
+                    //Console.WriteLine(collectionItem.Text);
                 }
 
             }
@@ -59,7 +60,7 @@ namespace umowaDoPDF
             {
                 if (sender.Text == $"{defaultTextBoxNames[$"{sender.Name}"]}")
                 {
-                    Console.WriteLine("Entering");
+                    //Console.WriteLine("Entering");
                     sender.Text = "";
                     sender.ForeColor = Color.Black;
                 }
@@ -68,7 +69,7 @@ namespace umowaDoPDF
             {
                 if (sender.Text == "")
                 {
-                    Console.WriteLine("NOT_Entering");
+                    //Console.WriteLine("NOT_Entering");
 
                     //private System.Windows.Forms.TextBox tName;
                     
