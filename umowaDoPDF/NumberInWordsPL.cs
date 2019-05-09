@@ -89,7 +89,7 @@ namespace umowaDoPDF
             }
             catch { }
             //Console.WriteLine("asd" + "\"" + word + "\"" + "asdasd");
-            return word.Trim();
+            return word.Trim() + " złotych";
         }
 
 
