@@ -10,7 +10,7 @@ namespace umowaDoPDF
     {
         public static string ConvertNumberToWordsPL(string Number)
         {
-            string word = null;
+            string word = "";
             try
             {
                 bool beginsZero = false;//tests for 0XX    
@@ -84,10 +84,11 @@ namespace umowaDoPDF
                         //if (beginsZero) word = " and " + word.Trim();    
                     }
                     //ignore digit grouping names    
-                    if (word.Trim().Equals(place.Trim())) word = "";
+                    //if (word.Trim().Equals(place.Trim())) word = "asdasdasd";
                 }
             }
             catch { }
+            //Console.WriteLine("asd" + "\"" + word + "\"" + "asdasd");
             return word.Trim();
         }
 

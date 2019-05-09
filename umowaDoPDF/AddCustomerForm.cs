@@ -179,11 +179,23 @@ namespace umowaDoPDF
                 }
                 
                 tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+                tName.ForeColor = Color.Black;
+
                 tZipCode.Text = linesTxtClient[3];
+                tZipCode.ForeColor = Color.Black;
+
                 tCity.Text = linesTxtClient[4];
+                tCity.ForeColor = Color.Black;
+
                 tStreet.Text = linesTxtClient[5];
+                tStreet.ForeColor = Color.Black;
+
                 tIDCard.Text = linesTxtClient[6];
+                tIDCard.ForeColor = Color.Black;
+
                 tPesel.Text = linesTxtClient[7];
+                tPesel.ForeColor = Color.Black;
+
             }
 
         }
