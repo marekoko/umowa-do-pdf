@@ -126,7 +126,7 @@
             this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(197, 20);
+            this.tName.Size = new System.Drawing.Size(221, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
@@ -139,7 +139,7 @@
             this.tIDCard.ForeColor = System.Drawing.Color.Silver;
             this.tIDCard.Location = new System.Drawing.Point(126, 143);
             this.tIDCard.Name = "tIDCard";
-            this.tIDCard.Size = new System.Drawing.Size(92, 20);
+            this.tIDCard.Size = new System.Drawing.Size(116, 20);
             this.tIDCard.TabIndex = 17;
             this.tIDCard.Text = "-- Seria i Nr Dowodu --";
             this.tIDCard.Enter += new System.EventHandler(this.TIDCard_Enter);
@@ -161,7 +161,7 @@
             this.tPesel.ForeColor = System.Drawing.Color.Silver;
             this.tPesel.Location = new System.Drawing.Point(126, 169);
             this.tPesel.Name = "tPesel";
-            this.tPesel.Size = new System.Drawing.Size(92, 20);
+            this.tPesel.Size = new System.Drawing.Size(116, 20);
             this.tPesel.TabIndex = 18;
             this.tPesel.Text = "-- Nr PESEL --";
             this.tPesel.Enter += new System.EventHandler(this.TPesel_Enter);
@@ -183,7 +183,7 @@
             this.tStreet.ForeColor = System.Drawing.Color.Silver;
             this.tStreet.Location = new System.Drawing.Point(54, 119);
             this.tStreet.Name = "tStreet";
-            this.tStreet.Size = new System.Drawing.Size(461, 20);
+            this.tStreet.Size = new System.Drawing.Size(485, 20);
             this.tStreet.TabIndex = 16;
             this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
             this.tStreet.Enter += new System.EventHandler(this.TStreet_Enter);
@@ -225,7 +225,7 @@
             this.tCity.ForeColor = System.Drawing.Color.Silver;
             this.tCity.Location = new System.Drawing.Point(282, 93);
             this.tCity.Name = "tCity";
-            this.tCity.Size = new System.Drawing.Size(233, 20);
+            this.tCity.Size = new System.Drawing.Size(257, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "-- Gmina/Miasto --";
             this.tCity.Enter += new System.EventHandler(this.TCity_Enter);
@@ -247,7 +247,7 @@
             this.tSubjectOfAgreemnt.ForeColor = System.Drawing.Color.Silver;
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(126, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(389, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(413, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
             this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
@@ -269,7 +269,7 @@
             this.tPurchasePriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
-            this.tPurchasePriceInWords.Size = new System.Drawing.Size(389, 20);
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(413, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
             this.tPurchasePriceInWords.Enter += new System.EventHandler(this.TPurchasePriceInWords_Enter);
@@ -294,7 +294,7 @@
             0,
             0});
             this.nudPurchasePrice.Name = "nudPurchasePrice";
-            this.nudPurchasePrice.Size = new System.Drawing.Size(45, 20);
+            this.nudPurchasePrice.Size = new System.Drawing.Size(56, 20);
             this.nudPurchasePrice.TabIndex = 23;
             this.nudPurchasePrice.ValueChanged += new System.EventHandler(this.NudPurchasePrice_ValueChanged);
             // 
@@ -326,7 +326,7 @@
             0,
             0});
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
-            this.nudBuyoutPrice.Size = new System.Drawing.Size(45, 20);
+            this.nudBuyoutPrice.Size = new System.Drawing.Size(56, 20);
             this.nudBuyoutPrice.TabIndex = 27;
             this.nudBuyoutPrice.ValueChanged += new System.EventHandler(this.NudBuyoutPrice_ValueChanged);
             // 
@@ -337,7 +337,7 @@
             this.tBuyoutPriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
-            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(389, 20);
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(413, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
             this.tBuyoutPriceInWords.Enter += new System.EventHandler(this.TBuyoutPriceInWords_Enter);
@@ -355,7 +355,7 @@
             // bGeneratePDF
             // 
             this.bGeneratePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGeneratePDF.Location = new System.Drawing.Point(652, 326);
+            this.bGeneratePDF.Location = new System.Drawing.Point(676, 326);
             this.bGeneratePDF.Name = "bGeneratePDF";
             this.bGeneratePDF.Size = new System.Drawing.Size(99, 44);
             this.bGeneratePDF.TabIndex = 32;
@@ -366,7 +366,7 @@
             // bSaveData
             // 
             this.bSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveData.Location = new System.Drawing.Point(547, 326);
+            this.bSaveData.Location = new System.Drawing.Point(571, 326);
             this.bSaveData.Name = "bSaveData";
             this.bSaveData.Size = new System.Drawing.Size(99, 44);
             this.bSaveData.TabIndex = 33;
@@ -377,7 +377,7 @@
             // bSaveClient
             // 
             this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveClient.Location = new System.Drawing.Point(652, 268);
+            this.bSaveClient.Location = new System.Drawing.Point(676, 275);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
             this.bSaveClient.TabIndex = 30;
@@ -507,7 +507,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 382);
+            this.ClientSize = new System.Drawing.Size(787, 382);
             this.Controls.Add(this.bFromDateMakeToday);
             this.Controls.Add(this.bToDateMakeToday);
             this.Controls.Add(this.bSubtract30Days);
@@ -548,7 +548,7 @@
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFrom);
-            this.MinimumSize = new System.Drawing.Size(779, 421);
+            this.MinimumSize = new System.Drawing.Size(803, 421);
             this.Name = "AddCustomerForm";
             this.Text = "Generator Umowy";
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).EndInit();

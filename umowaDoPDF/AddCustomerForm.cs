@@ -315,16 +315,18 @@ namespace umowaDoPDF
         {
             decimal nudPurchaseValue = nudPurchasePrice.Value;
             string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudPurchaseValue.ToString());
+            string zlotyFormPurchase = NumberInWordsPL.ZlotyVariety(nudPurchaseValue.ToString());
             tPurchasePriceInWords.ForeColor = Color.Black;
-            tPurchasePriceInWords.Text = niwPL;
+            tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
         }
 
         private void NudBuyoutPrice_ValueChanged(object sender, EventArgs e)
         {
             decimal nudBuyoutPriceValue = nudBuyoutPrice.Value;
             string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudBuyoutPriceValue.ToString());
+            string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
             tBuyoutPriceInWords.ForeColor = Color.Black;
-            tBuyoutPriceInWords.Text = niwPL;
+            tBuyoutPriceInWords.Text = $"{niwPL} {zlotyFormBuyout}";
         }
 
         private void bAddOneDay_Click(object sender, EventArgs e)

@@ -92,8 +92,34 @@ namespace umowaDoPDF
             return word.Trim();
         }
 
+        public static string ZlotyVariety(string Number)
+        {
+            //Dla liczb z zakresu 5–14 lub gdy ostatnia cyfra liczby wynosi 1, 5, 6, 7, 8, 9, 0 
+            //mówi i pisze się „złotych” (np. 18 złotych, 85 złotych). Te liczby łączą się z dopełniaczem. 
+            //Ostatnia cyfra 2, 3, 4 – mówi i pisze się „złote” (np. 42 złote, 104 złote). Liczby te z kolei 
+            //podaje się w formie mianownika.
 
+            string ZlotyCorrectForm = "";
+            int intNumber = Convert.ToInt32(Number);
 
+            List<int> listZlotych = new List<int>() { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+            List<int> listZlotychLastDigit = new List<int>() { 0, 1, 5, 6, 7, 8, 9 };
+            List<int> listZloteLastDigit = new List<int>() { 2, 3, 4 };
+
+            if (intNumber == 1 && Number.Trim().Length == 1)
+            {
+                ZlotyCorrectForm = "złoty";
+            }
+            else if (listZlotych.Any(x => x == intNumber) || listZlotychLastDigit.Any(x => x == intNumber % 10))
+            {
+                ZlotyCorrectForm = "złotych";
+            }
+            else if (listZloteLastDigit.Any(x => x == intNumber % 10))
+            {
+                ZlotyCorrectForm = "złote";
+            }
+            return ZlotyCorrectForm;
+        }
 
 
         private static string Ones(string Number)
