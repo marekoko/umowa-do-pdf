@@ -147,6 +147,7 @@ namespace umowaDoPDF
             using (TextWriter tw = new StreamWriter($"{clientsDir}\\{clientTextFile}", false))
             {
                 tw.WriteLine(clientData);
+                MessageBox.Show("Zapisano klienta w bazie");
                 //Process.Start($"{clientsDir}\\{clientTextFile}");
             }
         }
