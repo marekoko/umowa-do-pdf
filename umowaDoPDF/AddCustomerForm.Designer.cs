@@ -70,6 +70,7 @@
             this.bSubtract30Days = new System.Windows.Forms.Button();
             this.bToDateMakeToday = new System.Windows.Forms.Button();
             this.bFromDateMakeToday = new System.Windows.Forms.Button();
+            this.cBoxSaveOnDesktop = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -377,7 +378,7 @@
             // bSaveClient
             // 
             this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveClient.Location = new System.Drawing.Point(676, 275);
+            this.bSaveClient.Location = new System.Drawing.Point(571, 275);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
             this.bSaveClient.TabIndex = 30;
@@ -503,11 +504,25 @@
             this.bFromDateMakeToday.UseVisualStyleBackColor = true;
             this.bFromDateMakeToday.Click += new System.EventHandler(this.BFromDateMakeToday_Click);
             // 
+            // cBoxSaveOnDesktop
+            // 
+            this.cBoxSaveOnDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cBoxSaveOnDesktop.AutoSize = true;
+            this.cBoxSaveOnDesktop.Checked = true;
+            this.cBoxSaveOnDesktop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBoxSaveOnDesktop.Location = new System.Drawing.Point(676, 303);
+            this.cBoxSaveOnDesktop.Name = "cBoxSaveOnDesktop";
+            this.cBoxSaveOnDesktop.Size = new System.Drawing.Size(101, 17);
+            this.cBoxSaveOnDesktop.TabIndex = 46;
+            this.cBoxSaveOnDesktop.Text = "Zapisz na Pulpit";
+            this.cBoxSaveOnDesktop.UseVisualStyleBackColor = true;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 382);
+            this.Controls.Add(this.cBoxSaveOnDesktop);
             this.Controls.Add(this.bFromDateMakeToday);
             this.Controls.Add(this.bToDateMakeToday);
             this.Controls.Add(this.bSubtract30Days);
@@ -601,6 +616,7 @@
         private System.Windows.Forms.Button bSubtract30Days;
         private System.Windows.Forms.Button bToDateMakeToday;
         private System.Windows.Forms.Button bFromDateMakeToday;
+        private System.Windows.Forms.CheckBox cBoxSaveOnDesktop;
     }
 }
 

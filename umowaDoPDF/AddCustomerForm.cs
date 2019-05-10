@@ -39,7 +39,7 @@ namespace umowaDoPDF
 
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
-            var a = new Agreement();
+            Agreement a = new Agreement();
             a.FromDate = dtpFrom.Value;
             a.ToDate = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
@@ -51,28 +51,43 @@ namespace umowaDoPDF
             a.Client.IDCard = tIDCard.Text;
             a.Client.Name = tName.Text;
             a.Client.Pesel = tPesel.Text;
-            var address = a.Client.Address = new Address();
+            Address address = a.Client.Address = new Address();
             address.City = tCity.Text;
             address.Street = tStreet.Text;
             address.ZipCode = tZipCode.Text;
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            sfd.Filter = "PDF|*.pdf";
-            sfd.FileName = $"Umowa Lombardowa {DateTime.Now:ddMMyyyy}";
-            var dr = sfd.ShowDialog();
-            if (dr == DialogResult.Cancel)
+            
+
+            if (!cBoxSaveOnDesktop.Checked)
             {
-                return;
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                sfd.Filter = "PDF|*.pdf";
+                sfd.FileName = $"Umowa_Lombardowa_{DateTime.Now:ddMMyyyy}_{a.Client.FirstNameOnly()}_{a.Client.LastNameOnly()}";
+
+                DialogResult dr = sfd.ShowDialog();
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+                PDFExporter.SaveAsPDF(sfd.FileName, a);
+
+                MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
+
+                Process.Start(sfd.FileName);
             }
+            else
+            {
+                var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
+                var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
+                var fileExtension = ".pdf";
+                var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
 
+                // check default path
+                //Console.WriteLine(pathDefaultSavePDF);
 
-
-            PDFExporter.SaveAsPDF(sfd.FileName, a);
-
-            MessageBox.Show("Zapisano PDF!");
-
-            Process.Start(sfd.FileName);
+                PDFExporter.SaveAsPDF(pathDefaultSavePDF, a);
+            }
 
         }
 
@@ -367,5 +382,6 @@ namespace umowaDoPDF
         {
             dtpTo.Value = DateTime.Today;
         }
+
     }
 }
