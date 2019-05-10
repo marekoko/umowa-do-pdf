@@ -76,13 +76,11 @@
             // 
             // dtpFrom
             // 
-            this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFrom.CustomFormat = "dd/MM/yyyy";
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(54, 12);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(84, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(99, 20);
             this.dtpFrom.TabIndex = 0;
             // 
             // label1
@@ -105,13 +103,11 @@
             // 
             // dtpTo
             // 
-            this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTo.CustomFormat = "dd/MM/yyyy";
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(54, 38);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(84, 20);
+            this.dtpTo.Size = new System.Drawing.Size(99, 20);
             this.dtpTo.TabIndex = 2;
             // 
             // label3
@@ -130,7 +126,7 @@
             this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(222, 20);
+            this.tName.Size = new System.Drawing.Size(197, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
@@ -143,7 +139,7 @@
             this.tIDCard.ForeColor = System.Drawing.Color.Silver;
             this.tIDCard.Location = new System.Drawing.Point(126, 143);
             this.tIDCard.Name = "tIDCard";
-            this.tIDCard.Size = new System.Drawing.Size(117, 20);
+            this.tIDCard.Size = new System.Drawing.Size(92, 20);
             this.tIDCard.TabIndex = 17;
             this.tIDCard.Text = "-- Seria i Nr Dowodu --";
             this.tIDCard.Enter += new System.EventHandler(this.TIDCard_Enter);
@@ -165,7 +161,7 @@
             this.tPesel.ForeColor = System.Drawing.Color.Silver;
             this.tPesel.Location = new System.Drawing.Point(126, 169);
             this.tPesel.Name = "tPesel";
-            this.tPesel.Size = new System.Drawing.Size(117, 20);
+            this.tPesel.Size = new System.Drawing.Size(92, 20);
             this.tPesel.TabIndex = 18;
             this.tPesel.Text = "-- Nr PESEL --";
             this.tPesel.Enter += new System.EventHandler(this.TPesel_Enter);
@@ -187,7 +183,7 @@
             this.tStreet.ForeColor = System.Drawing.Color.Silver;
             this.tStreet.Location = new System.Drawing.Point(54, 119);
             this.tStreet.Name = "tStreet";
-            this.tStreet.Size = new System.Drawing.Size(486, 20);
+            this.tStreet.Size = new System.Drawing.Size(461, 20);
             this.tStreet.TabIndex = 16;
             this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
             this.tStreet.Enter += new System.EventHandler(this.TStreet_Enter);
@@ -229,7 +225,7 @@
             this.tCity.ForeColor = System.Drawing.Color.Silver;
             this.tCity.Location = new System.Drawing.Point(282, 93);
             this.tCity.Name = "tCity";
-            this.tCity.Size = new System.Drawing.Size(258, 20);
+            this.tCity.Size = new System.Drawing.Size(233, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "-- Gmina/Miasto --";
             this.tCity.Enter += new System.EventHandler(this.TCity_Enter);
@@ -251,7 +247,7 @@
             this.tSubjectOfAgreemnt.ForeColor = System.Drawing.Color.Silver;
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(126, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(414, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(389, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
             this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
@@ -273,7 +269,7 @@
             this.tPurchasePriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
-            this.tPurchasePriceInWords.Size = new System.Drawing.Size(414, 20);
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(389, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
             this.tPurchasePriceInWords.Enter += new System.EventHandler(this.TPurchasePriceInWords_Enter);
@@ -290,8 +286,6 @@
             // 
             // nudPurchasePrice
             // 
-            this.nudPurchasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.nudPurchasePrice.DecimalPlaces = 2;
             this.nudPurchasePrice.Location = new System.Drawing.Point(126, 221);
             this.nudPurchasePrice.Maximum = new decimal(new int[] {
@@ -300,7 +294,7 @@
             0,
             0});
             this.nudPurchasePrice.Name = "nudPurchasePrice";
-            this.nudPurchasePrice.Size = new System.Drawing.Size(73, 20);
+            this.nudPurchasePrice.Size = new System.Drawing.Size(45, 20);
             this.nudPurchasePrice.TabIndex = 23;
             this.nudPurchasePrice.ValueChanged += new System.EventHandler(this.NudPurchasePrice_ValueChanged);
             // 
@@ -324,8 +318,6 @@
             // 
             // nudBuyoutPrice
             // 
-            this.nudBuyoutPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.nudBuyoutPrice.DecimalPlaces = 2;
             this.nudBuyoutPrice.Location = new System.Drawing.Point(126, 273);
             this.nudBuyoutPrice.Maximum = new decimal(new int[] {
@@ -334,7 +326,7 @@
             0,
             0});
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
-            this.nudBuyoutPrice.Size = new System.Drawing.Size(73, 20);
+            this.nudBuyoutPrice.Size = new System.Drawing.Size(45, 20);
             this.nudBuyoutPrice.TabIndex = 27;
             this.nudBuyoutPrice.ValueChanged += new System.EventHandler(this.NudBuyoutPrice_ValueChanged);
             // 
@@ -345,7 +337,7 @@
             this.tBuyoutPriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
-            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(414, 20);
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(389, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
             this.tBuyoutPriceInWords.Enter += new System.EventHandler(this.TBuyoutPriceInWords_Enter);
@@ -363,7 +355,7 @@
             // bGeneratePDF
             // 
             this.bGeneratePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGeneratePDF.Location = new System.Drawing.Point(677, 382);
+            this.bGeneratePDF.Location = new System.Drawing.Point(652, 326);
             this.bGeneratePDF.Name = "bGeneratePDF";
             this.bGeneratePDF.Size = new System.Drawing.Size(99, 44);
             this.bGeneratePDF.TabIndex = 32;
@@ -374,7 +366,7 @@
             // bSaveData
             // 
             this.bSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveData.Location = new System.Drawing.Point(572, 382);
+            this.bSaveData.Location = new System.Drawing.Point(547, 326);
             this.bSaveData.Name = "bSaveData";
             this.bSaveData.Size = new System.Drawing.Size(99, 44);
             this.bSaveData.TabIndex = 33;
@@ -385,7 +377,7 @@
             // bSaveClient
             // 
             this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveClient.Location = new System.Drawing.Point(677, 324);
+            this.bSaveClient.Location = new System.Drawing.Point(652, 268);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
             this.bSaveClient.TabIndex = 30;
@@ -398,7 +390,7 @@
             this.cBoxClientsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cBoxClientsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cBoxClientsList.FormattingEnabled = true;
-            this.cBoxClientsList.Location = new System.Drawing.Point(84, 400);
+            this.cBoxClientsList.Location = new System.Drawing.Point(84, 344);
             this.cBoxClientsList.Name = "cBoxClientsList";
             this.cBoxClientsList.Size = new System.Drawing.Size(351, 26);
             this.cBoxClientsList.TabIndex = 35;
@@ -409,7 +401,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(7, 407);
+            this.label14.Location = new System.Drawing.Point(7, 351);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 13);
             this.label14.TabIndex = 36;
@@ -418,7 +410,7 @@
             // bChooseClientFromCBox
             // 
             this.bChooseClientFromCBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bChooseClientFromCBox.Location = new System.Drawing.Point(441, 400);
+            this.bChooseClientFromCBox.Location = new System.Drawing.Point(441, 344);
             this.bChooseClientFromCBox.Name = "bChooseClientFromCBox";
             this.bChooseClientFromCBox.Size = new System.Drawing.Size(99, 26);
             this.bChooseClientFromCBox.TabIndex = 37;
@@ -433,7 +425,7 @@
             // 
             // bAddOneDay
             // 
-            this.bAddOneDay.Location = new System.Drawing.Point(226, 37);
+            this.bAddOneDay.Location = new System.Drawing.Point(253, 37);
             this.bAddOneDay.Name = "bAddOneDay";
             this.bAddOneDay.Size = new System.Drawing.Size(32, 20);
             this.bAddOneDay.TabIndex = 38;
@@ -443,7 +435,7 @@
             // 
             // bAddOneWeek
             // 
-            this.bAddOneWeek.Location = new System.Drawing.Point(314, 37);
+            this.bAddOneWeek.Location = new System.Drawing.Point(341, 37);
             this.bAddOneWeek.Name = "bAddOneWeek";
             this.bAddOneWeek.Size = new System.Drawing.Size(44, 20);
             this.bAddOneWeek.TabIndex = 39;
@@ -453,7 +445,7 @@
             // 
             // bAdd30Days
             // 
-            this.bAdd30Days.Location = new System.Drawing.Point(426, 37);
+            this.bAdd30Days.Location = new System.Drawing.Point(453, 37);
             this.bAdd30Days.Name = "bAdd30Days";
             this.bAdd30Days.Size = new System.Drawing.Size(45, 20);
             this.bAdd30Days.TabIndex = 40;
@@ -463,7 +455,7 @@
             // 
             // bSubtractOneDay
             // 
-            this.bSubtractOneDay.Location = new System.Drawing.Point(270, 37);
+            this.bSubtractOneDay.Location = new System.Drawing.Point(297, 37);
             this.bSubtractOneDay.Name = "bSubtractOneDay";
             this.bSubtractOneDay.Size = new System.Drawing.Size(32, 20);
             this.bSubtractOneDay.TabIndex = 41;
@@ -473,7 +465,7 @@
             // 
             // bSubtractOneWeek
             // 
-            this.bSubtractOneWeek.Location = new System.Drawing.Point(370, 37);
+            this.bSubtractOneWeek.Location = new System.Drawing.Point(397, 37);
             this.bSubtractOneWeek.Name = "bSubtractOneWeek";
             this.bSubtractOneWeek.Size = new System.Drawing.Size(44, 20);
             this.bSubtractOneWeek.TabIndex = 42;
@@ -483,7 +475,7 @@
             // 
             // bSubtract30Days
             // 
-            this.bSubtract30Days.Location = new System.Drawing.Point(483, 37);
+            this.bSubtract30Days.Location = new System.Drawing.Point(510, 37);
             this.bSubtract30Days.Name = "bSubtract30Days";
             this.bSubtract30Days.Size = new System.Drawing.Size(45, 20);
             this.bSubtract30Days.TabIndex = 43;
@@ -493,9 +485,9 @@
             // 
             // bToDateMakeToday
             // 
-            this.bToDateMakeToday.Location = new System.Drawing.Point(145, 37);
+            this.bToDateMakeToday.Location = new System.Drawing.Point(171, 37);
             this.bToDateMakeToday.Name = "bToDateMakeToday";
-            this.bToDateMakeToday.Size = new System.Drawing.Size(75, 20);
+            this.bToDateMakeToday.Size = new System.Drawing.Size(76, 20);
             this.bToDateMakeToday.TabIndex = 44;
             this.bToDateMakeToday.Text = "Do Dzisiaj";
             this.bToDateMakeToday.UseVisualStyleBackColor = true;
@@ -503,9 +495,9 @@
             // 
             // bFromDateMakeToday
             // 
-            this.bFromDateMakeToday.Location = new System.Drawing.Point(144, 12);
+            this.bFromDateMakeToday.Location = new System.Drawing.Point(171, 12);
             this.bFromDateMakeToday.Name = "bFromDateMakeToday";
-            this.bFromDateMakeToday.Size = new System.Drawing.Size(75, 19);
+            this.bFromDateMakeToday.Size = new System.Drawing.Size(76, 19);
             this.bFromDateMakeToday.TabIndex = 45;
             this.bFromDateMakeToday.Text = "Od Dzisiaj";
             this.bFromDateMakeToday.UseVisualStyleBackColor = true;
@@ -515,7 +507,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 438);
+            this.ClientSize = new System.Drawing.Size(763, 382);
             this.Controls.Add(this.bFromDateMakeToday);
             this.Controls.Add(this.bToDateMakeToday);
             this.Controls.Add(this.bSubtract30Days);
@@ -556,6 +548,7 @@
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFrom);
+            this.MinimumSize = new System.Drawing.Size(779, 421);
             this.Name = "AddCustomerForm";
             this.Text = "Generator Umowy";
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).EndInit();
