@@ -326,5 +326,44 @@ namespace umowaDoPDF
             tBuyoutPriceInWords.ForeColor = Color.Black;
             tBuyoutPriceInWords.Text = niwPL;
         }
+
+        private void bAddOneDay_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(1);
+        }
+
+        private void bAddOneWeek_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(7);
+        }
+
+        private void bAdd30Days_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(30);
+        }
+        private void bSubtractOneDay_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(-1);
+        }
+
+        private void bSubtractOneWeek_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(-7);
+        }
+
+        private void bSubtract30Days_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = dtpTo.Value.AddDays(-30);
+        }
+
+        private void BFromDateMakeToday_Click(object sender, EventArgs e)
+        {
+            dtpFrom.Value = DateTime.Today;
+        }
+
+        private void BToDateMakeToday_Click(object sender, EventArgs e)
+        {
+            dtpTo.Value = DateTime.Today;
+        }
     }
 }

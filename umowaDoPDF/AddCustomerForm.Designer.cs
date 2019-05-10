@@ -62,6 +62,14 @@
             this.label14 = new System.Windows.Forms.Label();
             this.bChooseClientFromCBox = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bAddOneDay = new System.Windows.Forms.Button();
+            this.bAddOneWeek = new System.Windows.Forms.Button();
+            this.bAdd30Days = new System.Windows.Forms.Button();
+            this.bSubtractOneDay = new System.Windows.Forms.Button();
+            this.bSubtractOneWeek = new System.Windows.Forms.Button();
+            this.bSubtract30Days = new System.Windows.Forms.Button();
+            this.bToDateMakeToday = new System.Windows.Forms.Button();
+            this.bFromDateMakeToday = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -423,11 +431,99 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // bAddOneDay
+            // 
+            this.bAddOneDay.Location = new System.Drawing.Point(226, 37);
+            this.bAddOneDay.Name = "bAddOneDay";
+            this.bAddOneDay.Size = new System.Drawing.Size(32, 20);
+            this.bAddOneDay.TabIndex = 38;
+            this.bAddOneDay.Text = "+1 d";
+            this.bAddOneDay.UseVisualStyleBackColor = true;
+            this.bAddOneDay.Click += new System.EventHandler(this.bAddOneDay_Click);
+            // 
+            // bAddOneWeek
+            // 
+            this.bAddOneWeek.Location = new System.Drawing.Point(314, 37);
+            this.bAddOneWeek.Name = "bAddOneWeek";
+            this.bAddOneWeek.Size = new System.Drawing.Size(44, 20);
+            this.bAddOneWeek.TabIndex = 39;
+            this.bAddOneWeek.Text = "+1 t";
+            this.bAddOneWeek.UseVisualStyleBackColor = true;
+            this.bAddOneWeek.Click += new System.EventHandler(this.bAddOneWeek_Click);
+            // 
+            // bAdd30Days
+            // 
+            this.bAdd30Days.Location = new System.Drawing.Point(426, 37);
+            this.bAdd30Days.Name = "bAdd30Days";
+            this.bAdd30Days.Size = new System.Drawing.Size(45, 20);
+            this.bAdd30Days.TabIndex = 40;
+            this.bAdd30Days.Text = "+30 d";
+            this.bAdd30Days.UseVisualStyleBackColor = true;
+            this.bAdd30Days.Click += new System.EventHandler(this.bAdd30Days_Click);
+            // 
+            // bSubtractOneDay
+            // 
+            this.bSubtractOneDay.Location = new System.Drawing.Point(270, 37);
+            this.bSubtractOneDay.Name = "bSubtractOneDay";
+            this.bSubtractOneDay.Size = new System.Drawing.Size(32, 20);
+            this.bSubtractOneDay.TabIndex = 41;
+            this.bSubtractOneDay.Text = "-1 d";
+            this.bSubtractOneDay.UseVisualStyleBackColor = true;
+            this.bSubtractOneDay.Click += new System.EventHandler(this.bSubtractOneDay_Click);
+            // 
+            // bSubtractOneWeek
+            // 
+            this.bSubtractOneWeek.Location = new System.Drawing.Point(370, 37);
+            this.bSubtractOneWeek.Name = "bSubtractOneWeek";
+            this.bSubtractOneWeek.Size = new System.Drawing.Size(44, 20);
+            this.bSubtractOneWeek.TabIndex = 42;
+            this.bSubtractOneWeek.Text = "-1 t";
+            this.bSubtractOneWeek.UseVisualStyleBackColor = true;
+            this.bSubtractOneWeek.Click += new System.EventHandler(this.bSubtractOneWeek_Click);
+            // 
+            // bSubtract30Days
+            // 
+            this.bSubtract30Days.Location = new System.Drawing.Point(483, 37);
+            this.bSubtract30Days.Name = "bSubtract30Days";
+            this.bSubtract30Days.Size = new System.Drawing.Size(45, 20);
+            this.bSubtract30Days.TabIndex = 43;
+            this.bSubtract30Days.Text = "-30 d";
+            this.bSubtract30Days.UseVisualStyleBackColor = true;
+            this.bSubtract30Days.Click += new System.EventHandler(this.bSubtract30Days_Click);
+            // 
+            // bToDateMakeToday
+            // 
+            this.bToDateMakeToday.Location = new System.Drawing.Point(145, 37);
+            this.bToDateMakeToday.Name = "bToDateMakeToday";
+            this.bToDateMakeToday.Size = new System.Drawing.Size(75, 20);
+            this.bToDateMakeToday.TabIndex = 44;
+            this.bToDateMakeToday.Text = "Do Dzisiaj";
+            this.bToDateMakeToday.UseVisualStyleBackColor = true;
+            this.bToDateMakeToday.Click += new System.EventHandler(this.BToDateMakeToday_Click);
+            // 
+            // bFromDateMakeToday
+            // 
+            this.bFromDateMakeToday.Location = new System.Drawing.Point(144, 12);
+            this.bFromDateMakeToday.Name = "bFromDateMakeToday";
+            this.bFromDateMakeToday.Size = new System.Drawing.Size(75, 19);
+            this.bFromDateMakeToday.TabIndex = 45;
+            this.bFromDateMakeToday.Text = "Od Dzisiaj";
+            this.bFromDateMakeToday.UseVisualStyleBackColor = true;
+            this.bFromDateMakeToday.Click += new System.EventHandler(this.BFromDateMakeToday_Click);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 438);
+            this.Controls.Add(this.bFromDateMakeToday);
+            this.Controls.Add(this.bToDateMakeToday);
+            this.Controls.Add(this.bSubtract30Days);
+            this.Controls.Add(this.bSubtractOneWeek);
+            this.Controls.Add(this.bSubtractOneDay);
+            this.Controls.Add(this.bAdd30Days);
+            this.Controls.Add(this.bAddOneWeek);
+            this.Controls.Add(this.bAddOneDay);
             this.Controls.Add(this.bChooseClientFromCBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cBoxClientsList);
@@ -504,6 +600,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button bChooseClientFromCBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button bAddOneDay;
+        private System.Windows.Forms.Button bAddOneWeek;
+        private System.Windows.Forms.Button bAdd30Days;
+        private System.Windows.Forms.Button bSubtractOneDay;
+        private System.Windows.Forms.Button bSubtractOneWeek;
+        private System.Windows.Forms.Button bSubtract30Days;
+        private System.Windows.Forms.Button bToDateMakeToday;
+        private System.Windows.Forms.Button bFromDateMakeToday;
     }
 }
 
