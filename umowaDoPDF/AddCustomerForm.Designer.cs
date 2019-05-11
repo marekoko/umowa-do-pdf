@@ -124,6 +124,11 @@
             // 
             this.tName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tName.AutoCompleteCustomSource.AddRange(new string[] {
+            "Andrzej Seweryn",
+            "barbara"});
+            this.tName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
