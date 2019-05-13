@@ -24,17 +24,21 @@ namespace umowaDoPDF
             var today = DateTime.Now;
             dtpFrom.Value = today;
             dtpTo.Value = today.AddDays(30);
-            GetClientsToComboBox();
+            GetClientsToComboBoxAndAutocompleteSource();
         }
 
-        public void GetClientsToComboBox()
+        public void GetClientsToComboBoxAndAutocompleteSource()
         {
             cBoxClientsList.Items.Clear();
+            tName.AutoCompleteCustomSource.Clear();
 
             ToolsAndStuff.MkDir(clientsDir);
             string[] txtClientFiles = Directory.GetFiles(clientsDir);
-            foreach (string filePath in txtClientFiles) cBoxClientsList.Items.Add(Path.GetFileNameWithoutExtension(filePath));
-
+            foreach (string filePath in txtClientFiles)
+            {
+                cBoxClientsList.Items.Add(Path.GetFileNameWithoutExtension(filePath));
+                tName.AutoCompleteCustomSource.Add(Path.GetFileNameWithoutExtension(filePath));
+            }
         }
 
         private void bGeneratePDF_Click(object sender, EventArgs e)
@@ -130,6 +134,7 @@ namespace umowaDoPDF
 
         private void BSaveClient_Click(object sender, EventArgs e)
         {
+            // check if text in textbox is a default text, if so messagebox appear, if not saving client process starts
             if (tName.Text == $"{TextBoxesDefaults[tName.Name]}")
             {
                 MessageBox.Show("Wpisz Imię i Nazwisko klienta");
@@ -182,8 +187,7 @@ namespace umowaDoPDF
 
         private void CBoxClientsList_DropDown(object sender, EventArgs e)
         {
-            GetClientsToComboBox();
-
+            GetClientsToComboBoxAndAutocompleteSource();
         }
 
         private void BChooseClientFromCBox_Click(object sender, EventArgs e)

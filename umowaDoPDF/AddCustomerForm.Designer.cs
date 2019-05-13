@@ -127,8 +127,10 @@
             this.tName.AutoCompleteCustomSource.AddRange(new string[] {
             "Andrzej Seweryn",
             "barbara"});
+            //this.tName.AutoCompleteCustomSource.cBoxClientsList.Items;
+
             this.tName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.tName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.tName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
@@ -402,6 +404,7 @@
             this.cBoxClientsList.TabIndex = 35;
             this.cBoxClientsList.DropDown += new System.EventHandler(this.CBoxClientsList_DropDown);
             this.cBoxClientsList.SelectedIndexChanged += new System.EventHandler(this.CBoxClientsList_SelectedIndexChanged);
+
             // 
             // label14
             // 
