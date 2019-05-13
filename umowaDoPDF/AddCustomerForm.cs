@@ -130,26 +130,34 @@ namespace umowaDoPDF
 
         private void BSaveClient_Click(object sender, EventArgs e)
         {
-            var a = new Agreement();
-            a.FromDate = dtpFrom.Value;
-            a.ToDate = dtpTo.Value;
-            a.PurchasePrice = nudPurchasePrice.Value;
-            a.BuyoutPrice = nudBuyoutPrice.Value;
-            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-            a.Client = new Client();
-            a.Client.IDCard = tIDCard.Text;
-            a.Client.Name = tName.Text;
-            a.Client.Pesel = tPesel.Text;
-            var address = a.Client.Address = new Address();
-            address.City = tCity.Text;
-            address.Street = tStreet.Text;
-            address.ZipCode = tZipCode.Text;
+            if (tName.Text == $"{TextBoxesDefaults[tName.Name]}")
+            {
+                MessageBox.Show("Wpisz Imię i Nazwisko klienta");
+                ;
+            }
+            else
+            {
+                var a = new Agreement();
+                a.FromDate = dtpFrom.Value;
+                a.ToDate = dtpTo.Value;
+                a.PurchasePrice = nudPurchasePrice.Value;
+                a.BuyoutPrice = nudBuyoutPrice.Value;
+                a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+                a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+                a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+                a.Client = new Client();
+                a.Client.IDCard = tIDCard.Text;
+                a.Client.Name = tName.Text;
+                a.Client.Pesel = tPesel.Text;
+                var address = a.Client.Address = new Address();
+                address.City = tCity.Text;
+                address.Street = tStreet.Text;
+                address.ZipCode = tZipCode.Text;
 
-            //string clientsPath = $"{Directory.GetCurrentDirectory()}\\Clients\\";
-            string clientTextFile = $"{a.Client.Name}_{a.Client.Pesel}.txt";
-            string clientData = $@"
+                //string clientsPath = $"{Directory.GetCurrentDirectory()}\\Clients\\";
+                string clientTextFile = $"{a.Client.Name}_{a.Client.Pesel}.txt";
+                string clientData = $@"
+            
 {a.Client.FirstNameOnly()}
 {a.Client.LastNameOnly()}
 {a.Client.Address.ZipCode}
@@ -157,16 +165,16 @@ namespace umowaDoPDF
 {a.Client.Address.Street}
 {a.Client.IDCard}
 {a.Client.Pesel}";
-            ToolsAndStuff.MkDir(clientsDir);
+                ToolsAndStuff.MkDir(clientsDir);
 
-            using (TextWriter tw = new StreamWriter($"{clientsDir}\\{clientTextFile}", false))
-            {
-                tw.WriteLine(clientData);
-                MessageBox.Show("Zapisano klienta w bazie");
-                //Process.Start($"{clientsDir}\\{clientTextFile}");
+                using (TextWriter tw = new StreamWriter($"{clientsDir}\\{clientTextFile}", false))
+                {
+                    tw.WriteLine(clientData);
+                    MessageBox.Show("Zapisano klienta w bazie");
+                    //Process.Start($"{clientsDir}\\{clientTextFile}");
+                }
             }
         }
-
         private void CBoxClientsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             cBoxClientsList.SelectedItem = cBoxClientsList.Text;
@@ -329,17 +337,21 @@ namespace umowaDoPDF
         private void NudPurchasePrice_ValueChanged(object sender, EventArgs e)
         {
             decimal nudPurchaseValue = nudPurchasePrice.Value;
-            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudPurchaseValue.ToString());
-            string zlotyFormPurchase = NumberInWordsPL.ZlotyVariety(nudPurchaseValue.ToString());
+            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudPurchaseValue.ToString("0"));
+            //string zlotyFormPurchase = NumberInWordsPL.ZlotyVariety(nudPurchaseValue.ToString());
+            string zlotyFormPurchase = PolishGrammar.NounsWithNumeralsVariety(nudPurchaseValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tPurchasePriceInWords.ForeColor = Color.Black;
             tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
+
+
         }
 
         private void NudBuyoutPrice_ValueChanged(object sender, EventArgs e)
         {
             decimal nudBuyoutPriceValue = nudBuyoutPrice.Value;
-            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudBuyoutPriceValue.ToString());
-            string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
+            string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudBuyoutPriceValue.ToString("0"));
+            //string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
+            string zlotyFormBuyout = PolishGrammar.NounsWithNumeralsVariety(nudBuyoutPriceValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tBuyoutPriceInWords.ForeColor = Color.Black;
             tBuyoutPriceInWords.Text = $"{niwPL} {zlotyFormBuyout}";
         }

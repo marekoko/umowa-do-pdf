@@ -16,17 +16,25 @@ namespace umowaDoPDF
                 {234, "złote" },
                 {567, "złotych" }
             };
-            
-
-            public static string ZlotyOnlyOne { get; set; } = "złoty";
-            public static string Zloty234 { get; set; } = "złote";
-            public static string Zloty567 { get; set; } = "złotych";
         }
         public class Thousand
         {
-            public static string ThousandOnlyOne { get; set; } = "tysiąc";
-            public static string Thousand234 { get; set; } = "tysiące";
-            public static string Thousand567 { get; set; } = "tysięcy";
+            public static Dictionary<short, string> ThousandWithNumeralsDict = new Dictionary<short, string>
+            {
+                {1, "tysiąc" },
+                {234, "tysiące" },
+                {567, "tysięcy" }
+            };
+
+        }public class Million
+        {
+            public static Dictionary<short, string> MillionWithNumeralsDict = new Dictionary<short, string>
+            {
+                {1, "milion" },
+                {234, "miliony" },
+                {567, "milionów" }
+            };
+
         }
     }
 

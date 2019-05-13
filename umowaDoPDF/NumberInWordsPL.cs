@@ -11,6 +11,7 @@ namespace umowaDoPDF
         public static string ConvertNumberToWordsPL(string Number)
         {
             string word = "";
+
             try
             {
                 bool beginsZero = false;//tests for 0XX    
@@ -23,7 +24,7 @@ namespace umowaDoPDF
 
                     int numDigits = Number.Length;
                     int pos = 0;//store digit grouping    
-                    string place = "";//digit grouping name:hundres,thousand,etc...    
+                    string placeName = "";//digit grouping name:hundres,thousand,etc...    
                     switch (numDigits)
                     {
                         case 1://ones' range    
@@ -45,20 +46,25 @@ namespace umowaDoPDF
                         case 5:
                         case 6:
                             pos = (numDigits % 4) + 1;
-                            place = " tysiąc ";
+                            //placeName = " tysiąc ";
+                            //Number = Convert.ToInt32(Number);
+                            dblAmt = dblAmt / 1000;
+                            placeName = $" {PolishGrammar.NounsWithNumeralsVariety(dblAmt.ToString("0"), Noun.Thousand.ThousandWithNumeralsDict)} ";
                             break;
                         case 7://millions' range    
                         case 8:
                         case 9:
                             pos = (numDigits % 7) + 1;
-                            place = " milion ";
+                            //placeName = " milion ";
+                            dblAmt = dblAmt / 1000000;
+                            placeName = $" {PolishGrammar.NounsWithNumeralsVariety(dblAmt.ToString("0"), Noun.Million.MillionWithNumeralsDict)} ";
                             break;
                         case 10://Billions's range    
                         case 11:
                         case 12:
 
                             pos = (numDigits % 10) + 1;
-                            place = " miliard ";
+                            placeName = " miliard ";
                             break;
                         //add extra case options for anything above Billion...    
                         default:
@@ -71,7 +77,7 @@ namespace umowaDoPDF
                         {
                             try
                             {
-                                word = ConvertNumberToWordsPL(Number.Substring(0, pos)) + place + ConvertNumberToWordsPL(Number.Substring(pos));
+                                word = ConvertNumberToWordsPL(Number.Substring(0, pos)) + placeName + ConvertNumberToWordsPL(Number.Substring(pos));
                             }
                             catch { }
                         }
@@ -92,42 +98,44 @@ namespace umowaDoPDF
             return word.Trim();
         }
 
-        public static string ZlotyVariety(string Number)
-        {
-            /*
-            Pierwszy liczebnik to jedyny wyjątek przy liczbie "1" i słowie "złoty".
-            Dla liczb z zakresu 5–14 lub gdy ostatnia cyfra liczby wynosi 1, 5, 6, 7, 8, 9, 0 
-            mówi i pisze się „złotych” (np. 18 złotych, 85 złotych). Te liczby łączą się z dopełniaczem. 
-            Ostatnia cyfra 2, 3, 4 – mówi i pisze się „złote” (np. 42 złote, 104 złote). Liczby te z kolei 
-            podaje się w formie mianownika.
-             TRANSLATED TO ENGLISH:
-            The first numeral is the only exception to the number "1" and the word "złoty".
-            For numbers in the range 5-14 or when the last digit of the number is 1, 5, 6, 7, 8, 9, 0
-            says and writes „złotych”(eg 18 złotych, 85 złotych).These numbers connect to the complement.
-            The last digit 2, 3, 4 - says and "gold" is written(eg 42 złote, 104 złote). These numbers in turn
-            is given in the form of a nominative.
-            */
-            string ZlotyCorrectForm = "";
-            int intNumber = Convert.ToInt32(Number);
+        //public static string ZlotyVariety(string Number)
+        //{
+        //    /*
+        //     * Poniższa zasada działa w przypadku odmiany wszystkich rzeczowników przy licznikach.
+        //    Pierwszy liczebnik to jedyny wyjątek przy liczbie "1" i słowie "złoty".
+        //    Dla liczb z zakresu 5–14 lub gdy ostatnia cyfra liczby wynosi 1, 5, 6, 7, 8, 9, 0 
+        //    mówi i pisze się „złotych” (np. 18 złotych, 85 złotych). Te liczby łączą się z dopełniaczem. 
+        //    Ostatnia cyfra 2, 3, 4 – mówi i pisze się „złote” (np. 42 złote, 104 złote). Liczby te z kolei 
+        //    podaje się w formie mianownika.
+        //     TRANSLATED TO ENGLISH:
+        //     The following rule works in the case of a variety of all nouns at counters(numerals).
+        //    The first numeral is the only exception to the number "1" and the word "złoty".
+        //    For numbers in the range 5-14 or when the last digit of the number is 1, 5, 6, 7, 8, 9, 0
+        //    says and writes „złotych”(eg 18 złotych, 85 złotych).These numbers connect to the complement.
+        //    The last digit 2, 3, 4 - says and "gold" is written(eg 42 złote, 104 złote). These numbers in turn
+        //    is given in the form of a nominative.
+        //    */
+        //    string ZlotyCorrectForm = "";
+        //    int intNumber = Convert.ToInt32(Number);
             
-            List<int> listZlotych = new List<int>() { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-            List<int> listZlotychLastDigit = new List<int>() { 0, 1, 5, 6, 7, 8, 9 };
-            List<int> listZloteLastDigit = new List<int>() { 2, 3, 4 };
+        //    List<int> listZlotych = new List<int>() { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        //    List<int> listZlotychLastDigit = new List<int>() { 0, 1, 5, 6, 7, 8, 9 };
+        //    List<int> listZloteLastDigit = new List<int>() { 2, 3, 4 };
 
-            if (intNumber == 1 && Number.Trim().Length == 1)
-            {
-                ZlotyCorrectForm = "złoty";
-            }
-            else if (listZlotych.Any(x => x == intNumber) || listZlotychLastDigit.Any(x => x == intNumber % 10))
-            {
-                ZlotyCorrectForm = "złotych";
-            }
-            else if (listZloteLastDigit.Any(x => x == intNumber % 10))
-            {
-                ZlotyCorrectForm = "złote";
-            }
-            return ZlotyCorrectForm;
-        }
+        //    if (intNumber == 1 && Number.Trim().Length == 1)
+        //    {
+        //        ZlotyCorrectForm = "złoty";
+        //    }
+        //    else if (listZlotych.Any(x => x == intNumber) || listZlotychLastDigit.Any(x => x == intNumber % 10))
+        //    {
+        //        ZlotyCorrectForm = "złotych";
+        //    }
+        //    else if (listZloteLastDigit.Any(x => x == intNumber % 10))
+        //    {
+        //        ZlotyCorrectForm = "złote";
+        //    }
+        //    return ZlotyCorrectForm;
+        //}
 
 
         private static string Ones(string Number)
