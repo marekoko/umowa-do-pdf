@@ -15,13 +15,16 @@ namespace umowaDoPDF
     public partial class AddCustomerForm : Form
     {
 
-        private readonly string clientsDir = Directory.GetCurrentDirectory() + "\\Clients";
+        private readonly string ClientsDir = Directory.GetCurrentDirectory() + "\\Clients";
+        private readonly string DataDir = Directory.GetCurrentDirectory() + "\\Data";
         private Dictionary<string, string> TextBoxesDefaults = null;
-        List<string> ClientList = new List<string>();
+        private List<string> ClientList = new List<string>();
 
         public AddCustomerForm()
         {
             InitializeComponent();
+            ToolsAndStuff.MkDir(ClientsDir);
+            ToolsAndStuff.MkDir(DataDir);
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
@@ -35,8 +38,8 @@ namespace umowaDoPDF
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
 
-            ToolsAndStuff.MkDir(clientsDir);
-            string[] txtClientFiles = Directory.GetFiles(clientsDir);
+            ToolsAndStuff.MkDir(ClientsDir);
+            string[] txtClientFiles = Directory.GetFiles(ClientsDir);
             foreach (string filePath in txtClientFiles)
             {
                 cBoxClientsList.Items.Add(Path.GetFileNameWithoutExtension(filePath));
@@ -101,9 +104,11 @@ namespace umowaDoPDF
 
         private void bSaveData_Click(object sender, EventArgs e)
         {
-            string path = "dane.txt";
+
             var a = new Agreement();
             a.FromDate = dtpFrom.Value;
+            string path = $"{DataDir}\\dane_{a.FromDate:dd.MM.yyyy}.txt";
+
             a.ToDate = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
             a.BuyoutPrice = nudBuyoutPrice.Value;
@@ -131,7 +136,7 @@ namespace umowaDoPDF
             {
                 tw.WriteLine(line);
                 MessageBox.Show("Zapisano do pliku txt");
-                try {Process.Start("notepad++.exe", "dane.txt");}
+                try {Process.Start("notepad++.exe", path);}
                 catch {Process.Start("dane.txt");}
             }
         }
@@ -174,9 +179,9 @@ namespace umowaDoPDF
 {a.Client.Address.Street}
 {a.Client.IDCard}
 {a.Client.Pesel}";
-                ToolsAndStuff.MkDir(clientsDir);
+                ToolsAndStuff.MkDir(ClientsDir);
 
-                using (TextWriter tw = new StreamWriter($"{clientsDir}\\{clientTextFile}", false))
+                using (TextWriter tw = new StreamWriter($"{ClientsDir}\\{clientTextFile}", false))
                 {
                     tw.WriteLine(clientData);
                     MessageBox.Show("Zapisano klienta w bazie");
@@ -198,12 +203,12 @@ namespace umowaDoPDF
         {
             if(cBoxClientsList.Text == "")
             {
-                Console.WriteLine("Błont");
+                Console.WriteLine("Error - client not chosen from list");
                 MessageBox.Show("Wybierz klienta z listy");
             }
             else
             {
-                string[] linesTxtClient = File.ReadAllLines($"{clientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
+                string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
                 Console.WriteLine(linesTxtClient.Count());
                 foreach (string clientData in linesTxtClient)
                 {
@@ -246,15 +251,70 @@ namespace umowaDoPDF
 
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
         }
-
-        private void TName_TextChanged(object sender, EventArgs e)
+        private void TName_KeyDown(object sender, KeyEventArgs e)
         {
-            if(ClientList.Any(x => x == tName.Text))
+            // if the key pressed is Enter:
+            if (e.KeyCode == Keys.Return)
             {
-                Console.WriteLine($"{tName.Text}"); 
+                if (ClientList.Any(x => x.ToLower() == tName.Text.ToLower()))
+                {
+                    string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{tName.Text}.txt", Encoding.UTF8);
 
+                    tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+                    tName.ForeColor = Color.Black;
+
+                    tZipCode.Text = linesTxtClient[3];
+                    tZipCode.ForeColor = Color.Black;
+
+                    tCity.Text = linesTxtClient[4];
+                    tCity.ForeColor = Color.Black;
+
+                    tStreet.Text = linesTxtClient[5];
+                    tStreet.ForeColor = Color.Black;
+
+                    tIDCard.Text = linesTxtClient[6];
+                    tIDCard.ForeColor = Color.Black;
+
+                    tPesel.Text = linesTxtClient[7];
+                    tPesel.ForeColor = Color.Black;
+                }
             }
         }
+            //private void TName_TextChanged(object sender, EventArgs e)
+            //{
+            //    if(ClientList.Any(x => x == tName.Text))
+            //    {
+            //        Console.WriteLine($"{tName.Text}");
+
+            //        string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{tName.Text}.txt", Encoding.UTF8);
+            //        Console.WriteLine(linesTxtClient.Count());
+            //        foreach (string clientData in linesTxtClient)
+            //        {
+            //            Console.WriteLine(clientData);
+            //        }
+
+            //        tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+            //        tName.ForeColor = Color.Black;
+
+            //        tZipCode.Text = linesTxtClient[3];
+            //        tZipCode.ForeColor = Color.Black;
+
+            //        tCity.Text = linesTxtClient[4];
+            //        tCity.ForeColor = Color.Black;
+
+            //        tStreet.Text = linesTxtClient[5];
+            //        tStreet.ForeColor = Color.Black;
+
+            //        tIDCard.Text = linesTxtClient[6];
+            //        tIDCard.ForeColor = Color.Black;
+
+            //        tPesel.Text = linesTxtClient[7];
+            //        tPesel.ForeColor = Color.Black;
+
+            //    }
+
+            //}
+
         private void TZipCode_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
@@ -411,7 +471,5 @@ namespace umowaDoPDF
         {
             dtpTo.Value = DateTime.Today;
         }
-
-
     }
 }
