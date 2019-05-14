@@ -127,8 +127,6 @@
             this.tName.AutoCompleteCustomSource.AddRange(new string[] {
             "Andrzej Seweryn",
             "barbara"});
-            //this.tName.AutoCompleteCustomSource.cBoxClientsList.Items;
-
             this.tName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tName.ForeColor = System.Drawing.Color.Silver;
@@ -137,6 +135,7 @@
             this.tName.Size = new System.Drawing.Size(221, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
+            this.tName.TextChanged += new System.EventHandler(this.TName_TextChanged);
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
             this.tName.Leave += new System.EventHandler(this.TName_Leave);
             // 
@@ -404,7 +403,6 @@
             this.cBoxClientsList.TabIndex = 35;
             this.cBoxClientsList.DropDown += new System.EventHandler(this.CBoxClientsList_DropDown);
             this.cBoxClientsList.SelectedIndexChanged += new System.EventHandler(this.CBoxClientsList_SelectedIndexChanged);
-
             // 
             // label14
             // 

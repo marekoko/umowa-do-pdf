@@ -17,6 +17,8 @@ namespace umowaDoPDF
 
         private readonly string clientsDir = Directory.GetCurrentDirectory() + "\\Clients";
         private Dictionary<string, string> TextBoxesDefaults = null;
+        List<string> ClientList = new List<string>();
+
         public AddCustomerForm()
         {
             InitializeComponent();
@@ -24,10 +26,11 @@ namespace umowaDoPDF
             var today = DateTime.Now;
             dtpFrom.Value = today;
             dtpTo.Value = today.AddDays(30);
-            GetClientsToComboBoxAndAutocompleteSource();
+            UpdateClientListSource();
+            
         }
 
-        public void GetClientsToComboBoxAndAutocompleteSource()
+        public void UpdateClientListSource()
         {
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
@@ -38,6 +41,7 @@ namespace umowaDoPDF
             {
                 cBoxClientsList.Items.Add(Path.GetFileNameWithoutExtension(filePath));
                 tName.AutoCompleteCustomSource.Add(Path.GetFileNameWithoutExtension(filePath));
+                ClientList.Add(Path.GetFileNameWithoutExtension(filePath));
             }
         }
 
@@ -187,7 +191,7 @@ namespace umowaDoPDF
 
         private void CBoxClientsList_DropDown(object sender, EventArgs e)
         {
-            GetClientsToComboBoxAndAutocompleteSource();
+            UpdateClientListSource();
         }
 
         private void BChooseClientFromCBox_Click(object sender, EventArgs e)
@@ -230,18 +234,27 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-
+            UpdateClientListSource();
+            
             //Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
         }
 
         private void TName_Leave(object sender, EventArgs e)
         {
-            
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
+            UpdateClientListSource();
 
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
         }
 
+        private void TName_TextChanged(object sender, EventArgs e)
+        {
+            if(ClientList.Any(x => x == tName.Text))
+            {
+                Console.WriteLine($"{tName.Text}"); 
+
+            }
+        }
         private void TZipCode_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
@@ -398,6 +411,7 @@ namespace umowaDoPDF
         {
             dtpTo.Value = DateTime.Today;
         }
+
 
     }
 }
