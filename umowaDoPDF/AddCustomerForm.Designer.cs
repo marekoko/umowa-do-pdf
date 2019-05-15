@@ -64,10 +64,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bAddOneDay = new System.Windows.Forms.Button();
             this.bAddOneWeek = new System.Windows.Forms.Button();
-            this.bAdd30Days = new System.Windows.Forms.Button();
+            this.bAddOneMonth = new System.Windows.Forms.Button();
             this.bSubtractOneDay = new System.Windows.Forms.Button();
             this.bSubtractOneWeek = new System.Windows.Forms.Button();
-            this.bSubtract30Days = new System.Windows.Forms.Button();
+            this.bSubtractOneMonth = new System.Windows.Forms.Button();
             this.bToDateMakeToday = new System.Windows.Forms.Button();
             this.bFromDateMakeToday = new System.Windows.Forms.Button();
             this.cBoxSaveOnDesktop = new System.Windows.Forms.CheckBox();
@@ -452,15 +452,15 @@
             this.bAddOneWeek.UseVisualStyleBackColor = true;
             this.bAddOneWeek.Click += new System.EventHandler(this.bAddOneWeek_Click);
             // 
-            // bAdd30Days
+            // bAddOneMonth
             // 
-            this.bAdd30Days.Location = new System.Drawing.Point(453, 37);
-            this.bAdd30Days.Name = "bAdd30Days";
-            this.bAdd30Days.Size = new System.Drawing.Size(45, 20);
-            this.bAdd30Days.TabIndex = 40;
-            this.bAdd30Days.Text = "+30 d";
-            this.bAdd30Days.UseVisualStyleBackColor = true;
-            this.bAdd30Days.Click += new System.EventHandler(this.bAdd30Days_Click);
+            this.bAddOneMonth.Location = new System.Drawing.Point(453, 37);
+            this.bAddOneMonth.Name = "bAddOneMonth";
+            this.bAddOneMonth.Size = new System.Drawing.Size(45, 20);
+            this.bAddOneMonth.TabIndex = 40;
+            this.bAddOneMonth.Text = "+1 M";
+            this.bAddOneMonth.UseVisualStyleBackColor = true;
+            this.bAddOneMonth.Click += new System.EventHandler(this.bAddOneMonth_Click);
             // 
             // bSubtractOneDay
             // 
@@ -482,15 +482,15 @@
             this.bSubtractOneWeek.UseVisualStyleBackColor = true;
             this.bSubtractOneWeek.Click += new System.EventHandler(this.bSubtractOneWeek_Click);
             // 
-            // bSubtract30Days
+            // bSubtractOneMonth
             // 
-            this.bSubtract30Days.Location = new System.Drawing.Point(510, 37);
-            this.bSubtract30Days.Name = "bSubtract30Days";
-            this.bSubtract30Days.Size = new System.Drawing.Size(45, 20);
-            this.bSubtract30Days.TabIndex = 43;
-            this.bSubtract30Days.Text = "-30 d";
-            this.bSubtract30Days.UseVisualStyleBackColor = true;
-            this.bSubtract30Days.Click += new System.EventHandler(this.bSubtract30Days_Click);
+            this.bSubtractOneMonth.Location = new System.Drawing.Point(510, 37);
+            this.bSubtractOneMonth.Name = "bSubtractOneMonth";
+            this.bSubtractOneMonth.Size = new System.Drawing.Size(45, 20);
+            this.bSubtractOneMonth.TabIndex = 43;
+            this.bSubtractOneMonth.Text = "-1 M";
+            this.bSubtractOneMonth.UseVisualStyleBackColor = true;
+            this.bSubtractOneMonth.Click += new System.EventHandler(this.bSubtractOneMonth_Click);
             // 
             // bToDateMakeToday
             // 
@@ -533,10 +533,10 @@
             this.Controls.Add(this.cBoxSaveOnDesktop);
             this.Controls.Add(this.bFromDateMakeToday);
             this.Controls.Add(this.bToDateMakeToday);
-            this.Controls.Add(this.bSubtract30Days);
+            this.Controls.Add(this.bSubtractOneMonth);
             this.Controls.Add(this.bSubtractOneWeek);
             this.Controls.Add(this.bSubtractOneDay);
-            this.Controls.Add(this.bAdd30Days);
+            this.Controls.Add(this.bAddOneMonth);
             this.Controls.Add(this.bAddOneWeek);
             this.Controls.Add(this.bAddOneDay);
             this.Controls.Add(this.bChooseClientFromCBox);
@@ -618,10 +618,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button bAddOneDay;
         private System.Windows.Forms.Button bAddOneWeek;
-        private System.Windows.Forms.Button bAdd30Days;
+        private System.Windows.Forms.Button bAddOneMonth;
         private System.Windows.Forms.Button bSubtractOneDay;
         private System.Windows.Forms.Button bSubtractOneWeek;
-        private System.Windows.Forms.Button bSubtract30Days;
+        private System.Windows.Forms.Button bSubtractOneMonth;
         private System.Windows.Forms.Button bToDateMakeToday;
         private System.Windows.Forms.Button bFromDateMakeToday;
         private System.Windows.Forms.CheckBox cBoxSaveOnDesktop;

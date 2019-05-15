@@ -441,9 +441,9 @@ namespace umowaDoPDF
             dtpTo.Value = dtpTo.Value.AddDays(7);
         }
 
-        private void bAdd30Days_Click(object sender, EventArgs e)
+        private void bAddOneMonth_Click(object sender, EventArgs e)
         {
-            dtpTo.Value = dtpTo.Value.AddDays(30);
+            dtpTo.Value = dtpTo.Value.AddMonths(1);
         }
         private void bSubtractOneDay_Click(object sender, EventArgs e)
         {
@@ -455,9 +455,9 @@ namespace umowaDoPDF
             dtpTo.Value = dtpTo.Value.AddDays(-7);
         }
 
-        private void bSubtract30Days_Click(object sender, EventArgs e)
+        private void bSubtractOneMonth_Click(object sender, EventArgs e)
         {
-            dtpTo.Value = dtpTo.Value.AddDays(-30);
+            dtpTo.Value = dtpTo.Value.AddMonths(-1);
         }
 
         private void BFromDateMakeToday_Click(object sender, EventArgs e)
