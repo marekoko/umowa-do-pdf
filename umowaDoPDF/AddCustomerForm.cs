@@ -14,6 +14,10 @@ namespace umowaDoPDF
 {
     public partial class AddCustomerForm : Form
     {
+        // todo: add button to manage clientlist
+        // todo: add button to manage SubjectsOfAgreements Source list
+        // todo: make clientlist manager
+        // todo: make SubjectsOfAgreements Source list manager
 
         private readonly string ClientsDir = Directory.GetCurrentDirectory() + "\\Clients";
         private readonly string DataDir = Directory.GetCurrentDirectory() + "\\Data";
@@ -29,11 +33,15 @@ namespace umowaDoPDF
         {
             InitializeComponent();
             InitializeAppDirs();
+            UpdateClientListSource();
+
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
-            dtpTo.Value = today.AddDays(30);
-            UpdateClientListSource();
+            //dtpTo.Value = today.AddDays(30);
+            dtpTo.Value = today.AddMonths(1);
+            
+            // todo: make a default dtpTo.Value date appear updated +30 or +31 or +28 or +29 days
             
         }
         public void InitializeAppDirs()
@@ -130,7 +138,7 @@ namespace umowaDoPDF
 
             var a = new Agreement();
             a.FromDate = dtpFrom.Value;
-            string path = $"{DataDir}\\dane_{a.FromDate:dd.MM.yyyy}.txt";
+            string TxtFilePath = $"{DataDir}\\dane_{a.FromDate:dd.MM.yyyy}.txt";
 
             a.ToDate = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
@@ -155,12 +163,12 @@ namespace umowaDoPDF
 {a.Client.Pesel}
 {a.BuyoutPrice.ToString("0.00")}
 {a.ToDate:dd.MM.yyyy}";
-            using (TextWriter tw = new StreamWriter(path, true))
+            using (TextWriter tw = new StreamWriter(TxtFilePath, true))
             {
                 tw.WriteLine(line);
                 MessageBox.Show("Zapisano do pliku txt");
-                try {Process.Start("notepad++.exe", path);}
-                catch {Process.Start("dane.txt");}
+                try {Process.Start("notepad++.exe", TxtFilePath);}
+                catch {Process.Start(TxtFilePath);}
             }
         }
 
