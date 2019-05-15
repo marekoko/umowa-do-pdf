@@ -18,12 +18,13 @@ namespace umowaDoPDF
         // todo: add button to manage SubjectsOfAgreements Source list
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
+        // todo: make cheking in tName textbox form appropriate data format
 
-        private readonly string ClientsDir = Directory.GetCurrentDirectory() + "\\Clients";
-        private readonly string DataDir = Directory.GetCurrentDirectory() + "\\Data";
-        private readonly string PDFdraftsDir = Directory.GetCurrentDirectory() + "\\PDFdrafts";
+        private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
+        private readonly string DataDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+        private readonly string PDFdraftsDir = Path.Combine(Directory.GetCurrentDirectory(), "PDFdrafts");
         private readonly string AgreementDraftFile = "Agreement_Draft.pdf";
-        private readonly string SOASourceDir = Directory.GetCurrentDirectory() + "\\Data\\SOA";
+        private readonly string SOASourceDir = Path.Combine(Directory.GetCurrentDirectory(), "Data", "SOA");
         private readonly string SOASourceFile = "SubjectsOfAgreements.txt";
 
         private Dictionary<string, string> TextBoxesDefaults = null;
@@ -117,7 +118,8 @@ namespace umowaDoPDF
                     var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
                     var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
                     var fileExtension = ".pdf";
-                    var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
+                    //var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
+                    var pathDefaultSavePDF = Path.Combine(pathDesktop, $"{filename}{fileExtension}");
 
                     // check default path
                     //Console.WriteLine(pathDefaultSavePDF);
@@ -138,7 +140,9 @@ namespace umowaDoPDF
 
             var a = new Agreement();
             a.FromDate = dtpFrom.Value;
-            string TxtFilePath = $"{DataDir}\\dane_{a.FromDate:dd.MM.yyyy}.txt";
+
+            string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
+            string TxtFilePath = Path.Combine(DataDir, TxtFile);
 
             a.ToDate = dtpTo.Value;
             a.PurchasePrice = nudPurchasePrice.Value;
