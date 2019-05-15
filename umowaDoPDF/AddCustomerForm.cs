@@ -144,7 +144,7 @@ namespace umowaDoPDF
         private void BSaveClient_Click(object sender, EventArgs e)
         {
             // check if text in textbox is a default text, if so messagebox appear, if not saving client process starts
-            if (tName.Text == $"{TextBoxesDefaults[tName.Name]}" || tName.Text == "")
+            if (tName.Text == $"{TextBoxesDefaults[tName.Name]}" || string.IsNullOrWhiteSpace(tName.Text))
             {
                 MessageBox.Show("Wpisz Imię i Nazwisko klienta");
                 ;
