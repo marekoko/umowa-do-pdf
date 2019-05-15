@@ -238,15 +238,12 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-            UpdateClientListSource();
-            
             //Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
         }
 
         private void TName_Leave(object sender, EventArgs e)
         {
-            UpdateClientListSource();
 
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
         }
