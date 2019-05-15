@@ -17,6 +17,9 @@ namespace umowaDoPDF
 
         private readonly string ClientsDir = Directory.GetCurrentDirectory() + "\\Clients";
         private readonly string DataDir = Directory.GetCurrentDirectory() + "\\Data";
+        private readonly string PDFdraftsDir = Directory.GetCurrentDirectory() + "\\PDFdrafts";
+        private readonly string AgreementDraftFile = "Agreement_Draft.pdf";
+
         private Dictionary<string, string> TextBoxesDefaults = null;
         private List<string> ClientList = new List<string>();
 
@@ -25,6 +28,7 @@ namespace umowaDoPDF
             InitializeComponent();
             ToolsAndStuff.MkDir(ClientsDir);
             ToolsAndStuff.MkDir(DataDir);
+            ToolsAndStuff.MkDir(PDFdraftsDir);
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
@@ -50,6 +54,8 @@ namespace umowaDoPDF
 
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
+            string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
+
             Agreement a = new Agreement();
             a.FromDate = dtpFrom.Value;
             a.ToDate = dtpTo.Value;
@@ -81,7 +87,7 @@ namespace umowaDoPDF
                 {
                     return;
                 }
-                PDFExporter.SaveAsPDF(sfd.FileName, a);
+                PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
 
                 MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
 
@@ -97,7 +103,8 @@ namespace umowaDoPDF
                 // check default path
                 //Console.WriteLine(pathDefaultSavePDF);
 
-                PDFExporter.SaveAsPDF(pathDefaultSavePDF, a);
+                PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
+                Process.Start(pathDefaultSavePDF);
             }
 
         }

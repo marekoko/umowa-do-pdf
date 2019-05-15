@@ -19,7 +19,7 @@ namespace Tests
         {
             var agr = RandomValue.Object<Agreement>();
             
-            PDFExporter.SaveAsPDF("umowaNowa.pdf", agr);
+            PDFExporter.SaveAsPDF("umowaNowa.pdf", ".", agr);
             Assert.Equal(true, true);
             true.ShouldBe(true);
 

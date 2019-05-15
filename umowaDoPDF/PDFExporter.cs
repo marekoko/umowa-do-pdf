@@ -12,16 +12,15 @@ namespace umowaDoPDF
 {
     public static class PDFExporter
     {
-        public static void SaveAsPDF(string path, Agreement a)
+        public static void SaveAsPDF(string path, string pathDraftPDF, Agreement a)
         {
-            PdfDocument AgreementOriginal = PdfReader.Open("umowa.pdf", PdfDocumentOpenMode.Import);
+            PdfDocument AgreementOriginal = PdfReader.Open(pathDraftPDF, PdfDocumentOpenMode.Import);
             PdfDocument newAgreement = new PdfDocument();
             newAgreement.AddPage(AgreementOriginal.Pages[0]);
             AgreementOriginal.Dispose();
             XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode);
             XFont fontBold = new XFont("Calibri", 12, XFontStyle.Bold, options);
             XFont fontRegular = new XFont("Calibri", 12, XFontStyle.Regular, options);
-
             XGraphics gfx = XGraphics.FromPdfPage(newAgreement.Pages[0]);
             gfx.DrawString(a.FromDateString(), fontBold, new XSolidBrush(XColor.FromName("black")), 83, 133.5);
             gfx.DrawString(" w Jędrzejowie pomiędzy:", fontRegular, new XSolidBrush(XColor.FromName("black")), 148, 133.5);
