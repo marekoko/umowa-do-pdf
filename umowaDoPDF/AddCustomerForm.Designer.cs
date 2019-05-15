@@ -125,8 +125,7 @@
             this.tName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tName.AutoCompleteCustomSource.AddRange(new string[] {
-            "Andrzej Seweryn",
-            "barbara"});
+            "Andrzej Seweryn"});
             this.tName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tName.ForeColor = System.Drawing.Color.Silver;
@@ -135,7 +134,6 @@
             this.tName.Size = new System.Drawing.Size(221, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
-            //this.tName.TextChanged += new System.EventHandler(this.TName_TextChanged);
             this.tName.Enter += new System.EventHandler(this.TName_Enter);
             this.tName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TName_KeyDown);
             this.tName.Leave += new System.EventHandler(this.TName_Leave);
@@ -252,12 +250,15 @@
             // 
             this.tSubjectOfAgreemnt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tSubjectOfAgreemnt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tSubjectOfAgreemnt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tSubjectOfAgreemnt.ForeColor = System.Drawing.Color.Silver;
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(126, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
             this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(413, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
+            this.tSubjectOfAgreemnt.TextChanged += new System.EventHandler(this.TSubjectOfAgreemnt_TextChanged);
             this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
             this.tSubjectOfAgreemnt.Leave += new System.EventHandler(this.TSubjectOfAgreemnt_Leave);
             // 

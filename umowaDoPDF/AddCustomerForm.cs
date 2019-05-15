@@ -245,7 +245,6 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-            //Process.Start(@"c:\users\marek\source\repos\numbertowords\numbertowords\bin\debug\numbertowords.exe");
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
         }
 
@@ -254,6 +253,7 @@ namespace umowaDoPDF
 
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
         }
+
         private void TName_KeyDown(object sender, KeyEventArgs e)
         {
             // if the key pressed is Enter:
@@ -283,40 +283,6 @@ namespace umowaDoPDF
                 }
             }
         }
-            //private void TName_TextChanged(object sender, EventArgs e)
-            //{
-            //    if(ClientList.Any(x => x == tName.Text))
-            //    {
-            //        Console.WriteLine($"{tName.Text}");
-
-            //        string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{tName.Text}.txt", Encoding.UTF8);
-            //        Console.WriteLine(linesTxtClient.Count());
-            //        foreach (string clientData in linesTxtClient)
-            //        {
-            //            Console.WriteLine(clientData);
-            //        }
-
-            //        tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
-            //        tName.ForeColor = Color.Black;
-
-            //        tZipCode.Text = linesTxtClient[3];
-            //        tZipCode.ForeColor = Color.Black;
-
-            //        tCity.Text = linesTxtClient[4];
-            //        tCity.ForeColor = Color.Black;
-
-            //        tStreet.Text = linesTxtClient[5];
-            //        tStreet.ForeColor = Color.Black;
-
-            //        tIDCard.Text = linesTxtClient[6];
-            //        tIDCard.ForeColor = Color.Black;
-
-            //        tPesel.Text = linesTxtClient[7];
-            //        tPesel.ForeColor = Color.Black;
-
-            //    }
-
-            //}
 
         private void TZipCode_Enter(object sender, EventArgs e)
         {
@@ -473,6 +439,12 @@ namespace umowaDoPDF
         private void BToDateMakeToday_Click(object sender, EventArgs e)
         {
             dtpTo.Value = DateTime.Today;
+        }
+
+        private void TSubjectOfAgreemnt_TextChanged(object sender, EventArgs e)
+        {
+            // todo: make a list of thing that is updating and autocomplete for this textbox
+
         }
     }
 }
