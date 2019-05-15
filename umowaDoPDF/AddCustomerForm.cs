@@ -144,7 +144,7 @@ namespace umowaDoPDF
         private void BSaveClient_Click(object sender, EventArgs e)
         {
             // check if text in textbox is a default text, if so messagebox appear, if not saving client process starts
-            if (tName.Text == $"{TextBoxesDefaults[tName.Name]}")
+            if (tName.Text == $"{TextBoxesDefaults[tName.Name]}" || tName.Text == "")
             {
                 MessageBox.Show("Wpisz Imię i Nazwisko klienta");
                 ;
@@ -171,7 +171,6 @@ namespace umowaDoPDF
                 //string clientsPath = $"{Directory.GetCurrentDirectory()}\\Clients\\";
                 string clientTextFile = $"{a.Client.Name}_{a.Client.Pesel}.txt";
                 string clientData = $@"
-            
 {a.Client.FirstNameOnly()}
 {a.Client.LastNameOnly()}
 {a.Client.Address.ZipCode}
