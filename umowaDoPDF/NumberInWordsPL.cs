@@ -250,7 +250,7 @@ namespace umowaDoPDF
             Console.WriteLine(Number);
             Console.WriteLine(intHundredsNumber);
             //return "sto jeden";
-            string name = null;
+            string name = "";
             switch (intHundredsNumber)
             {
                 case 100:
@@ -283,7 +283,7 @@ namespace umowaDoPDF
                 default:
                     if (intHundredsNumber > 0)
                     {
-                        name = Hundreds(Number.Substring(0, 1) + "00") + " " + Tens(Number.Substring(1, 1) + "0") + " " + Ones(Number.Substring(2));
+                        name = Hundreds(Number.Substring(0, 1) + "00") + " " + Tens(Number.Substring(1, 2));
                     }
                     break;
             }
