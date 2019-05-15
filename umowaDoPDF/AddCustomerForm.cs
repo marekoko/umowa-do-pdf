@@ -19,6 +19,7 @@ namespace umowaDoPDF
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
         // todo: make cheking in tName textbox form appropriate data format
+        // todo: !!!! BUG If file exists it crashes while saving pdf
 
         private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
         private readonly string DataDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
@@ -29,37 +30,71 @@ namespace umowaDoPDF
 
         private Dictionary<string, string> TextBoxesDefaults = null;
         private List<string> ClientList = new List<string>();
+        private List<string> SOAList = new List<string>();
 
         public AddCustomerForm()
         {
             InitializeComponent();
             InitializeAppDirs();
             UpdateClientListSource();
+            UpdateSOAListSource();
 
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
             //dtpTo.Value = today.AddDays(30);
             dtpTo.Value = today.AddMonths(1);
-            
-            // todo: make a default dtpTo.Value date appear updated +30 or +31 or +28 or +29 days
-            
         }
         public void InitializeAppDirs()
         {
-            ToolsAndStuff.MkDir(ClientsDir);
-            ToolsAndStuff.MkDir(DataDir);
-            ToolsAndStuff.MkDir(PDFdraftsDir);
-            ToolsAndStuff.MkDir(SOASourceDir);
+            ToolsAndStuff.MkDir(ClientsDir, null);
+            ToolsAndStuff.MkDir(DataDir, null);
+            ToolsAndStuff.MkDir(PDFdraftsDir, null);
+            ToolsAndStuff.MkDir(SOASourceDir, null);
+        }
+        public void UpdateSOAListSource()
+        {
+            string SOAFullPath = Path.Combine(SOASourceDir, SOASourceFile);
+            string Message = $"Brak pliku źódłowego: \"SubjectsOfAgreements.txt\"\n " +
+                $"Stworzyłem go ścieżce: {Path.Combine(SOASourceDir, SOASourceFile)}";
+            ToolsAndStuff.MkFile(SOAFullPath, Message);
+            SOAList.Clear();
+            // todo: when makeing file and reading file it crashes brak dostepu do pliku
+            string[] linesSOASourceFile = File.ReadAllLines(Path.Combine(SOASourceDir, SOASourceFile), Encoding.UTF8);
+            Console.WriteLine(linesSOASourceFile.Count());
+            if (linesSOASourceFile != null)
+            {
+                foreach (string SOAData in linesSOASourceFile)
+                {
+                    Console.WriteLine(SOAData);
+                }
+            }
         }
 
-        public void UpdateClientListSource()
+            //tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+            //tName.ForeColor = Color.Black;
+
+            //tZipCode.Text = linesTxtClient[3];
+            //tZipCode.ForeColor = Color.Black;
+
+            //tCity.Text = linesTxtClient[4];
+            //tCity.ForeColor = Color.Black;
+
+            //tStreet.Text = linesTxtClient[5];
+            //tStreet.ForeColor = Color.Black;
+
+            //tIDCard.Text = linesTxtClient[6];
+            //tIDCard.ForeColor = Color.Black;
+
+            //tPesel.Text = linesTxtClient[7];
+            //tPesel.ForeColor = Color.Black;
+        
+    public void UpdateClientListSource()
         {
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
             ClientList.Clear();
 
-            ToolsAndStuff.MkDir(ClientsDir);
             string[] txtClientFiles = Directory.GetFiles(ClientsDir);
             foreach (string filePath in txtClientFiles)
             {
@@ -213,7 +248,7 @@ namespace umowaDoPDF
 {a.Client.Address.Street}
 {a.Client.IDCard}
 {a.Client.Pesel}";
-                ToolsAndStuff.MkDir(ClientsDir);
+                ToolsAndStuff.MkDir(ClientsDir, null);
 
                 using (TextWriter tw = new StreamWriter($"{ClientsDir}\\{clientTextFile}", false))
                 {
@@ -243,12 +278,13 @@ namespace umowaDoPDF
             }
             else
             {
-                string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
-                Console.WriteLine(linesTxtClient.Count());
-                foreach (string clientData in linesTxtClient)
-                {
-                    Console.WriteLine(clientData);
-                }
+                //string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
+                string[] linesTxtClient = File.ReadAllLines(Path.Combine(ClientsDir, $"{cBoxClientsList.Text}.txt"), Encoding.UTF8);
+                //Console.WriteLine(linesTxtClient.Count());
+                //foreach (string clientData in linesTxtClient)
+                //{
+                //    Console.WriteLine(clientData);
+                //}
                 
                 tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
                 tName.ForeColor = Color.Black;

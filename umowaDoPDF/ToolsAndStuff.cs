@@ -41,18 +41,36 @@ namespace umowaDoPDF
             return TextBoxDict;
         }
 
-        public static void MkDir(string path)
+        public static void MkDir(string path, string infoMessage)
         //
         // Making directory in designated path with messagebox info
         //
         {
             if (!Directory.Exists(path))
             {
-                MessageBox.Show($"Utworzyłem katalog z danymi klientów:\n\"{path}\"");
+
+                if (infoMessage == null || infoMessage == "")
+                {
+                    infoMessage = $"Utworzyłem katalog w ścieżce:\n\"{path}\"";
+                }
+                MessageBox.Show(infoMessage);
                 Directory.CreateDirectory(path);
             }
         }
-
+        public static void MkFile(string path, string infoMessage)
+        {
+            if (!File.Exists(path))
+            {
+                if (infoMessage == null || infoMessage == "")
+                {
+                    infoMessage = $"Utworzyłem plik w ścieżce:\n\"{path}\"";
+                }
+                
+                MessageBox.Show(infoMessage);
+                File.Create(path);
+                
+            }
+        }
         public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, Dictionary<string, string> defaultTextBoxNames)
         {
 
