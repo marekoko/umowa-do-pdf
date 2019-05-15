@@ -19,6 +19,8 @@ namespace umowaDoPDF
         private readonly string DataDir = Directory.GetCurrentDirectory() + "\\Data";
         private readonly string PDFdraftsDir = Directory.GetCurrentDirectory() + "\\PDFdrafts";
         private readonly string AgreementDraftFile = "Agreement_Draft.pdf";
+        private readonly string SOASourceDir = Directory.GetCurrentDirectory() + "\\Data\\SOA";
+        private readonly string SOASourceFile = "SubjectsOfAgreements.txt";
 
         private Dictionary<string, string> TextBoxesDefaults = null;
         private List<string> ClientList = new List<string>();
@@ -26,9 +28,7 @@ namespace umowaDoPDF
         public AddCustomerForm()
         {
             InitializeComponent();
-            ToolsAndStuff.MkDir(ClientsDir);
-            ToolsAndStuff.MkDir(DataDir);
-            ToolsAndStuff.MkDir(PDFdraftsDir);
+            InitializeAppDirs();
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
@@ -36,11 +36,19 @@ namespace umowaDoPDF
             UpdateClientListSource();
             
         }
+        public void InitializeAppDirs()
+        {
+            ToolsAndStuff.MkDir(ClientsDir);
+            ToolsAndStuff.MkDir(DataDir);
+            ToolsAndStuff.MkDir(PDFdraftsDir);
+            ToolsAndStuff.MkDir(SOASourceDir);
+        }
 
         public void UpdateClientListSource()
         {
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
+            ClientList.Clear();
 
             ToolsAndStuff.MkDir(ClientsDir);
             string[] txtClientFiles = Directory.GetFiles(ClientsDir);
@@ -56,61 +64,69 @@ namespace umowaDoPDF
         {
             string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
 
-            Agreement a = new Agreement();
-            a.FromDate = dtpFrom.Value;
-            a.ToDate = dtpTo.Value;
-            a.PurchasePrice = nudPurchasePrice.Value;
-            a.BuyoutPrice = nudBuyoutPrice.Value;
-            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-            a.Client = new Client();
-            a.Client.IDCard = tIDCard.Text;
-            a.Client.Name = tName.Text;
-            a.Client.Pesel = tPesel.Text;
-            Address address = a.Client.Address = new Address();
-            address.City = tCity.Text;
-            address.Street = tStreet.Text;
-            address.ZipCode = tZipCode.Text;
-
-            
-
-            if (!cBoxSaveOnDesktop.Checked)
+            if (File.Exists(PathDraft))
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                sfd.Filter = "PDF|*.pdf";
-                sfd.FileName = $"Umowa_Lombardowa_{DateTime.Now:ddMMyyyy}_{a.Client.FirstNameOnly()}_{a.Client.LastNameOnly()}";
 
-                DialogResult dr = sfd.ShowDialog();
-                if (dr == DialogResult.Cancel)
+                Agreement a = new Agreement();
+                a.FromDate = dtpFrom.Value;
+                a.ToDate = dtpTo.Value;
+                a.PurchasePrice = nudPurchasePrice.Value;
+                a.BuyoutPrice = nudBuyoutPrice.Value;
+                a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+                a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+                a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+                a.Client = new Client();
+                a.Client.IDCard = tIDCard.Text;
+                a.Client.Name = tName.Text;
+                a.Client.Pesel = tPesel.Text;
+                Address address = a.Client.Address = new Address();
+                address.City = tCity.Text;
+                address.Street = tStreet.Text;
+                address.ZipCode = tZipCode.Text;
+
+
+
+                if (!cBoxSaveOnDesktop.Checked)
                 {
-                    return;
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    sfd.Filter = "PDF|*.pdf";
+                    sfd.FileName = $"Umowa_Lombardowa_{DateTime.Now:ddMMyyyy}_{a.Client.FirstNameOnly()}_{a.Client.LastNameOnly()}";
+
+                    DialogResult dr = sfd.ShowDialog();
+                    if (dr == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                    PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
+
+                    MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
+
+                    Process.Start(sfd.FileName);
                 }
-                PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
+                else
+                {
+                    var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
+                    var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
+                    var fileExtension = ".pdf";
+                    var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
 
-                MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
+                    // check default path
+                    //Console.WriteLine(pathDefaultSavePDF);
 
-                Process.Start(sfd.FileName);
+                    PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
+                    Process.Start(pathDefaultSavePDF);
+                }
             }
             else
             {
-                var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
-                var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
-                var fileExtension = ".pdf";
-                var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
-
-                // check default path
-                //Console.WriteLine(pathDefaultSavePDF);
-
-                PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
-                Process.Start(pathDefaultSavePDF);
+                MessageBox.Show("Brak szablonu pliku! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
             }
-
         }
 
         private void bSaveData_Click(object sender, EventArgs e)
         {
+            // todo: get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
 
             var a = new Agreement();
             a.FromDate = dtpFrom.Value;
@@ -195,6 +211,7 @@ namespace umowaDoPDF
                 }
             }
         }
+
         private void CBoxClientsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             cBoxClientsList.SelectedItem = cBoxClientsList.Text;
