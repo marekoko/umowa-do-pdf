@@ -42,7 +42,6 @@ namespace umowaDoPDF
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
-            //dtpTo.Value = today.AddDays(30);
             dtpTo.Value = today.AddMonths(1);
         }
         public void InitializeAppDirs()
@@ -54,21 +53,44 @@ namespace umowaDoPDF
         }
         public void UpdateSOAListSource()
         {
-            string SOAFullPath = Path.Combine(SOASourceDir, SOASourceFile);
-            string Message = $"Brak pliku źódłowego: \"SubjectsOfAgreements.txt\"\n " +
-                $"Stworzyłem go ścieżce: {Path.Combine(SOASourceDir, SOASourceFile)}";
-            ToolsAndStuff.MkFile(SOAFullPath, Message);
             SOAList.Clear();
-            // todo: when makeing file and reading file it crashes brak dostepu do pliku
+
+            string SOAFullPath = Path.Combine(SOASourceDir, SOASourceFile);
+            string Message = $"Brak pliku źródłowego: \"SubjectsOfAgreements.txt\"\n " +
+                $"Stworzyłem go ścieżce: {Path.Combine(SOASourceDir, SOASourceFile)}";
+
+            ToolsAndStuff.MkFile(SOAFullPath, Message);
             string[] linesSOASourceFile = File.ReadAllLines(Path.Combine(SOASourceDir, SOASourceFile), Encoding.UTF8);
             Console.WriteLine(linesSOASourceFile.Count());
             if (linesSOASourceFile != null)
             {
-                foreach (string SOAData in linesSOASourceFile)
+                foreach (string SOA in linesSOASourceFile)
                 {
-                    Console.WriteLine(SOAData);
+                    Console.WriteLine(SOA);
+                    tSubjectOfAgreemnt.AutoCompleteCustomSource.Add(SOA);
+
                 }
             }
+        }
+        public void AddNewSOA(string SOA)
+        {
+            if (true)
+            //if (SOAList.Any(x => x.ToLower() == SOA.ToLower()))
+            {
+                using (TextWriter tw = new StreamWriter(Path.Combine(SOASourceDir, SOASourceFile), true))
+                {
+                    Console.WriteLine("Klapło");
+                    tw.WriteLine($"{SOA}");
+                    //MessageBox.Show("Zapisano do pliku txt");
+                    //try { Process.Start("notepad++.exe", TxtFilePath); }
+                    //catch { Process.Start(TxtFilePath); }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nie klapło");
+            }
+            
         }
 
         //tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
@@ -116,6 +138,7 @@ namespace umowaDoPDF
         }
         void TwojaStara<t>(t x)
         {
+            // todo: titolowe czary mary - metoda generyczna - zależy od rodzaju zmiennej
             if(x.GetType() == typeof(int))
             {
                 Console.WriteLine(x.GetType());
@@ -136,6 +159,9 @@ namespace umowaDoPDF
                 a.PurchasePriceInWords = tPurchasePriceInWords.Text;
                 a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
                 a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+
+                AddNewSOA(a.SubjectOfAgreement);
+                UpdateSOAListSource();
                 a.Client = new Client();
                 a.Client.IDCard = tIDCard.Text;
                 a.Client.Name = tName.Text;
@@ -265,7 +291,6 @@ namespace umowaDoPDF
 {a.Client.Address.Street}
 {a.Client.IDCard}
 {a.Client.Pesel}";
-                ToolsAndStuff.MkDir(ClientsDir, null);
 
                 using (TextWriter tw = new StreamWriter($"{ClientsDir}\\{clientTextFile}", false))
                 {
@@ -273,17 +298,13 @@ namespace umowaDoPDF
                     MessageBox.Show("Zapisano klienta w bazie");
                     //Process.Start($"{clientsDir}\\{clientTextFile}");
                 }
+                UpdateClientListSource();
             }
         }
 
         private void CBoxClientsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             cBoxClientsList.SelectedItem = cBoxClientsList.Text;
-        }
-
-        private void CBoxClientsList_DropDown(object sender, EventArgs e)
-        {
-            UpdateClientListSource();
         }
 
         private void BChooseClientFromCBox_Click(object sender, EventArgs e)

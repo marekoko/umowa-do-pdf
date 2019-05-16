@@ -403,7 +403,6 @@
             this.cBoxClientsList.Name = "cBoxClientsList";
             this.cBoxClientsList.Size = new System.Drawing.Size(351, 26);
             this.cBoxClientsList.TabIndex = 35;
-            this.cBoxClientsList.DropDown += new System.EventHandler(this.CBoxClientsList_DropDown);
             this.cBoxClientsList.SelectedIndexChanged += new System.EventHandler(this.CBoxClientsList_SelectedIndexChanged);
             // 
             // label14

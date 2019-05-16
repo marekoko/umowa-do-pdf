@@ -8,6 +8,9 @@ namespace umowaDoPDF
 {
     class NumberInWordsPL
     {
+        // todo: !!!! BUG in numbers wrong zloty form for hundreds and teens (like 312,313,314... 311 and 315 are ok!!)
+        // todo: !!!! BUG in numbers extra whitespace in hundreds between name of each hundred and once digit( like 309, 308, 407)
+        
         public static string ConvertNumberToWordsPL(string Number)
         {
             string word = "";
