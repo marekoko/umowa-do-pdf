@@ -27,6 +27,19 @@ namespace umowaDoPDF
                     TextBoxDict.Add(collectionItem.Name, collectionItem.Text);
                     //check the list in console:
                     //Console.WriteLine(collectionItem.Text);
+
+                }
+                // todo: titolowe czary mary - wrzuca przy wejsciu do textboxow akcje placeholder
+            }
+            foreach (var item in controls)
+            {
+                var collectionItem = item as TextBox;
+                if (collectionItem != null)
+                {
+                    collectionItem.Enter += (sender, args) =>
+                    {
+                        TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxDict);
+                    };
                 }
 
             }
@@ -65,9 +78,13 @@ namespace umowaDoPDF
                 {
                     infoMessage = $"Utworzyłem plik w ścieżce:\n\"{path}\"";
                 }
-                
+
+                // todo: działa jak "File.Create(path);" ale zamyka plik
                 MessageBox.Show(infoMessage);
-                File.Create(path);
+                using (File.Create(path))
+                {
+                
+                }
                 
             }
         }

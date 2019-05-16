@@ -71,25 +71,25 @@ namespace umowaDoPDF
             }
         }
 
-            //tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
-            //tName.ForeColor = Color.Black;
+        //tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+        //tName.ForeColor = Color.Black;
 
-            //tZipCode.Text = linesTxtClient[3];
-            //tZipCode.ForeColor = Color.Black;
+        //tZipCode.Text = linesTxtClient[3];
+        //tZipCode.ForeColor = Color.Black;
 
-            //tCity.Text = linesTxtClient[4];
-            //tCity.ForeColor = Color.Black;
+        //tCity.Text = linesTxtClient[4];
+        //tCity.ForeColor = Color.Black;
 
-            //tStreet.Text = linesTxtClient[5];
-            //tStreet.ForeColor = Color.Black;
+        //tStreet.Text = linesTxtClient[5];
+        //tStreet.ForeColor = Color.Black;
 
-            //tIDCard.Text = linesTxtClient[6];
-            //tIDCard.ForeColor = Color.Black;
+        //tIDCard.Text = linesTxtClient[6];
+        //tIDCard.ForeColor = Color.Black;
 
-            //tPesel.Text = linesTxtClient[7];
-            //tPesel.ForeColor = Color.Black;
-        
-    public void UpdateClientListSource()
+        //tPesel.Text = linesTxtClient[7];
+        //tPesel.ForeColor = Color.Black;
+
+        public void UpdateClientListSource()
         {
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
@@ -102,8 +102,25 @@ namespace umowaDoPDF
                 tName.AutoCompleteCustomSource.Add(Path.GetFileNameWithoutExtension(filePath));
                 ClientList.Add(Path.GetFileNameWithoutExtension(filePath));
             }
-        }
+            // todo: titolowe czary mary objectcollection do stringa
+            var x = cBoxClientsList.Items;
+            foreach (var c in x)
+            {
+                var element = (string)c;
+                var element2 = c.ToString();
+            }
 
+            var list = x.Cast<string>();
+            TwojaStara("");
+            TwojaStara(1);
+        }
+        void TwojaStara<t>(t x)
+        {
+            if(x.GetType() == typeof(int))
+            {
+                Console.WriteLine(x.GetType());
+            }
+        }
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
             string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
@@ -206,8 +223,8 @@ namespace umowaDoPDF
             {
                 tw.WriteLine(line);
                 MessageBox.Show("Zapisano do pliku txt");
-                try {Process.Start("notepad++.exe", TxtFilePath);}
-                catch {Process.Start(TxtFilePath);}
+                try { Process.Start("notepad++.exe", TxtFilePath); }
+                catch { Process.Start(TxtFilePath); }
             }
         }
 
@@ -271,7 +288,7 @@ namespace umowaDoPDF
 
         private void BChooseClientFromCBox_Click(object sender, EventArgs e)
         {
-            if(cBoxClientsList.Text == "")
+            if (cBoxClientsList.Text == "")
             {
                 Console.WriteLine("Error - client not chosen from list");
                 MessageBox.Show("Wybierz klienta z listy");
@@ -285,7 +302,7 @@ namespace umowaDoPDF
                 //{
                 //    Console.WriteLine(clientData);
                 //}
-                
+
                 tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
                 tName.ForeColor = Color.Black;
 
@@ -310,13 +327,14 @@ namespace umowaDoPDF
 
         private void TName_Enter(object sender, EventArgs e)
         {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
+            // wyłączony aby sprawdzić czy działa metoda dodająca zachowanie dla wszystich textboxow
+            //ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
         }
 
         private void TName_Leave(object sender, EventArgs e)
         {
 
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, false, TextBoxesDefaults);
+            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
         }
 
         private void TName_KeyDown(object sender, KeyEventArgs e)
