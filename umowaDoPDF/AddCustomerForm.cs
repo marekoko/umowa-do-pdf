@@ -84,7 +84,7 @@ namespace umowaDoPDF
                 {
                     tw.WriteLine($"{SOA}");
                 }
-                Console.WriteLine($"SOA:\"{SOA}\"dodany do AutoCompleteList"); // refresh autocomplete list
+                Console.WriteLine($"SOA:\"{SOA}\" dodany do AutoCompleteList"); // refresh autocomplete list
 
                 SOAUpdateListSource();
                 
