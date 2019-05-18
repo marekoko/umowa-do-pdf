@@ -36,7 +36,7 @@ namespace umowaDoPDF
             {
                 NounCorrectForm = NounsWithNumeralsDict[1];
             }
-            else if (ListFor1.Any(x => x == intNumber) || ListFor567.Any(x => x == intNumber % 10))
+            else if (ListFor1.Any(x => x == intNumber) || ListFor567.Any(x => x == intNumber % 10) || (ListFor1.Any(x => x == intNumber % 100)))
             {
                 NounCorrectForm = NounsWithNumeralsDict[567];
             }

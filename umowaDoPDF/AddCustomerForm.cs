@@ -475,7 +475,8 @@ namespace umowaDoPDF
             //string zlotyFormPurchase = NumberInWordsPL.ZlotyVariety(nudPurchaseValue.ToString());
             string zlotyFormPurchase = PolishGrammar.NounsWithNumeralsVariety(nudPurchaseValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tPurchasePriceInWords.ForeColor = Color.Black;
-            tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
+            //tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
+            tPurchasePriceInWords.Text = $"{niwPL}";
 
 
         }
@@ -487,7 +488,7 @@ namespace umowaDoPDF
             //string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
             string zlotyFormBuyout = PolishGrammar.NounsWithNumeralsVariety(nudBuyoutPriceValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tBuyoutPriceInWords.ForeColor = Color.Black;
-            tBuyoutPriceInWords.Text = $"{niwPL} {zlotyFormBuyout}";
+            tBuyoutPriceInWords.Text = $"{niwPL.Trim()} {zlotyFormBuyout.Trim()}";
         }
 
         private void bAddOneDay_Click(object sender, EventArgs e)
