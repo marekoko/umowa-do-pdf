@@ -36,8 +36,8 @@ namespace umowaDoPDF
         {
             InitializeComponent();
             InitializeAppDirs();
-            UpdateClientListSource();
-            UpdateSOAListSource();
+            ClientListUpdateSource();
+            SOAUpdateListSource();
 
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
@@ -51,7 +51,7 @@ namespace umowaDoPDF
             ToolsAndStuff.MkDir(PDFdraftsDir, null);
             ToolsAndStuff.MkDir(SOASourceDir, null);
         }
-        public void UpdateSOAListSource()
+        public void SOAUpdateListSource()
         {
             SOAList.Clear();
 
@@ -61,57 +61,41 @@ namespace umowaDoPDF
 
             ToolsAndStuff.MkFile(SOAFullPath, Message);
             string[] linesSOASourceFile = File.ReadAllLines(Path.Combine(SOASourceDir, SOASourceFile), Encoding.UTF8);
-            Console.WriteLine(linesSOASourceFile.Count());
+            //Console.WriteLine(linesSOASourceFile.Count());
             if (linesSOASourceFile != null)
             {
                 foreach (string SOA in linesSOASourceFile)
                 {
-                    Console.WriteLine(SOA);
+                    //Console.WriteLine(SOA);
                     tSubjectOfAgreemnt.AutoCompleteCustomSource.Add(SOA);
 
                 }
             }
         }
-        public void AddNewSOA(string SOA)
+        public void SOAAddNew(string SOA)
         {
-            if (true)
-            //if (SOAList.Any(x => x.ToLower() == SOA.ToLower()))
+            var SourceList = tSubjectOfAgreemnt.AutoCompleteCustomSource.Cast<string>();
+
+            if (SourceList.Any(x => x.ToLower().Trim() != SOA.ToLower().Trim()))
             {
+                //if didnt find SOA in AutocompleteList then adds it to SOAListSourceFile and refreshes the AutocompleteList
+
                 using (TextWriter tw = new StreamWriter(Path.Combine(SOASourceDir, SOASourceFile), true))
                 {
-                    Console.WriteLine("Klapło");
                     tw.WriteLine($"{SOA}");
-                    //MessageBox.Show("Zapisano do pliku txt");
-                    //try { Process.Start("notepad++.exe", TxtFilePath); }
-                    //catch { Process.Start(TxtFilePath); }
                 }
+                Console.WriteLine("SOA dodany do AutoCompleteList");
+
+                SOAUpdateListSource();
+
             }
             else
             {
-                Console.WriteLine("Nie klapło");
+                Console.WriteLine("SOA jest już na liście");
             }
             
         }
-
-        //tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
-        //tName.ForeColor = Color.Black;
-
-        //tZipCode.Text = linesTxtClient[3];
-        //tZipCode.ForeColor = Color.Black;
-
-        //tCity.Text = linesTxtClient[4];
-        //tCity.ForeColor = Color.Black;
-
-        //tStreet.Text = linesTxtClient[5];
-        //tStreet.ForeColor = Color.Black;
-
-        //tIDCard.Text = linesTxtClient[6];
-        //tIDCard.ForeColor = Color.Black;
-
-        //tPesel.Text = linesTxtClient[7];
-        //tPesel.ForeColor = Color.Black;
-
-        public void UpdateClientListSource()
+        public void ClientListUpdateSource()
         {
             cBoxClientsList.Items.Clear();
             tName.AutoCompleteCustomSource.Clear();
@@ -160,8 +144,7 @@ namespace umowaDoPDF
                 a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
                 a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
 
-                AddNewSOA(a.SubjectOfAgreement);
-                UpdateSOAListSource();
+                SOAAddNew(a.SubjectOfAgreement);
                 a.Client = new Client();
                 a.Client.IDCard = tIDCard.Text;
                 a.Client.Name = tName.Text;
@@ -298,7 +281,7 @@ namespace umowaDoPDF
                     MessageBox.Show("Zapisano klienta w bazie");
                     //Process.Start($"{clientsDir}\\{clientTextFile}");
                 }
-                UpdateClientListSource();
+                ClientListUpdateSource();
             }
         }
 

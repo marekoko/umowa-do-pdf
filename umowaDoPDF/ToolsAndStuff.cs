@@ -66,8 +66,8 @@ namespace umowaDoPDF
                 {
                     infoMessage = $"Utworzyłem katalog w ścieżce:\n\"{path}\"";
                 }
-                MessageBox.Show(infoMessage);
                 Directory.CreateDirectory(path);
+                MessageBox.Show(infoMessage);
             }
         }
         public static void MkFile(string path, string infoMessage)
