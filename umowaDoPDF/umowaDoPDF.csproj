@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="Noun.cs" />
     <Compile Include="NumberInWordsPL.cs" />
-    <Compile Include="Numerals.cs" />
     <Compile Include="PDFExporter.cs" />
     <Compile Include="PolishGrammar.cs" />
     <Compile Include="Program.cs" />
