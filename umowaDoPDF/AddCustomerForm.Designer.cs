@@ -258,7 +258,6 @@
             this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(413, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
-            this.tSubjectOfAgreemnt.TextChanged += new System.EventHandler(this.TSubjectOfAgreemnt_TextChanged);
             this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
             this.tSubjectOfAgreemnt.Leave += new System.EventHandler(this.TSubjectOfAgreemnt_Leave);
             // 

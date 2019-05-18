@@ -44,14 +44,14 @@ namespace umowaDoPDF
             dtpFrom.Value = today;
             dtpTo.Value = today.AddMonths(1);
         }
-        public void InitializeAppDirs()
+        private void InitializeAppDirs()
         {
             ToolsAndStuff.MkDir(ClientsDir, null);
             ToolsAndStuff.MkDir(DataDir, null);
             ToolsAndStuff.MkDir(PDFdraftsDir, null);
             ToolsAndStuff.MkDir(SOASourceDir, null);
         }
-        public void SOAUpdateListSource()
+        private void SOAUpdateListSource()
         {
             SOAList.Clear();
 
@@ -72,26 +72,26 @@ namespace umowaDoPDF
                 }
             }
         }
-        public void SOAAddNew(string SOA)
+        private void SOAAddNew(string SOA)
         {
-            var SourceList = tSubjectOfAgreemnt.AutoCompleteCustomSource.Cast<string>();
+            IEnumerable<string> SOASourceList = tSubjectOfAgreemnt.AutoCompleteCustomSource.Cast<string>();
 
-            if (SourceList.Any(x => x.ToLower().Trim() != SOA.ToLower().Trim()))
+            if (!SOASourceList.Any(x => x.ToLower().Trim() == SOA.ToLower().Trim()))
             {
                 //if didnt find SOA in AutocompleteList then adds it to SOAListSourceFile and refreshes the AutocompleteList
 
-                using (TextWriter tw = new StreamWriter(Path.Combine(SOASourceDir, SOASourceFile), true))
+                using (TextWriter tw = new StreamWriter(Path.Combine(SOASourceDir, SOASourceFile), true)) //add SOA to file
                 {
                     tw.WriteLine($"{SOA}");
                 }
-                Console.WriteLine("SOA dodany do AutoCompleteList");
+                Console.WriteLine("SOA dodany do AutoCompleteList"); // refresh autocomplete list
 
                 SOAUpdateListSource();
-
+                
             }
             else
             {
-                Console.WriteLine("SOA jest już na liście");
+                Console.WriteLine("SOA jest już na liście\nNie dodaję do listy");
             }
             
         }
@@ -108,25 +108,26 @@ namespace umowaDoPDF
                 tName.AutoCompleteCustomSource.Add(Path.GetFileNameWithoutExtension(filePath));
                 ClientList.Add(Path.GetFileNameWithoutExtension(filePath));
             }
-            // todo: titolowe czary mary objectcollection do stringa
-            var x = cBoxClientsList.Items;
-            foreach (var c in x)
-            {
-                var element = (string)c;
-                var element2 = c.ToString();
-            }
 
-            var list = x.Cast<string>();
-            TwojaStara("");
-            TwojaStara(1);
-        }
-        void TwojaStara<t>(t x)
-        {
-            // todo: titolowe czary mary - metoda generyczna - zależy od rodzaju zmiennej
-            if(x.GetType() == typeof(int))
-            {
-                Console.WriteLine(x.GetType());
-            }
+                    //    // todo: titolowe czary mary objectcollection do stringa
+                    //    var x = cBoxClientsList.Items;
+                    //    foreach (var c in x)
+                    //    {
+                    //        var element = (string)c;
+                    //        var element2 = c.ToString();
+                    //    }
+
+                    //    var list = x.Cast<string>();
+                    //    TwojaStara("");
+                    //    TwojaStara(1);
+                    //}
+                    //void TwojaStara<t>(t x)
+                    //{
+                    //    // todo: titolowe czary mary - metoda generyczna - zależy od rodzaju zmiennej
+                    //    if(x.GetType() == typeof(int))
+                    //    {
+                    //        Console.WriteLine(x.GetType());
+                    //    }
         }
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
@@ -528,10 +529,5 @@ namespace umowaDoPDF
             dtpTo.Value = DateTime.Today;
         }
 
-        private void TSubjectOfAgreemnt_TextChanged(object sender, EventArgs e)
-        {
-            // todo: make a list of thing that is updating and autocomplete for this textbox
-
-        }
     }
 }
