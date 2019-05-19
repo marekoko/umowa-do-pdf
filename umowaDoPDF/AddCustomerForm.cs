@@ -157,17 +157,17 @@ namespace umowaDoPDF
 
 
 
-                if (!cBoxSaveOnDesktop.Checked)
-                {
+
                     SaveFileDialog sfd = new SaveFileDialog();
                     sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     sfd.Filter = "PDF|*.pdf";
                     sfd.FileName = $"Umowa_Lombardowa_{DateTime.Now:ddMMyyyy}_{a.Client.FirstNameOnly()}_{a.Client.LastNameOnly()}";
-
+                if (!cBoxSaveOnDesktop.Checked)
+                {
                     DialogResult dr = sfd.ShowDialog();
                     if (dr == DialogResult.Cancel)
                     {
-                        return;
+
                     }
                     PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
 
@@ -177,18 +177,38 @@ namespace umowaDoPDF
                 }
                 else
                 {
-                    var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
-                    var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
-                    var fileExtension = ".pdf";
-                    //var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
-                    var pathDefaultSavePDF = Path.Combine(pathDesktop, $"{filename}{fileExtension}");
+                    string DefaultFileName = $"{sfd.FileName}.pdf";
+                    string defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
 
-                    // check default path
-                    //Console.WriteLine(pathDefaultSavePDF);
+                    int count = 1;
+                    while (File.Exists(defaultPath))
+                    {
+                        DefaultFileName = $"{sfd.FileName}_{count++}.pdf";
+                        if (!File.Exists(Path.Combine(sfd.InitialDirectory, DefaultFileName)))
+                        {
+                            defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
+                            break;
+                        }
+                    }
+                    PDFExporter.SaveAsPDF(defaultPath, PathDraft, a);
 
-                    PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
-                    Process.Start(pathDefaultSavePDF);
-                }
+                    MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{defaultPath}");
+
+                    Process.Start(defaultPath);
+                }                //else
+                //{
+                //    var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
+                //    var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
+                //    var fileExtension = ".pdf";
+                //    //var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
+                //    var pathDefaultSavePDF = Path.Combine(pathDesktop, $"{filename}{fileExtension}");
+
+                    //    // check default path
+                    //    //Console.WriteLine(pathDefaultSavePDF);
+
+                    //    PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
+                    //    Process.Start(pathDefaultSavePDF);
+                    //}
             }
             else
             {
@@ -476,7 +496,7 @@ namespace umowaDoPDF
             string zlotyFormPurchase = PolishGrammar.NounsWithNumeralsVariety(nudPurchaseValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tPurchasePriceInWords.ForeColor = Color.Black;
             //tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
-            tPurchasePriceInWords.Text = $"{niwPL}";
+            tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
 
 
         }
@@ -488,7 +508,7 @@ namespace umowaDoPDF
             //string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
             string zlotyFormBuyout = PolishGrammar.NounsWithNumeralsVariety(nudBuyoutPriceValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tBuyoutPriceInWords.ForeColor = Color.Black;
-            tBuyoutPriceInWords.Text = $"{niwPL.Trim()} {zlotyFormBuyout.Trim()}";
+            tBuyoutPriceInWords.Text = $"{niwPL} {zlotyFormBuyout}";
         }
 
         private void bAddOneDay_Click(object sender, EventArgs e)
