@@ -133,9 +133,7 @@
             this.tName.Size = new System.Drawing.Size(221, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
-            this.tName.Enter += new System.EventHandler(this.TName_Enter);
             this.tName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TName_KeyDown);
-            this.tName.Leave += new System.EventHandler(this.TName_Leave);
             // 
             // tIDCard
             // 
@@ -147,8 +145,6 @@
             this.tIDCard.Size = new System.Drawing.Size(116, 20);
             this.tIDCard.TabIndex = 17;
             this.tIDCard.Text = "-- Seria i Nr Dowodu --";
-            this.tIDCard.Enter += new System.EventHandler(this.TIDCard_Enter);
-            this.tIDCard.Leave += new System.EventHandler(this.TIDCard_Leave);
             // 
             // label4
             // 
@@ -169,8 +165,6 @@
             this.tPesel.Size = new System.Drawing.Size(116, 20);
             this.tPesel.TabIndex = 18;
             this.tPesel.Text = "-- Nr PESEL --";
-            this.tPesel.Enter += new System.EventHandler(this.TPesel_Enter);
-            this.tPesel.Leave += new System.EventHandler(this.TPesel_Leave);
             // 
             // label5
             // 
@@ -191,8 +185,6 @@
             this.tStreet.Size = new System.Drawing.Size(485, 20);
             this.tStreet.TabIndex = 16;
             this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
-            this.tStreet.Enter += new System.EventHandler(this.TStreet_Enter);
-            this.tStreet.Leave += new System.EventHandler(this.TStreet_Leave);
             // 
             // label6
             // 
@@ -211,8 +203,6 @@
             this.tZipCode.Size = new System.Drawing.Size(101, 20);
             this.tZipCode.TabIndex = 13;
             this.tZipCode.Text = "-- Kod Pocztowy --";
-            this.tZipCode.Enter += new System.EventHandler(this.TZipCode_Enter);
-            this.tZipCode.Leave += new System.EventHandler(this.TZipCode_Leave);
             // 
             // label7
             // 
@@ -233,8 +223,6 @@
             this.tCity.Size = new System.Drawing.Size(257, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "-- Gmina/Miasto --";
-            this.tCity.Enter += new System.EventHandler(this.TCity_Enter);
-            this.tCity.Leave += new System.EventHandler(this.TCity_Leave);
             // 
             // label8
             // 
@@ -257,8 +245,6 @@
             this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(413, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
-            this.tSubjectOfAgreemnt.Enter += new System.EventHandler(this.TSubjectOfAgreemnt_Enter);
-            this.tSubjectOfAgreemnt.Leave += new System.EventHandler(this.TSubjectOfAgreemnt_Leave);
             // 
             // label9
             // 
@@ -279,8 +265,6 @@
             this.tPurchasePriceInWords.Size = new System.Drawing.Size(413, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
-            this.tPurchasePriceInWords.Enter += new System.EventHandler(this.TPurchasePriceInWords_Enter);
-            this.tPurchasePriceInWords.Leave += new System.EventHandler(this.TPurchasePriceInWords_Leave);
             // 
             // label10
             // 
@@ -347,8 +331,6 @@
             this.tBuyoutPriceInWords.Size = new System.Drawing.Size(413, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
-            this.tBuyoutPriceInWords.Enter += new System.EventHandler(this.TBuyoutPriceInWords_Enter);
-            this.tBuyoutPriceInWords.Leave += new System.EventHandler(this.TBuyoutPriceInWords_Leave);
             // 
             // label13
             // 

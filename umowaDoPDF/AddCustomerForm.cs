@@ -128,49 +128,6 @@ namespace umowaDoPDF
                     //        Console.WriteLine(x.GetType());
                     //    }
         }
-        public void SaveDataToTextFile(Agreement a)
-        {
-            {
-                // todo: get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
-
-                //var a = new Agreement();
-                a.FromDate = dtpFrom.Value;
-
-                string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
-                string TxtFilePath = Path.Combine(DataDir, TxtFile);
-
-                a.ToDate = dtpTo.Value;
-                a.PurchasePrice = nudPurchasePrice.Value;
-                a.BuyoutPrice = nudBuyoutPrice.Value;
-                a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-                a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-                a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-                //a.Client = new Client();
-                a.Client.IDCard = tIDCard.Text;
-                a.Client.Name = tName.Text;
-                a.Client.Pesel = tPesel.Text;
-                var address = a.Client.Address;
-                address.City = tCity.Text;
-                address.Street = tStreet.Text;
-                address.ZipCode = tZipCode.Text;
-                var line = $@"
-{a.FromDate:dd.MM.yyyy}
-{a.Client.Name} {a.Client.Address.ToString()}
-{a.PurchasePrice.ToString("0.00")}
-{a.SubjectOfAgreement}
-{a.Client.IDCard}
-{a.Client.Pesel}
-{a.BuyoutPrice.ToString("0.00")}
-{a.ToDate:dd.MM.yyyy}";
-                using (TextWriter tw = new StreamWriter(TxtFilePath, true))
-                {
-                    tw.WriteLine(line);
-                    //MessageBox.Show("Zapisano do pliku txt");
-                    //try { Process.Start("notepad++.exe", TxtFilePath); }
-                    //catch { Process.Start(TxtFilePath); }
-                }
-            }
-        }
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
             string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
@@ -243,7 +200,7 @@ namespace umowaDoPDF
                 {
                     MessageBox.Show($"Brak szablonu pliku \"{AgreementDraftFile}\" w ścieżce: \"{PDFdraftsDir}\"! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
                 }
-                SaveDataToTextFile(a); 
+                ToolsAndStuff.SaveDataToTextFile(a, DataDir); 
             }
             else if (checkName == -1)
             {
@@ -344,18 +301,6 @@ namespace umowaDoPDF
 
         }
 
-        private void TName_Enter(object sender, EventArgs e)
-        {
-            // wyłączony aby sprawdzić czy działa metoda dodająca zachowanie dla wszystich textboxow
-            //ToolsAndStuff.TextBoxPlaceHolderAction((TextBox) sender, true, TextBoxesDefaults);
-        }
-
-        private void TName_Leave(object sender, EventArgs e)
-        {
-
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
         private void TName_KeyDown(object sender, KeyEventArgs e)
         {
             // if the key pressed is Enter:
@@ -386,88 +331,6 @@ namespace umowaDoPDF
             }
         }
 
-        private void TZipCode_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
-        }
-
-        private void TZipCode_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TCity_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TCity_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TStreet_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TStreet_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TIDCard_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TIDCard_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TPesel_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TPesel_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TSubjectOfAgreemnt_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TSubjectOfAgreemnt_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TPurchasePriceInWords_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TPurchasePriceInWords_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-        }
-
-        private void TBuyoutPriceInWords_Enter(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-        }
-
-        private void TBuyoutPriceInWords_Leave(object sender, EventArgs e)
-        {
-            ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
-        }// <-------------------------------- Placeholder things
-
         private void NudPurchasePrice_ValueChanged(object sender, EventArgs e)
         {
             decimal nudPurchaseValue = nudPurchasePrice.Value;
@@ -475,8 +338,6 @@ namespace umowaDoPDF
             string zlotyFormPurchase = PolishGrammar.NounsWithNumeralsVariety(nudPurchaseValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tPurchasePriceInWords.ForeColor = Color.Black;
             tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
-
-
         }
 
         private void NudBuyoutPrice_ValueChanged(object sender, EventArgs e)

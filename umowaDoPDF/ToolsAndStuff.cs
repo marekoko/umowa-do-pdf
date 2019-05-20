@@ -32,14 +32,21 @@ namespace umowaDoPDF
                 }
                 // todo: titolowe czary mary - wrzuca przy wejsciu do textboxow akcje placeholder
             }
-            foreach (var item in controls)
+            foreach (object item in controls)
             {
-                var collectionItem = item as TextBox;
+                TextBox collectionItem = item as TextBox;
                 if (collectionItem != null)
                 {
                     collectionItem.Enter += (sender, args) =>
                     {
                         TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxDict);
+                    };
+                }
+                if (collectionItem != null)
+                {
+                    collectionItem.Leave += (sender, args) =>
+                    {
+                        TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxDict);
                     };
                 }
 
@@ -71,6 +78,7 @@ namespace umowaDoPDF
                 MessageBox.Show(infoMessage);
             }
         }
+
         public static void MkFile(string path, string infoMessage)
         //
         // Make file in designated path
@@ -93,6 +101,7 @@ namespace umowaDoPDF
                 
             }
         }
+
         public static void TextBoxPlaceHolderAction(TextBox sender, bool entering, Dictionary<string, string> defaultTextBoxNames)
         //
         // Makes names of textboxes if they are empty
@@ -121,6 +130,7 @@ namespace umowaDoPDF
                 }
             }
         }
+
         public static int CheckNameAndLastNameFormat(string textboxString)
         //
         //Checks if there are two words in string in right format:
@@ -168,6 +178,33 @@ namespace umowaDoPDF
             else
             {
                 return -1;
+            }
+        }
+
+        public static void SaveDataToTextFile(Agreement a, string DataDir)
+        //
+        // Saving data form Agreement object into txt file
+        //
+        {
+            {
+                string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
+                string TxtFilePath = Path.Combine(DataDir, TxtFile);
+                var line = $@"
+{a.FromDate:dd.MM.yyyy}
+{a.Client.Name} {a.Client.Address.ToString()}
+{a.PurchasePrice.ToString("0.00")}
+{a.SubjectOfAgreement}
+{a.Client.IDCard}
+{a.Client.Pesel}
+{a.BuyoutPrice.ToString("0.00")}
+{a.ToDate:dd.MM.yyyy}";
+                using (TextWriter tw = new StreamWriter(TxtFilePath, true))
+                {
+                    tw.WriteLine(line);
+                    //MessageBox.Show("Zapisano do pliku txt");
+                    //try { Process.Start("notepad++.exe", TxtFilePath); }
+                    //catch { Process.Start(TxtFilePath); }
+                }
             }
         }
     }
