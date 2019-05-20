@@ -18,7 +18,6 @@ namespace umowaDoPDF
         // todo: add button to manage SubjectsOfAgreements Source list
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
-        // todo: make cheking in tName textbox form appropriate data format
         
 
         private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
@@ -175,133 +174,90 @@ namespace umowaDoPDF
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
             string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
+
             Agreement a = new Agreement();
+            a.FromDate = dtpFrom.Value;
+            a.ToDate = dtpTo.Value;
+            a.PurchasePrice = nudPurchasePrice.Value;
+            a.BuyoutPrice = nudBuyoutPrice.Value;
+            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
 
-            if (File.Exists(PathDraft))
+            SOAAddNew(a.SubjectOfAgreement);
+
+            a.Client = new Client();
+            a.Client.IDCard = tIDCard.Text;
+            a.Client.Name = tName.Text;
+            a.Client.Pesel = tPesel.Text;
+
+            int checkName = ToolsAndStuff.CheckNameAndLastNameFormat(a.Client.Name);
+            Console.WriteLine(checkName);
+
+            Address address = a.Client.Address = new Address();
+            address.City = tCity.Text;
+            address.Street = tStreet.Text;
+            address.ZipCode = tZipCode.Text;
+
+            if (checkName == 1)
             {
-
-                a.FromDate = dtpFrom.Value;
-                a.ToDate = dtpTo.Value;
-                a.PurchasePrice = nudPurchasePrice.Value;
-                a.BuyoutPrice = nudBuyoutPrice.Value;
-                a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-                a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-                a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-
-                SOAAddNew(a.SubjectOfAgreement);
-                a.Client = new Client();
-                a.Client.IDCard = tIDCard.Text;
-                a.Client.Name = tName.Text;
-                a.Client.Pesel = tPesel.Text;
-                Address address = a.Client.Address = new Address();
-                address.City = tCity.Text;
-                address.Street = tStreet.Text;
-                address.ZipCode = tZipCode.Text;
-
-
-
-
+                if (File.Exists(PathDraft))
+                {
                     SaveFileDialog sfd = new SaveFileDialog();
                     sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     sfd.Filter = "PDF|*.pdf";
                     sfd.FileName = $"Umowa_Lombardowa_{DateTime.Now:ddMMyyyy}_{a.Client.FirstNameOnly()}_{a.Client.LastNameOnly()}";
-                if (!cBoxSaveOnDesktop.Checked)
-                {
-                    DialogResult dr = sfd.ShowDialog();
-                    if (dr == DialogResult.Cancel)
+
+                    if (!cBoxSaveOnDesktop.Checked)
                     {
+                        DialogResult dr = sfd.ShowDialog();
+                        if (dr == DialogResult.Cancel)
+                        {
 
+                        }
+                        PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
+                        MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
+                        Process.Start(sfd.FileName);
                     }
-                    PDFExporter.SaveAsPDF(sfd.FileName, PathDraft, a);
+                    else
+                    {
+                        string DefaultFileName = $"{sfd.FileName}.pdf";
+                        string defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
 
-                    MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{sfd.FileName}");
-
-                    Process.Start(sfd.FileName);
+                        int count = 1;
+                        while (File.Exists(defaultPath))
+                        {
+                            DefaultFileName = $"{sfd.FileName}_{count++}.pdf";
+                            if (!File.Exists(Path.Combine(sfd.InitialDirectory, DefaultFileName)))
+                            {
+                                defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
+                                break;
+                            }
+                        }
+                        PDFExporter.SaveAsPDF(defaultPath, PathDraft, a);
+                        MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{defaultPath}");
+                        Process.Start(defaultPath);
+                    }
                 }
                 else
                 {
-                    string DefaultFileName = $"{sfd.FileName}.pdf";
-                    string defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
-
-                    int count = 1;
-                    while (File.Exists(defaultPath))
-                    {
-                        DefaultFileName = $"{sfd.FileName}_{count++}.pdf";
-                        if (!File.Exists(Path.Combine(sfd.InitialDirectory, DefaultFileName)))
-                        {
-                            defaultPath = Path.Combine(sfd.InitialDirectory, DefaultFileName);
-                            break;
-                        }
-                    }
-                    PDFExporter.SaveAsPDF(defaultPath, PathDraft, a);
-
-                    MessageBox.Show($"Zapisano plik *.pdf w ścieżce:\n{defaultPath}");
-
-                    Process.Start(defaultPath);
-                }                //else
-                //{
-                //    var pathDesktop = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}";
-                //    var filename = $"Umowa_Lombardowa_{ DateTime.Now:ddMMyyyy}_{ a.Client.FirstNameOnly()}_{ a.Client.LastNameOnly()}";
-                //    var fileExtension = ".pdf";
-                //    //var pathDefaultSavePDF = $@"{pathDesktop}\{filename}{fileExtension}";
-                //    var pathDefaultSavePDF = Path.Combine(pathDesktop, $"{filename}{fileExtension}");
-
-                    //    // check default path
-                    //    //Console.WriteLine(pathDefaultSavePDF);
-
-                    //    PDFExporter.SaveAsPDF(pathDefaultSavePDF, PathDraft, a);
-                    //    Process.Start(pathDefaultSavePDF);
-                    //}
+                    MessageBox.Show($"Brak szablonu pliku \"{AgreementDraftFile}\" w ścieżce: \"{PDFdraftsDir}\"! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
+                }
+                SaveDataToTextFile(a); 
+            }
+            else if (checkName == -1)
+            {
+                MessageBox.Show("In TextBox tName field=null");
+            }
+            else if (checkName == 999)
+            {
+                MessageBox.Show("Niedozwolony znak (\"<>_:\" /\\|?*\") w polu z imieniem i nazwiskiem");
             }
             else
             {
-                MessageBox.Show("Brak szablonu pliku! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
+                MessageBox.Show("Żle wpisane imię i nazwisko!");
             }
-            SaveDataToTextFile(a);
         }
-
-//        private void bSaveData_Click(object sender, EventArgs e)
-//        {
-//            // to do: DONE!! get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
-
-//            var a = new Agreement();
-//            a.FromDate = dtpFrom.Value;
-
-//            string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
-//            string TxtFilePath = Path.Combine(DataDir, TxtFile);
-
-//            a.ToDate = dtpTo.Value;
-//            a.PurchasePrice = nudPurchasePrice.Value;
-//            a.BuyoutPrice = nudBuyoutPrice.Value;
-//            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-//            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-//            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-//            a.Client = new Client();
-//            a.Client.IDCard = tIDCard.Text;
-//            a.Client.Name = tName.Text;
-//            a.Client.Pesel = tPesel.Text;
-//            var address = a.Client.Address = new Address();
-//            address.City = tCity.Text;
-//            address.Street = tStreet.Text;
-//            address.ZipCode = tZipCode.Text;
-//            var line = $@"
-//{a.FromDate:dd.MM.yyyy}
-//{a.Client.Name} {a.Client.Address.ToString()}
-//{a.PurchasePrice.ToString("0.00")}
-//{a.SubjectOfAgreement}
-//{a.Client.IDCard}
-//{a.Client.Pesel}
-//{a.BuyoutPrice.ToString("0.00")}
-//{a.ToDate:dd.MM.yyyy}";
-//            using (TextWriter tw = new StreamWriter(TxtFilePath, true))
-//            {
-//                tw.WriteLine(line);
-//                MessageBox.Show("Zapisano do pliku txt");
-//                try { Process.Start("notepad++.exe", TxtFilePath); }
-//                catch { Process.Start(TxtFilePath); }
-//            }
-//        } //TODO DONE!
-
         private void BSaveClient_Click(object sender, EventArgs e)
         {
             // check if text in textbox is a default text, if so messagebox appear, if not saving client process starts
@@ -364,13 +320,7 @@ namespace umowaDoPDF
             }
             else
             {
-                //string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{cBoxClientsList.Text}.txt", Encoding.UTF8);
                 string[] linesTxtClient = File.ReadAllLines(Path.Combine(ClientsDir, $"{cBoxClientsList.Text}.txt"), Encoding.UTF8);
-                //Console.WriteLine(linesTxtClient.Count());
-                //foreach (string clientData in linesTxtClient)
-                //{
-                //    Console.WriteLine(clientData);
-                //}
 
                 tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
                 tName.ForeColor = Color.Black;
@@ -445,85 +395,71 @@ namespace umowaDoPDF
         private void TZipCode_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TCity_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TCity_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TStreet_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TStreet_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TIDCard_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TIDCard_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TPesel_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TPesel_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TSubjectOfAgreemnt_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TSubjectOfAgreemnt_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TPurchasePriceInWords_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TPurchasePriceInWords_Leave(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaults);
-
         }
 
         private void TBuyoutPriceInWords_Enter(object sender, EventArgs e)
         {
             ToolsAndStuff.TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaults);
-
         }
 
         private void TBuyoutPriceInWords_Leave(object sender, EventArgs e)
@@ -536,10 +472,8 @@ namespace umowaDoPDF
         {
             decimal nudPurchaseValue = nudPurchasePrice.Value;
             string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudPurchaseValue.ToString("0"));
-            //string zlotyFormPurchase = NumberInWordsPL.ZlotyVariety(nudPurchaseValue.ToString());
             string zlotyFormPurchase = PolishGrammar.NounsWithNumeralsVariety(nudPurchaseValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tPurchasePriceInWords.ForeColor = Color.Black;
-            //tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
             tPurchasePriceInWords.Text = $"{niwPL} {zlotyFormPurchase}";
 
 
@@ -549,7 +483,6 @@ namespace umowaDoPDF
         {
             decimal nudBuyoutPriceValue = nudBuyoutPrice.Value;
             string niwPL = NumberInWordsPL.ConvertNumberToWordsPL(nudBuyoutPriceValue.ToString("0"));
-            //string zlotyFormBuyout = NumberInWordsPL.ZlotyVariety(nudBuyoutPriceValue.ToString());
             string zlotyFormBuyout = PolishGrammar.NounsWithNumeralsVariety(nudBuyoutPriceValue.ToString("0"), Noun.Zloty.ZlotyWithNumeralsDict);
             tBuyoutPriceInWords.ForeColor = Color.Black;
             tBuyoutPriceInWords.Text = $"{niwPL} {zlotyFormBuyout}";
