@@ -19,7 +19,7 @@ namespace umowaDoPDF
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
         // todo: make cheking in tName textbox form appropriate data format
-        // todo: !!!! BUG If file exists it crashes while saving pdf
+        
 
         private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
         private readonly string DataDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
@@ -129,14 +129,57 @@ namespace umowaDoPDF
                     //        Console.WriteLine(x.GetType());
                     //    }
         }
+        public void SaveDataToTextFile(Agreement a)
+        {
+            {
+                // todo: get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
+
+                //var a = new Agreement();
+                a.FromDate = dtpFrom.Value;
+
+                string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
+                string TxtFilePath = Path.Combine(DataDir, TxtFile);
+
+                a.ToDate = dtpTo.Value;
+                a.PurchasePrice = nudPurchasePrice.Value;
+                a.BuyoutPrice = nudBuyoutPrice.Value;
+                a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+                a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+                a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+                //a.Client = new Client();
+                a.Client.IDCard = tIDCard.Text;
+                a.Client.Name = tName.Text;
+                a.Client.Pesel = tPesel.Text;
+                var address = a.Client.Address;
+                address.City = tCity.Text;
+                address.Street = tStreet.Text;
+                address.ZipCode = tZipCode.Text;
+                var line = $@"
+{a.FromDate:dd.MM.yyyy}
+{a.Client.Name} {a.Client.Address.ToString()}
+{a.PurchasePrice.ToString("0.00")}
+{a.SubjectOfAgreement}
+{a.Client.IDCard}
+{a.Client.Pesel}
+{a.BuyoutPrice.ToString("0.00")}
+{a.ToDate:dd.MM.yyyy}";
+                using (TextWriter tw = new StreamWriter(TxtFilePath, true))
+                {
+                    tw.WriteLine(line);
+                    //MessageBox.Show("Zapisano do pliku txt");
+                    //try { Process.Start("notepad++.exe", TxtFilePath); }
+                    //catch { Process.Start(TxtFilePath); }
+                }
+            }
+        }
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
             string PathDraft = Path.Combine(PDFdraftsDir, AgreementDraftFile);
+            Agreement a = new Agreement();
 
             if (File.Exists(PathDraft))
             {
 
-                Agreement a = new Agreement();
                 a.FromDate = dtpFrom.Value;
                 a.ToDate = dtpTo.Value;
                 a.PurchasePrice = nudPurchasePrice.Value;
@@ -214,49 +257,50 @@ namespace umowaDoPDF
             {
                 MessageBox.Show("Brak szablonu pliku! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
             }
+            SaveDataToTextFile(a);
         }
 
-        private void bSaveData_Click(object sender, EventArgs e)
-        {
-            // todo: get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
+//        private void bSaveData_Click(object sender, EventArgs e)
+//        {
+//            // to do: DONE!! get rid of that bSaveData_Click button, and make savings to txt while generating pdfs
 
-            var a = new Agreement();
-            a.FromDate = dtpFrom.Value;
+//            var a = new Agreement();
+//            a.FromDate = dtpFrom.Value;
 
-            string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
-            string TxtFilePath = Path.Combine(DataDir, TxtFile);
+//            string TxtFile = $"dane_{a.FromDate:dd.MM.yyyy}.txt";
+//            string TxtFilePath = Path.Combine(DataDir, TxtFile);
 
-            a.ToDate = dtpTo.Value;
-            a.PurchasePrice = nudPurchasePrice.Value;
-            a.BuyoutPrice = nudBuyoutPrice.Value;
-            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
-            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
-            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
-            a.Client = new Client();
-            a.Client.IDCard = tIDCard.Text;
-            a.Client.Name = tName.Text;
-            a.Client.Pesel = tPesel.Text;
-            var address = a.Client.Address = new Address();
-            address.City = tCity.Text;
-            address.Street = tStreet.Text;
-            address.ZipCode = tZipCode.Text;
-            var line = $@"
-{a.FromDate:dd.MM.yyyy}
-{a.Client.Name} {a.Client.Address.ToString()}
-{a.PurchasePrice.ToString("0.00")}
-{a.SubjectOfAgreement}
-{a.Client.IDCard}
-{a.Client.Pesel}
-{a.BuyoutPrice.ToString("0.00")}
-{a.ToDate:dd.MM.yyyy}";
-            using (TextWriter tw = new StreamWriter(TxtFilePath, true))
-            {
-                tw.WriteLine(line);
-                MessageBox.Show("Zapisano do pliku txt");
-                try { Process.Start("notepad++.exe", TxtFilePath); }
-                catch { Process.Start(TxtFilePath); }
-            }
-        }
+//            a.ToDate = dtpTo.Value;
+//            a.PurchasePrice = nudPurchasePrice.Value;
+//            a.BuyoutPrice = nudBuyoutPrice.Value;
+//            a.PurchasePriceInWords = tPurchasePriceInWords.Text;
+//            a.BuyoutPriceInWords = tBuyoutPriceInWords.Text;
+//            a.SubjectOfAgreement = tSubjectOfAgreemnt.Text;
+//            a.Client = new Client();
+//            a.Client.IDCard = tIDCard.Text;
+//            a.Client.Name = tName.Text;
+//            a.Client.Pesel = tPesel.Text;
+//            var address = a.Client.Address = new Address();
+//            address.City = tCity.Text;
+//            address.Street = tStreet.Text;
+//            address.ZipCode = tZipCode.Text;
+//            var line = $@"
+//{a.FromDate:dd.MM.yyyy}
+//{a.Client.Name} {a.Client.Address.ToString()}
+//{a.PurchasePrice.ToString("0.00")}
+//{a.SubjectOfAgreement}
+//{a.Client.IDCard}
+//{a.Client.Pesel}
+//{a.BuyoutPrice.ToString("0.00")}
+//{a.ToDate:dd.MM.yyyy}";
+//            using (TextWriter tw = new StreamWriter(TxtFilePath, true))
+//            {
+//                tw.WriteLine(line);
+//                MessageBox.Show("Zapisano do pliku txt");
+//                try { Process.Start("notepad++.exe", TxtFilePath); }
+//                catch { Process.Start(TxtFilePath); }
+//            }
+//        } //TODO DONE!
 
         private void BSaveClient_Click(object sender, EventArgs e)
         {

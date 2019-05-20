@@ -56,7 +56,6 @@
             this.tBuyoutPriceInWords = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.bGeneratePDF = new System.Windows.Forms.Button();
-            this.bSaveData = new System.Windows.Forms.Button();
             this.bSaveClient = new System.Windows.Forms.Button();
             this.cBoxClientsList = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -371,21 +370,10 @@
             this.bGeneratePDF.UseVisualStyleBackColor = true;
             this.bGeneratePDF.Click += new System.EventHandler(this.bGeneratePDF_Click);
             // 
-            // bSaveData
-            // 
-            this.bSaveData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveData.Location = new System.Drawing.Point(571, 326);
-            this.bSaveData.Name = "bSaveData";
-            this.bSaveData.Size = new System.Drawing.Size(99, 44);
-            this.bSaveData.TabIndex = 33;
-            this.bSaveData.Text = "Zapisz Dane";
-            this.bSaveData.UseVisualStyleBackColor = true;
-            this.bSaveData.Click += new System.EventHandler(this.bSaveData_Click);
-            // 
             // bSaveClient
             // 
             this.bSaveClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveClient.Location = new System.Drawing.Point(571, 275);
+            this.bSaveClient.Location = new System.Drawing.Point(571, 326);
             this.bSaveClient.Name = "bSaveClient";
             this.bSaveClient.Size = new System.Drawing.Size(99, 44);
             this.bSaveClient.TabIndex = 30;
@@ -541,7 +529,6 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cBoxClientsList);
             this.Controls.Add(this.bSaveClient);
-            this.Controls.Add(this.bSaveData);
             this.Controls.Add(this.bGeneratePDF);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.nudBuyoutPrice);
@@ -608,7 +595,6 @@
         private System.Windows.Forms.TextBox tBuyoutPriceInWords;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bGeneratePDF;
-        private System.Windows.Forms.Button bSaveData;
         private System.Windows.Forms.Button bSaveClient;
         private System.Windows.Forms.ComboBox cBoxClientsList;
         private System.Windows.Forms.Label label14;
