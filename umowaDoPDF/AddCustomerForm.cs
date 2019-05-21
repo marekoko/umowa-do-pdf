@@ -37,7 +37,7 @@ namespace umowaDoPDF
             InitializeAppDirs();
             ClientListUpdateSource();
             SOAUpdateListSource();
-
+            ToolsAndStuff.SetTextBoxesEvents(this.Controls);
             TextBoxesDefaults = ToolsAndStuff.MakeTextBoxesDictionary(this.Controls);
             var today = DateTime.Now;
             dtpFrom.Value = today;
@@ -388,5 +388,9 @@ namespace umowaDoPDF
             dtpTo.Value = DateTime.Today;
         }
 
+        private void BEraseData_Click(object sender, EventArgs e)
+        {
+            ToolsAndStuff.EraseTextBoxesData(this.Controls);
+        }
     }
 }

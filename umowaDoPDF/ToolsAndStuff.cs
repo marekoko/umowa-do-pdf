@@ -11,11 +11,25 @@ using System.Windows.Forms;
 namespace umowaDoPDF
 {
     class ToolsAndStuff
-    {   
-        
+    {
+        public static void EraseTextBoxesData(Control.ControlCollection controls)
+        //
+        // Deletes all text values from TextBoxes and makes them empty ("")
+        {
+            foreach (var item in controls)
+            {
+                TextBox collectionItem = item as TextBox;
+                if (collectionItem != null)
+                {
+                    collectionItem.Text = "";
+                }
+
+            }
+        }
+        //
         public static Dictionary<string, string> MakeTextBoxesDictionary(Control.ControlCollection controls)
         //
-        // Take out all checkboxes and text from this form and put it into dictionary:
+        // Take out all checkboxes and text from this form and put it into dictionary Key: textboxName, Value: textboxText
         //
         {
             Dictionary<string, string> TextBoxDict = new Dictionary<string, string>();
@@ -30,8 +44,17 @@ namespace umowaDoPDF
                     //Console.WriteLine(collectionItem.Text);
 
                 }
-                // todo: titolowe czary mary - wrzuca przy wejsciu do textboxow akcje placeholder
+
             }
+                return TextBoxDict;
+        }
+
+        public static void SetTextBoxesEvents(Control.ControlCollection controls)
+        // Set events to all texboxes for Entering and Leaving
+        // todo: titolowe czary mary - wrzuca przy wejsciu do textboxow akcje placeholder
+
+        {
+            var TextBoxesDefaultValues = MakeTextBoxesDictionary(controls);
             foreach (object item in controls)
             {
                 TextBox collectionItem = item as TextBox;
@@ -39,14 +62,14 @@ namespace umowaDoPDF
                 {
                     collectionItem.Enter += (sender, args) =>
                     {
-                        TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxDict);
+                        TextBoxPlaceHolderAction((TextBox)sender, true, TextBoxesDefaultValues);
                     };
                 }
                 if (collectionItem != null)
                 {
                     collectionItem.Leave += (sender, args) =>
                     {
-                        TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxDict);
+                        TextBoxPlaceHolderAction((TextBox)sender, false, TextBoxesDefaultValues);
                     };
                 }
 
@@ -59,7 +82,6 @@ namespace umowaDoPDF
             //    Console.WriteLine(entry.Key + " - " + entry.Value);
             //}
 
-            return TextBoxDict;
         }
 
         public static void MkDir(string path, string infoMessage)
@@ -70,7 +92,7 @@ namespace umowaDoPDF
             if (!Directory.Exists(path))
             {
 
-                if (infoMessage == null || infoMessage == "")
+                if (string.IsNullOrWhiteSpace(infoMessage))
                 {
                     infoMessage = $"Utworzyłem katalog w ścieżce:\n\"{path}\"";
                 }
@@ -81,24 +103,23 @@ namespace umowaDoPDF
 
         public static void MkFile(string path, string infoMessage)
         //
-        // Make file in designated path
+        // Make file in designated path with MessageBox(if info == null || "" => default message)
         //
         {
 
             if (!File.Exists(path))
             {
-                if (infoMessage == null || infoMessage == "")
+                if (string.IsNullOrWhiteSpace(infoMessage))
                 {
                     infoMessage = $"Utworzyłem plik w ścieżce:\n\"{path}\"";
                 }
 
-                // todo: działa jak "File.Create(path);" ale zamyka plik
+                // działa jak "File.Create(path);" ale zamyka plik
                 MessageBox.Show(infoMessage);
                 using (File.Create(path))
                 {
                 
                 }
-                
             }
         }
 

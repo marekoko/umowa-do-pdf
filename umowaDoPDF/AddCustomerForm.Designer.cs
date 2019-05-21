@@ -70,6 +70,7 @@
             this.bToDateMakeToday = new System.Windows.Forms.Button();
             this.bFromDateMakeToday = new System.Windows.Forms.Button();
             this.cBoxSaveOnDesktop = new System.Windows.Forms.CheckBox();
+            this.bEraseData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBuyoutPrice)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +131,7 @@
             this.tName.ForeColor = System.Drawing.Color.Silver;
             this.tName.Location = new System.Drawing.Point(54, 67);
             this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(221, 20);
+            this.tName.Size = new System.Drawing.Size(501, 20);
             this.tName.TabIndex = 5;
             this.tName.Text = "-- Imię i Nazwisko --";
             this.tName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TName_KeyDown);
@@ -182,7 +183,7 @@
             this.tStreet.ForeColor = System.Drawing.Color.Silver;
             this.tStreet.Location = new System.Drawing.Point(54, 119);
             this.tStreet.Name = "tStreet";
-            this.tStreet.Size = new System.Drawing.Size(485, 20);
+            this.tStreet.Size = new System.Drawing.Size(501, 20);
             this.tStreet.TabIndex = 16;
             this.tStreet.Text = "-- Miejscowość/Ulica + Nr Domu/Mieszkania --";
             // 
@@ -220,7 +221,7 @@
             this.tCity.ForeColor = System.Drawing.Color.Silver;
             this.tCity.Location = new System.Drawing.Point(282, 93);
             this.tCity.Name = "tCity";
-            this.tCity.Size = new System.Drawing.Size(257, 20);
+            this.tCity.Size = new System.Drawing.Size(273, 20);
             this.tCity.TabIndex = 15;
             this.tCity.Text = "-- Gmina/Miasto --";
             // 
@@ -242,7 +243,7 @@
             this.tSubjectOfAgreemnt.ForeColor = System.Drawing.Color.Silver;
             this.tSubjectOfAgreemnt.Location = new System.Drawing.Point(126, 195);
             this.tSubjectOfAgreemnt.Name = "tSubjectOfAgreemnt";
-            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(413, 20);
+            this.tSubjectOfAgreemnt.Size = new System.Drawing.Size(429, 20);
             this.tSubjectOfAgreemnt.TabIndex = 20;
             this.tSubjectOfAgreemnt.Text = "-- Opis Rzeczy --";
             // 
@@ -262,7 +263,7 @@
             this.tPurchasePriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tPurchasePriceInWords.Location = new System.Drawing.Point(126, 247);
             this.tPurchasePriceInWords.Name = "tPurchasePriceInWords";
-            this.tPurchasePriceInWords.Size = new System.Drawing.Size(413, 20);
+            this.tPurchasePriceInWords.Size = new System.Drawing.Size(429, 20);
             this.tPurchasePriceInWords.TabIndex = 25;
             this.tPurchasePriceInWords.Text = "-- Cena Zakupu Słownie --";
             // 
@@ -285,7 +286,7 @@
             0,
             0});
             this.nudPurchasePrice.Name = "nudPurchasePrice";
-            this.nudPurchasePrice.Size = new System.Drawing.Size(56, 20);
+            this.nudPurchasePrice.Size = new System.Drawing.Size(73, 20);
             this.nudPurchasePrice.TabIndex = 23;
             this.nudPurchasePrice.ValueChanged += new System.EventHandler(this.NudPurchasePrice_ValueChanged);
             // 
@@ -317,7 +318,7 @@
             0,
             0});
             this.nudBuyoutPrice.Name = "nudBuyoutPrice";
-            this.nudBuyoutPrice.Size = new System.Drawing.Size(56, 20);
+            this.nudBuyoutPrice.Size = new System.Drawing.Size(73, 20);
             this.nudBuyoutPrice.TabIndex = 27;
             this.nudBuyoutPrice.ValueChanged += new System.EventHandler(this.NudBuyoutPrice_ValueChanged);
             // 
@@ -328,7 +329,7 @@
             this.tBuyoutPriceInWords.ForeColor = System.Drawing.Color.Silver;
             this.tBuyoutPriceInWords.Location = new System.Drawing.Point(126, 299);
             this.tBuyoutPriceInWords.Name = "tBuyoutPriceInWords";
-            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(413, 20);
+            this.tBuyoutPriceInWords.Size = new System.Drawing.Size(429, 20);
             this.tBuyoutPriceInWords.TabIndex = 29;
             this.tBuyoutPriceInWords.Text = "-- Cena Wykupu Słownie --";
             // 
@@ -370,7 +371,7 @@
             this.cBoxClientsList.FormattingEnabled = true;
             this.cBoxClientsList.Location = new System.Drawing.Point(84, 344);
             this.cBoxClientsList.Name = "cBoxClientsList";
-            this.cBoxClientsList.Size = new System.Drawing.Size(351, 26);
+            this.cBoxClientsList.Size = new System.Drawing.Size(366, 26);
             this.cBoxClientsList.TabIndex = 35;
             this.cBoxClientsList.SelectedIndexChanged += new System.EventHandler(this.CBoxClientsList_SelectedIndexChanged);
             // 
@@ -387,7 +388,7 @@
             // bChooseClientFromCBox
             // 
             this.bChooseClientFromCBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bChooseClientFromCBox.Location = new System.Drawing.Point(441, 344);
+            this.bChooseClientFromCBox.Location = new System.Drawing.Point(456, 344);
             this.bChooseClientFromCBox.Name = "bChooseClientFromCBox";
             this.bChooseClientFromCBox.Size = new System.Drawing.Size(99, 26);
             this.bChooseClientFromCBox.TabIndex = 37;
@@ -493,11 +494,22 @@
             this.cBoxSaveOnDesktop.Text = "Zapisz na Pulpit";
             this.cBoxSaveOnDesktop.UseVisualStyleBackColor = true;
             // 
+            // bEraseData
+            // 
+            this.bEraseData.Location = new System.Drawing.Point(561, 67);
+            this.bEraseData.Name = "bEraseData";
+            this.bEraseData.Size = new System.Drawing.Size(69, 46);
+            this.bEraseData.TabIndex = 47;
+            this.bEraseData.Text = "Wyczyść";
+            this.bEraseData.UseVisualStyleBackColor = true;
+            this.bEraseData.Click += new System.EventHandler(this.BEraseData_Click);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 382);
+            this.Controls.Add(this.bEraseData);
             this.Controls.Add(this.cBoxSaveOnDesktop);
             this.Controls.Add(this.bFromDateMakeToday);
             this.Controls.Add(this.bToDateMakeToday);
@@ -591,6 +603,7 @@
         private System.Windows.Forms.Button bToDateMakeToday;
         private System.Windows.Forms.Button bFromDateMakeToday;
         private System.Windows.Forms.CheckBox cBoxSaveOnDesktop;
+        private System.Windows.Forms.Button bEraseData;
     }
 }
 
