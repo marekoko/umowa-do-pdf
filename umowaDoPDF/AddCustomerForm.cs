@@ -18,7 +18,8 @@ namespace umowaDoPDF
         // todo: add button to manage SubjectsOfAgreements Source list
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
-        
+        // todo: make ultimate method to add sources for autocomplete textboxes
+
 
         private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
         private readonly string DataDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
@@ -86,13 +87,13 @@ namespace umowaDoPDF
                 Console.WriteLine($"SOA:\"{SOA}\" dodany do AutoCompleteList"); // refresh autocomplete list
 
                 SOAUpdateListSource();
-                
+
             }
             else
             {
                 Console.WriteLine("SOA jest już na liście\nNie dodaję do listy");
             }
-            
+
         }
         public void ClientListUpdateSource()
         {
@@ -108,25 +109,25 @@ namespace umowaDoPDF
                 ClientList.Add(Path.GetFileNameWithoutExtension(filePath));
             }
 
-                    //    // todo: titolowe czary mary objectcollection do stringa
-                    //    var x = cBoxClientsList.Items;
-                    //    foreach (var c in x)
-                    //    {
-                    //        var element = (string)c;
-                    //        var element2 = c.ToString();
-                    //    }
+            //    // todo: titolowe czary mary objectcollection do stringa
+            //    var x = cBoxClientsList.Items;
+            //    foreach (var c in x)
+            //    {
+            //        var element = (string)c;
+            //        var element2 = c.ToString();
+            //    }
 
-                    //    var list = x.Cast<string>();
-                    //    TwojaStara("");
-                    //    TwojaStara(1);
-                    //}
-                    //void TwojaStara<t>(t x)
-                    //{
-                    //    // todo: titolowe czary mary - metoda generyczna - zależy od rodzaju zmiennej
-                    //    if(x.GetType() == typeof(int))
-                    //    {
-                    //        Console.WriteLine(x.GetType());
-                    //    }
+            //    var list = x.Cast<string>();
+            //    TwojaStara("");
+            //    TwojaStara(1);
+            //}
+            //void TwojaStara<t>(t x)
+            //{
+            //    // todo: titolowe czary mary - metoda generyczna - zależy od rodzaju zmiennej
+            //    if(x.GetType() == typeof(int))
+            //    {
+            //        Console.WriteLine(x.GetType());
+            //    }
         }
         private void bGeneratePDF_Click(object sender, EventArgs e)
         {
@@ -200,7 +201,7 @@ namespace umowaDoPDF
                 {
                     MessageBox.Show($"Brak szablonu pliku \"{AgreementDraftFile}\" w ścieżce: \"{PDFdraftsDir}\"! \n\nBez szablonu nie można \nwygenerować nowego dokumentu");
                 }
-                ToolsAndStuff.SaveDataToTextFile(a, DataDir); 
+                ToolsAndStuff.SaveDataToTextFile(a, DataDir);
             }
             else if (checkName == -1)
             {
@@ -300,7 +301,32 @@ namespace umowaDoPDF
             }
 
         }
+        private void TName_Leave(object sender, EventArgs e)
+        {
 
+            if (ClientList.Any(x => x.ToLower() == tName.Text.ToLower()))
+            {
+                string[] linesTxtClient = File.ReadAllLines($"{ClientsDir}\\{tName.Text}.txt", Encoding.UTF8);
+
+                tName.Text = $"{linesTxtClient[1]} {linesTxtClient[2]}";
+                tName.ForeColor = Color.Black;
+
+                tZipCode.Text = linesTxtClient[3];
+                tZipCode.ForeColor = Color.Black;
+
+                tCity.Text = linesTxtClient[4];
+                tCity.ForeColor = Color.Black;
+
+                tStreet.Text = linesTxtClient[5];
+                tStreet.ForeColor = Color.Black;
+
+                tIDCard.Text = linesTxtClient[6];
+                tIDCard.ForeColor = Color.Black;
+
+                tPesel.Text = linesTxtClient[7];
+                tPesel.ForeColor = Color.Black;
+            }
+        }
         private void TName_KeyDown(object sender, KeyEventArgs e)
         {
             // if the key pressed is Enter:
@@ -392,5 +418,7 @@ namespace umowaDoPDF
         {
             ToolsAndStuff.EraseTextBoxesData(this.Controls);
         }
+
+
     }
 }
