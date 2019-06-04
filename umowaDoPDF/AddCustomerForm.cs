@@ -19,7 +19,7 @@ namespace umowaDoPDF
         // todo: make clientlist manager
         // todo: make SubjectsOfAgreements Source list manager
         // todo: make ultimate method to add sources for autocomplete textboxes
-
+        // todo: BUG!! in making tenths of thounsands (and BUG in for example "1625") to wordsPL
 
         private readonly string ClientsDir = Path.Combine(Directory.GetCurrentDirectory(), "Clients");
         private readonly string DataDir = Path.Combine(Directory.GetCurrentDirectory(), "Data");
